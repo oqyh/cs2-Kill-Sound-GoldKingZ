@@ -12,6 +12,7 @@
 {
   // you can test any sound path ingame console type "play <soundpath>"
   // Sound Path will in  https://github.com/oqyh/cs2-Kill-Sound/blob/main/sounds/sounds.txt
+  //TO DISABLE MAKE IT "" empty
   "HeadShotSound": "sounds/training/bell_normal.vsnd_c"
 }
 ```
