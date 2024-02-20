@@ -1,6 +1,6 @@
 # [CS2] Kill-Sound (1.0.1)
 
-### Kill Sound , HeadShot
+### Sound On , Kill , HeadShot , Body
 
 ![menu](https://github.com/oqyh/cs2-Kill-Sound/assets/48490385/d9e90a91-0381-449c-95a4-fa686f9bf278)
 
