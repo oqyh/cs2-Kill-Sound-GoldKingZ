@@ -30,9 +30,9 @@
   
 //-----------------------------------------------------------------------------------------
 
-  //Commands To Open Sound Menu Add Many Commands You Like And If You Like To Disable It Make It Empty Like This ""
+  //Commands To Open Sound Menu Add Many Commands As You Like And If You Like To Disable It Make It Empty Like This ""
   "SoundDisableCommandsMenu": "!soundmenu,!soundsmenu,!soundsetting,!soundsettings",
-  //Commands To Disable All Sounds Add Many Commands You Like And If You Like To Disable It Make It Empty Like This ""
+  //Commands To Disable All Sounds Add Many Commands  As You Like And If You Like To Disable It Make It Empty Like This ""
   "SoundDisableCommands": "!stopsound,!stopsounds",
   //Delete Inactive Players Older Than X Days (Save Cookies in ../addons/counterstrikesharp/plugins/Kill_Sound/Cookies/)
   "RemovePlayerCookieOlderThanXDays": 7,
