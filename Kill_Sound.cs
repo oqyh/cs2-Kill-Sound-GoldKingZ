@@ -2,6 +2,7 @@ using System.Text.Json.Serialization;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Attributes;
 using CounterStrikeSharp.API.Modules.Commands;
+using CounterStrikeSharp.API.Modules.Cvars;
 using CounterStrikeSharp.API;
 using System.Text;
 using Newtonsoft.Json;
@@ -26,7 +27,7 @@ public class KillSoundConfig : BasePluginConfig
 public class KillSound : BasePlugin, IPluginConfig<KillSoundConfig>
 {
     public override string ModuleName => "Kill Sound";
-    public override string ModuleVersion => "1.0.1";
+    public override string ModuleVersion => "1.0.2";
     public override string ModuleAuthor => "Gold KingZ";
     public override string ModuleDescription => "Sound On , Kill , HeadShot , Body";
     public KillSoundConfig Config { get; set; } = new KillSoundConfig();
@@ -460,7 +461,9 @@ public class KillSound : BasePlugin, IPluginConfig<KillSoundConfig>
     private HookResult OnPlayerDeath(EventPlayerDeath @event, GameEventInfo _)
     {
         var attacker = @event.Attacker;
+        var attackerteam = attacker.TeamNum;
         var victim = @event.Userid;
+        var victimteam = victim.TeamNum;
         var headshot = @event.Headshot;
         var playerid = attacker.SteamID;
         PersonData personData = RetrievePersonDataById((int)playerid);
@@ -476,7 +479,17 @@ public class KillSound : BasePlugin, IPluginConfig<KillSoundConfig>
                         //SKIP SOUNDS
                     }else
                     {
-                        attacker.ExecuteClientCommand("play " + Config.HeadShotKillSoundPath);
+                        if(ConVar.Find("mp_teammates_are_enemies")!.GetPrimitiveValue<bool>() == false)
+                        {
+                            if(attackerteam != victimteam)
+                            {
+                                attacker.ExecuteClientCommand("play " + Config.HeadShotKillSoundPath);
+                            }
+                        }else
+                        {
+                            attacker.ExecuteClientCommand("play " + Config.HeadShotKillSoundPath);
+                        }
+                        
                     }
                     
                 }
@@ -490,7 +503,17 @@ public class KillSound : BasePlugin, IPluginConfig<KillSoundConfig>
                         //SKIP SOUNDS
                     }else
                     {
-                        attacker.ExecuteClientCommand("play " + Config.BodyKillSoundPath);
+                        if(ConVar.Find("mp_teammates_are_enemies")!.GetPrimitiveValue<bool>() == false)
+                        {
+                            if(attackerteam != victimteam)
+                            {
+                                attacker.ExecuteClientCommand("play " + Config.BodyKillSoundPath);
+                            }
+                        }else
+                        {
+                            attacker.ExecuteClientCommand("play " + Config.BodyKillSoundPath);
+                        }
+                        
                     }
                 }
             }
@@ -501,7 +524,9 @@ public class KillSound : BasePlugin, IPluginConfig<KillSoundConfig>
     private HookResult OnPlayerHurt(EventPlayerHurt @event, GameEventInfo _)
     {
         var attacker = @event.Attacker;
+        var attackerteam = attacker.TeamNum;
         var victim = @event.Userid;
+        var victimteam = victim.TeamNum;
         var hitgroup = @event.Hitgroup;
         var playerid = attacker.SteamID;
         PersonData personData = RetrievePersonDataById((int)playerid);
@@ -517,9 +542,17 @@ public class KillSound : BasePlugin, IPluginConfig<KillSoundConfig>
                         //SKIP SOUNDS
                     }else
                     {
-                        attacker.ExecuteClientCommand("play " + Config.HeadShotHitSoundPath);
+                        if(ConVar.Find("mp_teammates_are_enemies")!.GetPrimitiveValue<bool>() == false)
+                        {
+                            if(attackerteam != victimteam)
+                            {
+                                attacker.ExecuteClientCommand("play " + Config.HeadShotHitSoundPath);
+                            }
+                        }else
+                        {
+                            attacker.ExecuteClientCommand("play " + Config.HeadShotHitSoundPath);
+                        }
                     }
-                    
                 }
             }else
             {
@@ -531,7 +564,16 @@ public class KillSound : BasePlugin, IPluginConfig<KillSoundConfig>
                         
                     }else
                     {
-                        attacker.ExecuteClientCommand("play " + Config.BodyHitSoundPath);
+                        if(ConVar.Find("mp_teammates_are_enemies")!.GetPrimitiveValue<bool>() == false)
+                        {
+                            if(attackerteam != victimteam)
+                            {
+                                attacker.ExecuteClientCommand("play " + Config.BodyHitSoundPath);
+                            }
+                        }else
+                        {
+                            attacker.ExecuteClientCommand("play " + Config.BodyHitSoundPath);
+                        }
                     }
                 }
             }
