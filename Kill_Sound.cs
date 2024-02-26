@@ -27,7 +27,7 @@ public class KillSoundConfig : BasePluginConfig
 public class KillSound : BasePlugin, IPluginConfig<KillSoundConfig>
 {
     public override string ModuleName => "Kill Sound";
-    public override string ModuleVersion => "1.0.2";
+    public override string ModuleVersion => "1.0.3";
     public override string ModuleAuthor => "Gold KingZ";
     public override string ModuleDescription => "Sound On , Kill , HeadShot , Body";
     public KillSoundConfig Config { get; set; } = new KillSoundConfig();
@@ -461,8 +461,9 @@ public class KillSound : BasePlugin, IPluginConfig<KillSoundConfig>
     private HookResult OnPlayerDeath(EventPlayerDeath @event, GameEventInfo _)
     {
         var attacker = @event.Attacker;
-        var attackerteam = attacker.TeamNum;
         var victim = @event.Userid;
+        if (attacker == null || victim == null || !attacker.IsValid || !victim.IsValid || attacker.IsBot || attacker.IsHLTV)return HookResult.Continue;
+        var attackerteam = attacker.TeamNum;
         var victimteam = victim.TeamNum;
         var headshot = @event.Headshot;
         var playerid = attacker.SteamID;
@@ -524,8 +525,9 @@ public class KillSound : BasePlugin, IPluginConfig<KillSoundConfig>
     private HookResult OnPlayerHurt(EventPlayerHurt @event, GameEventInfo _)
     {
         var attacker = @event.Attacker;
-        var attackerteam = attacker.TeamNum;
         var victim = @event.Userid;
+        if (attacker == null || victim == null || !attacker.IsValid || !victim.IsValid || attacker.IsBot || attacker.IsHLTV)return HookResult.Continue;
+        var attackerteam = attacker.TeamNum;
         var victimteam = victim.TeamNum;
         var hitgroup = @event.Hitgroup;
         var playerid = attacker.SteamID;
