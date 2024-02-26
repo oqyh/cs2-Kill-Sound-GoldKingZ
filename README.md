@@ -1,4 +1,4 @@
-# [CS2] Kill-Sound (1.0.2)
+# [CS2] Kill-Sound (1.0.3)
 
 ### Sound On , Kill , HeadShot , Body
 
@@ -109,6 +109,9 @@
 
 ## .:[ Change Log ]:.
 ```
+(1.0.3)
+-Fix Null
+
 (1.0.2)
 -Fix Sounds On Teammate
 
