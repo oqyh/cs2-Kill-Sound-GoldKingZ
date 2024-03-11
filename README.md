@@ -2,7 +2,7 @@
 
 ### Sound On , Kill , HeadShot , Body
 
-![menu](https://github.com/oqyh/cs2-Kill-Sound/assets/48490385/d9e90a91-0381-449c-95a4-fa686f9bf278)
+![Untitled](https://github.com/oqyh/cs2-Kill-Sound/assets/48490385/c2ffb156-c689-40f1-8d6d-fe9299ed4072)
 
 ![111](https://github.com/oqyh/cs2-Kill-Sound/assets/48490385/ac812651-3a64-4010-a708-30890ddd8cc4)
 
@@ -50,15 +50,10 @@
 ## .:[ Language ]:.
 ```json
 {
-	//==========================
-	//        Colors Chat
-	//==========================
-	//{Yellow} {Gold} {Silver} {Blue} {DarkBlue} {BlueGrey} {Magenta} {LightRed}
-	//{LightBlue} {Olive} {Lime} {Red} {Purple} {Grey}
-	//{Default} {White} {Darkred} {Green} {LightYellow}
-	//==========================
-	
 	"Chat.AllSoundsOff": "{green}Gold KingZ {grey}| All Sounds {darkred}Disabled.",
+
+	"Chat.FreezeOff": "{green}Gold KingZ {grey}| Freeze When Menu Open {darkred}Disabled.",
+	"Chat.FreezeOn": "{green}Gold KingZ {grey}| Freeze When Menu Open {lime}Enabled.",
 
 	"Chat.HeadShotKillOff": "{green}Gold KingZ {grey}| Head-Shot Kill Sound {darkred}Disabled.",
 	"Chat.HeadShotKillOn": "{green}Gold KingZ {grey}| Head-Shot Kill Sound {lime}Enabled.",
@@ -72,43 +67,27 @@
 	"Chat.BodyHitOff": "{green}Gold KingZ {grey}| Body-Shot Hit Sound {darkred}Disabled.",
 	"Chat.BodyHitOn": "{green}Gold KingZ {grey}| Body-Shot Hit Sound {lime}Enabled.",
 
-	//==========================
-	//        Colors Menu
-	//==========================
-	//Red = {1}TEXT{0}
-	//Cyan = {2}TEXT{0}
-	//Blue = {3}TEXT{0}
-	//DarkBlue = {4}TEXT{0}
-	//LightBlue = {5}TEXT{0}
-	//Purple = {6}TEXT{0}
-	//Yellow = {7}TEXT{0}
-	//Lime = {8}TEXT{0}
-	//Magenta = {9}TEXT{0}
-	//Pink = {10}TEXT{0}
-	//Grey = {11}TEXT{0}
-	//Green = {12}TEXT{0}
-	//Orange = {13}TEXT{0}
-	//==========================
 
-	"Menu.HeadShotKillOff": "{7}[ !1 ]{0} {12}Head-Shot Kill Sound{0} : {1}Off{0}",
-	"Menu.HeadShotKillOn": "{7}[ !1 ]{0} {12}Head-Shot Kill Sound{0} : {12}On{0}",
 
-	"Menu.HeadShotHitOff": "{7}[ !2 ]{0} {12}Head-Shot Hit Sound{0} : {1}Off{0}",
-	"Menu.HeadShotHitOn": "{7}[ !2 ]{0} {12}Head-Shot Hit Sound{0} : {12}On{0}",
+	"Menu.Intro": "<font class='fontSize-l' color='yellow'> Opening Menu... </font>  <br> <br> <img src='https://cdn.discordapp.com/attachments/1175717468724015144/1215033982790410280/BtQI.gif?ex=65fb4793&is=65e8d293&hm=a68453fe98e8cdcca309f632183fae225964d012fe223a7705d780f3e1a89a98&' class=''> <br> <br>",
 
-	"Menu.BodyKillOff": "{7}[ !3 ]{0} {12}Body-Shot Kill Sound{0} : {1}Off{0}",
-	"Menu.BodyKillOn": "{7}[ !3 ]{0} {12}Body-Shot Kill Sound{0} : {12}On{0}",
+	"Menu.Freeze": "Freeze Menu Open",
+	"Menu.HeadShotKill": "HeadShot Kill Sound",
+	"Menu.HeadShotHit": "HeadShot Hit Sound",
+	"Menu.BodyKill": "Body Kill Sound",
+	"Menu.BodyHit": "Body Hit Sound",
+	"Menu.Bottom": "<br>           <font color='cyan'>[ WASD - To Native ]</font> <br><font color='purple'>[ <img src='https://cdn.discordapp.com/attachments/1175717468724015144/1214996807055183912/output-onlinegiftools_14.gif?ex=65fb24f4&is=65e8aff4&hm=2e94cf44a713c2fe3add69f79ed5e11a2371c7d26166de3cbb7f6b55d5fd60c3&' class=''> - To Exit ]<br>",
 
-	"Menu.BodyHitOff": "{7}[ !4 ]{0} {12}Body-Shot Hit Sound{0} : {1}Off{0}",
-	"Menu.BodyHitOn": "{7}[ !4 ]{0} {12}Body-Shot Hit Sound{0} : {12}On{0}",
-
-	"Menu.Exit": "{7}[ !5 ]{0} {1}Close Menu{0}"
+	"Menu.Outro": "<font class='fontSize-m' color='red'> Saving And Exiting Menu... </font>  <br> <br> <img src='https://cdn.discordapp.com/attachments/1175717468724015144/1215034880912523375/767dec44b7f42e7d0b338f3caba3a5db-ezgif.com-resize.gif?ex=65fb4869&is=65e8d369&hm=f299dba2118f5a2500b697d6ee83e690b8d8516028e8723d242e7eaf43ea6606&' class=''> <br> <br>"
 }
 ```
 
 
 ## .:[ Change Log ]:.
 ```
+(1.0.4)
+-Rework Menu (SoundDisableCommandsMenu)
+
 (1.0.3)
 -Fix Null
 
