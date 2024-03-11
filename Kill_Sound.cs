@@ -468,35 +468,36 @@ public class KillSound : BasePlugin, IPluginConfig<KillSoundConfig>
         string[] disableCommandsmenu = Config.SoundDisableCommandsMenu.Split(',');
         string[] disableCommands = Config.SoundDisableCommands.Split(',');
         
-        if (!string.IsNullOrEmpty(Config.SoundDisableCommandsMenu) && disableCommandsmenu.Any(cmd => cmd.Equals(trimmedMessage, StringComparison.OrdinalIgnoreCase)))
-        {      
-            if (!menuon.ContainsKey(playerid))
+        if (!string.IsNullOrEmpty(Config.SoundDisableCommandsMenu) && disableCommandsmenu.Any(cmd => cmd.Equals(trimmedMessage, StringComparison.OrdinalIgnoreCase))) //Menu Start Here
+        {
+
+            if (!intromenuon.ContainsKey(playerid))//check if not have intro (we going intro > Main Menu then stop if exit > outro > Exit)
             {
-                menuon.Add(playerid, true);
+                intromenuon.Add(playerid, true);
             }
-            if (!currentIndexDict.ContainsKey(playerid))
+            if (!currentIndexDict.ContainsKey(playerid)) //check if he has no index start then we start with 0 index in menu 
             {
                 currentIndexDict.Add(playerid, 0);
             }
-            if (!buttonPressed.ContainsKey(playerid))
+            if (!buttonPressed.ContainsKey(playerid)) //track anti spam
             {
                 buttonPressed.Add(playerid, false);
             }
         }
 
-        if (!string.IsNullOrEmpty(Config.SoundDisableCommands) && disableCommands.Any(cmd => cmd.Equals(trimmedMessage, StringComparison.OrdinalIgnoreCase)))
+        if (!string.IsNullOrEmpty(Config.SoundDisableCommands) && disableCommands.Any(cmd => cmd.Equals(trimmedMessage, StringComparison.OrdinalIgnoreCase))) //shortcut stop all sounds with commands Config.SoundDisableCommands
         {
             DateTime personDate = DateTime.Now;
             bool boolValue1 = personData.BoolValue1;
             bool boolValue2 = personData.BoolValue2;
             bool boolValue3 = personData.BoolValue3;
             bool boolValue4 = personData.BoolValue4;
-            bool boolValue5 = personData.BoolValue5;
+            bool boolValue5 = personData.BoolValue5;//we skip freeze menu boolean
 
-            boolValue1 = true;
-            boolValue2 = true;
-            boolValue3 = true;
-            boolValue4 = true;
+            boolValue1 = true;//head shot kill 
+            boolValue2 = true;//head shot Hit 
+            boolValue3 = true;//Body kill 
+            boolValue4 = true;//Body Hit 
 
             if (!string.IsNullOrEmpty(Localizer["Chat.AllSoundsOff"]))
             {
@@ -504,60 +505,6 @@ public class KillSound : BasePlugin, IPluginConfig<KillSoundConfig>
             }
 
             SaveToJsonFile((int)playerid, boolValue1, boolValue2, boolValue3, boolValue4, boolValue5, personDate);
-        }
-
-
-        if (menuon.ContainsKey(playerid))
-        {
-            if(!string.IsNullOrEmpty(Config.HeadShotKillSoundPath) && trimmedMessage.Contains("!1"))
-            {
-                DateTime personDate = DateTime.Now;
-                bool boolValue1 = !personData.BoolValue1;
-                bool boolValue2 = personData.BoolValue2;
-                bool boolValue3 = personData.BoolValue3;
-                bool boolValue4 = personData.BoolValue4;
-                bool boolValue5 = personData.BoolValue5;
-                
-                SaveToJsonFile((int)playerid, boolValue1, boolValue2, boolValue3, boolValue4, boolValue5, personDate);
-            }
-            if(!string.IsNullOrEmpty(Config.HeadShotHitSoundPath) && trimmedMessage.Contains("!2"))
-            {
-                DateTime personDate = DateTime.Now;
-                bool boolValue1 = personData.BoolValue1;
-                bool boolValue2 = !personData.BoolValue2;
-                bool boolValue3 = personData.BoolValue3;
-                bool boolValue4 = personData.BoolValue4;
-                bool boolValue5 = personData.BoolValue5;
-                
-                SaveToJsonFile((int)playerid, boolValue1, boolValue2, boolValue3, boolValue4, boolValue5, personDate);
-            }
-            if(!string.IsNullOrEmpty(Config.BodyKillSoundPath) && trimmedMessage.Contains("!3"))
-            {
-                DateTime personDate = DateTime.Now;
-                bool boolValue1 = personData.BoolValue1;
-                bool boolValue2 = personData.BoolValue2;
-                bool boolValue3 = !personData.BoolValue3;
-                bool boolValue4 = personData.BoolValue4;
-                bool boolValue5 = personData.BoolValue5;
-                
-                SaveToJsonFile((int)playerid, boolValue1, boolValue2, boolValue3, boolValue4, boolValue5, personDate);
-            }
-            if(!string.IsNullOrEmpty(Config.BodyHitSoundPath) && trimmedMessage.Contains("!4"))
-            {
-                DateTime personDate = DateTime.Now;
-                bool boolValue1 = personData.BoolValue1;
-                bool boolValue2 = personData.BoolValue2;
-                bool boolValue3 = personData.BoolValue3;
-                bool boolValue4 = !personData.BoolValue4;
-                bool boolValue5 = personData.BoolValue5;
-                
-                SaveToJsonFile((int)playerid, boolValue1, boolValue2, boolValue3, boolValue4, boolValue5, personDate);
-            }
-            
-            if(trimmedMessage.Contains("!5"))
-            {
-                menuon.Remove(playerid);
-            }
         }
         
         return HookResult.Continue;
