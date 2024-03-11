@@ -44,7 +44,6 @@
 
 ![colors](https://github.com/oqyh/cs2-Kill-Sound/assets/48490385/6c0717b0-0a7e-45c3-ab7e-cd164ee74aae)
 
-![menucolors](https://github.com/oqyh/cs2-Kill-Sound/assets/48490385/d19bfc83-eb81-437b-89d9-9d645e6506dd)
 
 
 ## .:[ Language ]:.
