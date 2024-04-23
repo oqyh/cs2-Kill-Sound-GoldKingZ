@@ -1,0 +1,49 @@
+{
+	"announce.round.prepare": "{green}Gold KingZ {grey}| {grey} Prepare To Fight...",
+
+	"announce.round.start": "{green}Gold KingZ {grey}| {lime}Round Start !",
+
+	"quake.kill.streak": "{green}Gold KingZ {grey}| You On Kill Streak {yellow}{0}",
+	"quake.kill.streak.26": "{green}Gold KingZ {grey}| Nice Work!!! You On Kill Streak {yellow}{0}",
+	"quake.kill": "{green}Gold KingZ {grey}| You Killed {blue}{0}",
+	"announce.quake.kill.streak": "{green}Gold KingZ {grey}| {purple}{0} {grey}On Kill Streak {yellow}{1}",
+	"announce.quake.kill.streak.26": "{green}Gold KingZ {grey}| {grey}HOOOLLYY!!!! {purple}{0} {grey}Is On Kill Streak {yellow}{1}",
+	"announce.quake.kill": "{green}Gold KingZ {grey}| {purple}{0} {grey} Killed {blue}{1}",
+
+	"quake.headshot.streak": "{green}Gold KingZ {grey}| You On HeadShot Streak {yellow}{0}",
+	"quake.headshot.streak.5": "{green}Gold KingZ {grey}| You Are HeadHunter!! {yellow}{0}",
+	"quake.headshot": "{green}Gold KingZ {grey}| You HeadShotted {blue}{0}",
+	"announce.quake.headshot.streak": "{green}Gold KingZ {grey}| {purple}{0} {grey}On HeadShot Streak {yellow}{1}",
+	"announce.quake.headshot.streak.5": "{green}Gold KingZ {grey}| {purple}{0} {grey}Is HeadHunter!!!! {grey}[{yellow}{1} {grey}HeadShot Streak]",
+	"announce.quake.headshot": "{green}Gold KingZ {grey}| {purple}{0} {grey} HeadShotted {blue}{1}",
+
+
+	"quake.grenade.streak": "{green}Gold KingZ {grey}| You On Grenade Streak {yellow}{0}",
+	"quake.grenade": "{green}Gold KingZ {grey}| You Grenade {blue}{0}",
+	"announce.quake.grenade.streak": "{green}Gold KingZ {grey}| {purple}{0} {grey}On Grenade Streak {yellow}{1}",
+	"announce.quake.grenade.streak.5": "{green}Gold KingZ {grey}| {grey}Nade KING !!!! {purple}{0} {grey}Is On Kill Streak {yellow}{1}",
+	"announce.quake.grenade": "{green}Gold KingZ {grey}| {purple}{0} {grey} Grenade {blue}{1}",
+
+
+	"quake.molly.streak": "{green}Gold KingZ {grey}| You On Molotov Streak {yellow}{0}",
+	"quake.molly": "{green}Gold KingZ {grey}| You Molotov {blue}{0}",
+	"announce.quake.molly.streak": "{green}Gold KingZ {grey}| {purple}{0} {grey}On Molotov Streak {yellow}{1}",
+	"announce.quake.molly.streak.5": "{green}Gold KingZ {grey}| {grey}Molotov KING !!!! {purple}{0} {grey}Is On Kill Streak {yellow}{1}",
+	"announce.quake.molly": "{green}Gold KingZ {grey}| {purple}{0} {grey} Molotov {blue}{1}",
+	
+	"quake.knife.streak": "{green}Gold KingZ {grey}| You On Knife Streak {yellow}{0}",
+	"quake.knife": "{green}Gold KingZ {grey}| You Knife {blue}{0}",
+	"announce.quake.knife.streak": "{green}Gold KingZ {grey}| {purple}{0} {grey}On Knife Streak {yellow}{1}",
+	"announce.quake.knife.streak.5": "{green}Gold KingZ {grey}| {grey}Knife Slayer!!! {purple}{0} {grey}Is On Kill Streak {yellow}{1}",
+	"announce.quake.knife": "{green}Gold KingZ {grey}| {purple}{0} {grey} Knifed {blue}{1}",
+
+
+	"quake.firstblood": "{green}Gold KingZ {grey}| FirstBlood You Killed {blue}{0}",
+	"announce.quake.firstblood": "{green}Gold KingZ {grey}| {purple}{0} {grey} FirstBlood Killed {blue}{1}",
+
+	"quake.teamkill": "{green}Gold KingZ {grey}| {darkred}You Team Killed {blue}{0}",
+	"announce.quake.teamkill": "{green}Gold KingZ {grey}| {purple}{0} {darkred} Team Killed {blue}{1}",
+
+	"quake.selfkill": "{green}Gold KingZ {grey}| {darkred}You Killed Your Self!",
+	"announce.quake.selfkill": "{green}Gold KingZ {grey}| {purple}{0} {grey}Killed Himself !"
+}
