@@ -236,6 +236,7 @@ You Cannot Control ["RoundPrepare" , "RoundStart" ] Becasue Its Already Announce
 ## .:[ Change Log ]:.
 ```
 (1.0.6)
+-Upgrade Net.7 To Net.8
 -Fix RoundPrepare, RoundStart Bug
 -Added Menu For Hit Sounds "KS_InGameMenu"
 -Added Flag For KS_InGameMenu "KS_OnlyAllowTheseGroupsToToggle"
