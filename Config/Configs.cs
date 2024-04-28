@@ -1,13 +1,12 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Microsoft.VisualBasic;
 
 namespace Kill_Sound_GoldKingZ.Config
 {
     public static class Configs
     {
         public static class Shared {
-            public static string? CookiesFolderPath { get; set; }
+            public static string? CookiesModule { get; set; }
         }
         
         private static readonly string ConfigDirectoryName = "config";
@@ -89,24 +88,46 @@ namespace Kill_Sound_GoldKingZ.Config
         public class ConfigData
         {
             public bool KS_EnableQuakeSounds { get; set; }
+            public bool KS_DisableQuakeSoundsOnWarmUp { get; set; }
             
             public string empty { get; set; }
             public string KS_HeadShotKillSoundPath { get; set; }
+            
             public string KS_BodyKillSoundPath { get; set; }
+            
             public string KS_HeadShotHitSoundPath { get; set; }
+            
             public string KS_BodyHitSoundPath { get; set; }
+            
             public string empty2 { get; set; }
+            public bool KS_FreezeOnOpenMenuDefaultValue { get; set; }
+            public bool KS_HeadShotKillSoundDefaultValue { get; set; }
+            public bool KS_BodyKillSoundDefaultValue { get; set; }
+            public bool KS_HeadShotHitSoundDefaultValue { get; set; }
+            public bool KS_BodyHitSoundDefaultValue { get; set; }
+            public string KS_InGameMenu { get; set; }
+            public string KS_OnlyAllowTheseGroupsToToggle { get; set; }
+            public string empty3 { get; set; }
             public string Information_For_You_Dont_Delete_it { get; set; }
             
             public ConfigData()
             {
                 KS_EnableQuakeSounds = false;
+                KS_DisableQuakeSoundsOnWarmUp = true;
                 empty = "-----------------------------------------------------------------------------------";
                 KS_HeadShotKillSoundPath = "sounds/GoldKingZ/Training/bell_normal.vsnd_c";
                 KS_BodyKillSoundPath = "sounds/GoldKingZ/Training/timer_bell.vsnd_c";
                 KS_HeadShotHitSoundPath = "sounds/GoldKingZ/Training/bell_impact.vsnd_c";
                 KS_BodyHitSoundPath = "sounds/GoldKingZ/Training/timer_bell.vsnd_c";
                 empty2 = "-----------------------------------------------------------------------------------";
+                KS_FreezeOnOpenMenuDefaultValue = true;
+                KS_HeadShotKillSoundDefaultValue = true;
+                KS_BodyKillSoundDefaultValue = false;
+                KS_HeadShotHitSoundDefaultValue = false;
+                KS_BodyHitSoundDefaultValue = false;
+                KS_InGameMenu = "!soundmenu,!soundsmenu,!menusound,!menusounds";
+                KS_OnlyAllowTheseGroupsToToggle = "";
+                empty3 = "-----------------------------------------------------------------------------------";
                 Information_For_You_Dont_Delete_it = " Vist  [https://github.com/oqyh/cs2-Kill-Sound-GoldKingZ/tree/main?tab=readme-ov-file#-configuration-] To Understand All Above";
             }
         }
