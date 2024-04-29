@@ -1,4 +1,6 @@
+
 {
+	
 	"player.not.allowed": "{green}Gold KingZ {grey}| {darkred}Toggle Sounds Menu Is For {lime}VIPS {darkred}Only",
 
 	"player.toggle.freeze.on": "{green}Gold KingZ {grey}| {grey}Freeze On Menu Open Is {lime}On",
@@ -16,6 +18,59 @@
 	"player.toggle.headshothit.on": "{green}Gold KingZ {grey}| {grey}HeadShot Hit Sound Is {lime}On",
 	"player.toggle.headshothit.off": "{green}Gold KingZ {grey}| {grey}HeadShot Hit Sound Is {darkred}Off",
 
+
+	"chat.announce.quake.headshot.streak.5": "{green}Gold KingZ {grey}| {purple}{0} {grey}IS HEAD HUNTER!!! Got {yellow}{1} {grey}HeadShot Streak!",
+	"center.announce.quake.headshot.streak.5": "<font color='purple'>{0} <font color='white'>IS HEAD HUNTER!!! Got <font color='yellow'>{1} <font color='white'>HeadShot Streak! </font>",
+	
+	"chat.announce.quake.kill.streak.4": "{green}Gold KingZ {grey}| {purple}{0} {grey}On Kill Streak {yellow}{1}",
+	"center.announce.quake.kill.streak.4": "<font color='purple'>{0} <font color='white'>On Kill Streak <font color='yellow'>{1} </font>",
+	
+	"chat.announce.quake.kill.streak.6": "{green}Gold KingZ {grey}| {red}Rampage  {nextline}{green}Gold KingZ {grey}| {purple}{0} {grey}On Kill Streak {yellow}{1}",
+	"center.announce.quake.kill.streak.6": "<font color='red'>Rampage <br><font color='purple'>{0} <font color='white'>On Kill Streak <font color='yellow'>{1} </font>",
+	
+	"chat.announce.quake.kill.streak.8": "{green}Gold KingZ {grey}| {red}Killing Spree {nextline}{green}Gold KingZ {grey}| {purple}{0} {grey}On Kill Streak {yellow}{1}",
+	"center.announce.quake.kill.streak.8": "<font color='red'>Killing Spree <br><font color='purple'>{0} <font color='white'>On Kill Streak <font color='yellow'>{1} </font>",
+	
+	"chat.announce.quake.kill.streak.10": "{green}Gold KingZ {grey}| {red}Monster Kill {nextline}{green}Gold KingZ {grey}| {purple}{0} {grey}On Kill Streak {yellow}{1}",
+	"center.announce.quake.kill.streak.10": "<font color='red'>Monster Kill <br><font color='purple'>{0} <font color='white'>On Kill Streak <font color='yellow'>{1} </font>",
+	
+	"chat.announce.quake.kill.streak.14": "{green}Gold KingZ {grey}| {red}Unstoppable ! {nextline}{green}Gold KingZ {grey}| {purple}{0} {grey}On Kill Streak {yellow}{1}",
+	"center.announce.quake.kill.streak.14": "<font color='red'>Unstoppable! <br><font color='purple'>{0} <font color='white'>On Kill Streak <font color='yellow'>{1} </font>",
+	
+	"chat.announce.quake.kill.streak.16": "{green}Gold KingZ {grey}| {red}Ultrakill ! {nextline}{green}Gold KingZ {grey}| {purple}{0} {grey}On Kill Streak {yellow}{1}",
+	"center.announce.quake.kill.streak.16": "<font color='red'>Ultrakill! <br><font color='purple'>{0} <font color='white'>On Kill Streak <font color='yellow'>{1} </font>",
+	
+	"chat.announce.quake.kill.streak.18": "{green}Gold KingZ {grey}| {red}Godlike !!! {nextline}{green}Gold KingZ {grey}| {purple}{0} {grey}On Kill Streak {yellow}{1}",
+	"center.announce.quake.kill.streak.18": "<font color='red'>Godlike!!! <br><font color='purple'>{0} <font color='white'>On Kill Streak <font color='yellow'>{1} </font>",
+	
+	"chat.announce.quake.kill.streak.20": "{green}Gold KingZ {grey}| {red}WickedSick !!! {nextline}{green}Gold KingZ {grey}| {purple}{0} {grey}On Kill Streak {yellow}{1}",
+	"center.announce.quake.kill.streak.20": "<font color='red'>WickedSick !!! <br><font color='purple'>{0} <font color='white'>On Kill Streak <font color='yellow'>{1} </font>",
+	
+	"chat.announce.quake.kill.streak.24": "{green}Gold KingZ {grey}| {red}Ludicrous Kill !!! {nextline}{green}Gold KingZ {grey}| {purple}{0} {grey}On Kill Streak {yellow}{1}",
+	"center.announce.quake.kill.streak.24": "<font color='red'>Ludicrous Kill !!! <br><font color='purple'>{0} <font color='white'>On Kill Streak <font color='yellow'>{1} </font>",
+	
+	"chat.announce.quake.kill.streak.26": "{green}Gold KingZ {grey}| {red}-------------------------------{nextline}{green}Gold KingZ {grey}| {blue}H {red}O {yellow}L {purple}Y {lime}S {darkred}H {darkblue}I {gold}T {blue}!!!!!!!!!!{nextline}{green}Gold KingZ {grey}| {purple}{0} {grey}On Kill Streak {yellow}{1}{nextline}{green}Gold KingZ {grey}| {red}-------------------------------",
+	"center.announce.quake.kill.streak.26": "<font color='red'>-------------------------------<br><font color='blue'>H <font color='red'>O <font color='yellow'>L <font color='pink'>Y <font color='lime'>S <font color='darkred'>H <font color='darkblue'>I <font color='gold'>T <font color='blue'>!!!!!!!!!!<br>{green} <font color='purple'>{0} <font color='white'>On Kill Streak <font color='yellow'>{1}<br><font color='red'>------------------------------- </font>",
+	
+	
+	"chat.announce.quake.knife": "{green}Gold KingZ {grey}| HAHAHA {purple}{0} {grey} Knifed {yellow}{1}",
+	"center.announce.quake.knife": "<font color='white'> H A H A H A <br> <font color='purple'>{0} <font color='white'>Knifed  <font color='yellow'>{1} </font>",
+	
+	"chat.announce.quake.taser": "{green}Gold KingZ {grey}| HAHAHA {purple}{0} {grey} Zeused {yellow}{1}",
+	"center.announce.quake.taser": "<font color='white'> H A H A H A <br> <font color='purple'>{0} <font color='white'>Zeused  <font color='yellow'>{1} </font>",
+	
+	
+	"chat.quake.grenade": "{green}Gold KingZ {grey}| Nice! Grenade Kill, You Killed {yellow}{0}",
+	
+	"chat.quake.molly": "{green}Gold KingZ {grey}| Nice! molotov Kill, You Killed {yellow}{0}",
+	
+	"chat.announce.quake.selfkill": "{green}Gold KingZ {grey}| {purple}{0} {grey}Killed Himself",
+	
+	"chat.announce.quake.teamkill": "{green}Gold KingZ {grey}| {purple}{0} {darkred}TeamKill {yellow}{1}",
+	
+	"chat.announce.quake.firstblood": "{green}Gold KingZ {grey}| {BlueGrey}FirstBlood !!!  {purple}{0} {purple} Killed {yellow}{1}",
+	
+	
 	"chat.announce.quake.roundprepare": "{green}Gold KingZ {grey}| {grey}Prepare To Fight...",
 	"center.announce.quake.roundprepare": "<font color='yellow'>Prepare To Fight <font color='darkred'>... </font>",
 
@@ -23,77 +78,6 @@
 	"center.announce.quake.roundstart": "<font color='green'>Round Start <font color='lime'>!!! </font>",
 
 
-
-	"chat.announce.quake.kill.streak.8": "{green}Gold KingZ {grey}|AA DOMANTING!!! {purple}{0} {grey}On Kill Streak {yellow}{1}",
-	"center.announce.quake.kill.streak.8": "<font color='green'>AA DOMANTING!!! <font color='purple'>{0} <font color='green'>On Kill Streak <font color='yellow'>{1}</font>",
-	"chat.announce.quake.kill": "{green}Gold KingZ {grey}| AA {purple}{0} {grey} Killed {blue}{1}",
-	"center.announce.quake.kill": "<font color='cyan'>{0} AA Killed  {1}</font>",
-
-
-
-	"chat.quake.kill.streak.8": "{green}Gold KingZ {grey}| NOA DOMANTING!!! {purple}{0} {grey}On Kill Streak {yellow}{1}",
-	"center.quake.kill.streak.8": "<font color='green'>NOA DOMANTING!!! <font color='purple'>{0} <font color='green'>On Kill Streak <font color='yellow'>{1}</font>",
-	"chat.quake.kill": "{green}Gold KingZ {grey}| NOA {purple}{0} {grey} Killed {blue}{1}",
-	"center.quake.kill": "<font color='cyan'>{0} NOA Killed  {1}</font>",
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	"quake.headshot.streak": "{green}Gold KingZ {grey}| You On HeadShot Streak {yellow}{0}",
-	"quake.headshot.streak.5": "{green}Gold KingZ {grey}| You Are HeadHunter!! {yellow}{0}",
-	"quake.headshot": "{green}Gold KingZ {grey}| You HeadShotted {blue}{0}",
-	"announce.quake.headshot.streak": "{green}Gold KingZ {grey}| {purple}{0} {grey}On HeadShot Streak {yellow}{1}",
-	"announce.quake.headshot.streak.5": "{green}Gold KingZ {grey}| {purple}{0} {grey}Is HeadHunter!!!! {grey}[{yellow}{1} {grey}HeadShot Streak]",
-	"announce.quake.headshot": "{green}Gold KingZ {grey}| {purple}{0} {grey} HeadShotted {blue}{1}",
-
-
-	"quake.grenade.streak": "{green}Gold KingZ {grey}| You On Grenade Streak {yellow}{0}",
-	"quake.grenade": "{green}Gold KingZ {grey}| You Grenade {blue}{0}",
-	"announce.quake.grenade.streak": "{green}Gold KingZ {grey}| {purple}{0} {grey}On Grenade Streak {yellow}{1}",
-	"announce.quake.grenade.streak.5": "{green}Gold KingZ {grey}| {grey}Nade KING !!!! {purple}{0} {grey}Is On Kill Streak {yellow}{1}",
-	"announce.quake.grenade": "{green}Gold KingZ {grey}| {purple}{0} {grey} Grenade {blue}{1}",
-
-
-	"quake.molly.streak": "{green}Gold KingZ {grey}| You On Molotov Streak {yellow}{0}",
-	"quake.molly": "{green}Gold KingZ {grey}| You Molotov {blue}{0}",
-	"announce.quake.molly.streak": "{green}Gold KingZ {grey}| {purple}{0} {grey}On Molotov Streak {yellow}{1}",
-	"announce.quake.molly.streak.5": "{green}Gold KingZ {grey}| {grey}Molotov KING !!!! {purple}{0} {grey}Is On Kill Streak {yellow}{1}",
-	"announce.quake.molly": "{green}Gold KingZ {grey}| {purple}{0} {grey} Molotov {blue}{1}",
-	
-	"quake.knife.streak": "{green}Gold KingZ {grey}| You On Knife Streak {yellow}{0}",
-	"quake.knife": "{green}Gold KingZ {grey}| You Knife {blue}{0}",
-	"announce.quake.knife.streak": "{green}Gold KingZ {grey}| {purple}{0} {grey}On Knife Streak {yellow}{1}",
-	"announce.quake.knife.streak.5": "{green}Gold KingZ {grey}| {grey}Knife Slayer!!! {purple}{0} {grey}Is On Kill Streak {yellow}{1}",
-	"announce.quake.knife": "{green}Gold KingZ {grey}| {purple}{0} {grey} Knifed {blue}{1}",
-
-	"quake.taser.streak": "{green}Gold KingZ {grey}| You On Taser Streak {yellow}{0}",
-	"quake.taser": "{green}Gold KingZ {grey}| You Taser {blue}{0}",
-	"announce.quake.taser.streak": "{green}Gold KingZ {grey}| {purple}{0} {grey}On Taser Streak {yellow}{1}",
-	"announce.quake.taser.streak.5": "{green}Gold KingZ {grey}| {grey}Taser Slayer!!! {purple}{0} {grey}Is On Kill Streak {yellow}{1}",
-	"announce.quake.taser": "{green}Gold KingZ {grey}| {purple}{0} {grey} Tasered {blue}{1}",
-
-
-
-	"chat.quake.firstblood": "{green}Gold KingZ {grey}| FirstBlood You Killed {blue}{0}",
-	"center.quake.firstblood": "<font color='cyan'>FirstBlood!!! <br> <font color='white'>You Killed <font color='lime'>{0} </font>",
-	"chat.announce.quake.firstblood": "{green}Gold KingZ {grey}| {purple}{0} {grey} FirstBlood Killed {blue}{1}",
-	"center.announce.quake.firstblood": "<font color='cyan'>FirstBlood!!! <br>  <font color='lime'>{0} Killed <font color='darkred'>{1} </font>",
-
-	"quake.teamkill": "{green}Gold KingZ {grey}| {darkred}You Team Killed {blue}{0}",
-	"announce.quake.teamkill": "{green}Gold KingZ {grey}| {purple}{0} {darkred} Team Killed {blue}{1}",
-
-	"quake.selfkill": "{green}Gold KingZ {grey}| {darkred}You Killed Your Self!",
-	"announce.quake.selfkill": "{green}Gold KingZ {grey}| {purple}{0} {grey}Killed Himself !",
 
 	"menu.item.freeze": "Freeze Open Menu",
 	"menu.item.bodyhit": "Body Hit Sound",
