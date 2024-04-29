@@ -128,7 +128,7 @@ You Cannot Control ["RoundPrepare" , "RoundStart" ] Becasue Its Already Announce
 ## .:[ Language ]:.
 ```json
 {
-{
+
     //==========================
     //        Colors
     //==========================
