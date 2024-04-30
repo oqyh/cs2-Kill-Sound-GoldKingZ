@@ -1,4 +1,4 @@
-# [CS2] Kill-Sound-GoldKingZ (1.0.6)
+# [CS2] Kill-Sound-GoldKingZ (1.0.7)
 
 ### Kill Sound ( Kill , HeadShot , Quake )
 
@@ -36,19 +36,36 @@
   //If KS_EnableQuakeSounds Enabled Do You Like To Disable Quake Sounds On WarmUp?
   "KS_DisableQuakeSoundsOnWarmUp": false,
 
-  //If You Want To Disable Any Make it Empty Like This ""
-  //Sound HeadShot Kill
-  "KS_HeadShotKillSoundPath": "sounds/GoldKingZ/Training/bell_normal.vsnd_c",
+  //If KS_EnableQuakeSounds Do You Like To Reset Kill Streaks On Every Round?
+  "KS_ResetKillStreakOnEveryRound": false,
 
-  //Sound BodyShot Kill
-  "KS_BodyKillSoundPath": "sounds/GoldKingZ/Training/timer_bell.vsnd_c",
+//-----------------------------------------------------------------------------------
 
-  //Sound HeadShot Hit
-  "KS_HeadShotHitSoundPath": "sounds/GoldKingZ/Training/bell_impact.vsnd_c",
+  //Do You Like To Add Freeze On Open Menu Option In The Menu?
+  "KS_AddMenu_FreezeOnOpenMenu": true,
 
-  //Sound BodyShot Hit
-  "KS_BodyHitSoundPath": "sounds/GoldKingZ/Training/timer_bell.vsnd_c",
+  //Do You Like To Add Sound HeadShot Kill Option In The Menu? (To Disable Make It Empty Like This "")
+  "KS_AddMenu_HeadShotKillSoundPath": "sounds/GoldKingZ/Training/bell_normal.vsnd_c",
 
+  //Do You Like To Add Sound BodyShot Kill Option In The Menu? (To Disable Make It Empty Like This "")
+  "KS_AddMenu_BodyKillSoundPath": "sounds/GoldKingZ/Training/timer_bell.vsnd_c",
+
+  //Do You Like To Add Sound HeadShot Hit Option In The Menu? (To Disable Make It Empty Like This "")
+  "KS_AddMenu_HeadShotHitSoundPath": "sounds/GoldKingZ/Training/bell_impact.vsnd_c",
+
+  //Do You Like To Add Sound BodyShot Hit Option In The Menu? (To Disable Make It Empty Like This "")
+  "KS_AddMenu_BodyHitSoundPath": "sounds/GoldKingZ/Training/timer_bell.vsnd_c",
+
+  //Do You Like To Add Quake Sounds Toggle Option In The Menu?
+  "KS_AddMenu_QuakeSoundsToggle": true,
+
+  //Do You Like To Add Quake Center Message Toggle Option In The Menu?
+  "KS_AddMenu_QuakeCenterMessageToggle": true,
+
+  //Do You Like To Add Quake Chat Message Toggle Option In The Menu?
+  "KS_AddMenu_QuakeChatMessageToggle": true,
+
+//-----------------------------------------------------------------------------------
   //Default Value Of FreezeOnOpenMenu
   "KS_FreezeOnOpenMenuDefaultValue": true,
 
@@ -128,7 +145,6 @@ You Cannot Control ["RoundPrepare" , "RoundStart" ] Becasue Its Already Announce
 ## .:[ Language ]:.
 ```json
 {
-
     //==========================
     //        Colors
     //==========================
@@ -141,6 +157,7 @@ You Cannot Control ["RoundPrepare" , "RoundStart" ] Becasue Its Already Announce
     //<br> = Next Line On Center Hud 
     //{nextline} = Print On Next Line
     //==========================
+	
 	
 	"player.not.allowed": "{green}Gold KingZ {grey}| {darkred}Toggle Sounds Menu Is For {lime}VIPS {darkred}Only",
 
@@ -158,6 +175,15 @@ You Cannot Control ["RoundPrepare" , "RoundStart" ] Becasue Its Already Announce
 
 	"player.toggle.headshothit.on": "{green}Gold KingZ {grey}| {grey}HeadShot Hit Sound Is {lime}On",
 	"player.toggle.headshothit.off": "{green}Gold KingZ {grey}| {grey}HeadShot Hit Sound Is {darkred}Off",
+
+	"player.toggle.quake.sounds.on": "{green}Gold KingZ {grey}| {grey}Quake Sounds Is {lime}On",
+	"player.toggle.quake.sounds.off": "{green}Gold KingZ {grey}| {grey}Quake Sounds Is {darkred}Off",
+
+	"player.toggle.quake.center.message.on": "{green}Gold KingZ {grey}| {grey}Quake Center Messages Is {lime}On",
+	"player.toggle.quake.center.message.off": "{green}Gold KingZ {grey}| {grey}Quake Center Messages Is {darkred}Off",
+
+	"player.toggle.quake.chat.message.on": "{green}Gold KingZ {grey}| {grey}Quake Chat Messages Is {lime}On",
+	"player.toggle.quake.chat.message.off": "{green}Gold KingZ {grey}| {grey}Quake Chat Messages Is {darkred}Off",
 
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
@@ -226,8 +252,12 @@ You Cannot Control ["RoundPrepare" , "RoundStart" ] Becasue Its Already Announce
 	"menu.item.bodykill": "Body Kill Sound",
 	"menu.item.headshothit": "HeadShot Hit Sound",
 	"menu.item.headshotkill": "HeadShot Kill Sound",
+	"menu.item.quake.sounds": "Quake Sounds",
+	"menu.item.quake.center.messages": "Quake Center Message",
+	"menu.item.quake.chat.messages": "Quake Chat Message",
 	"menu.left.image": "<img src='https://raw.githubusercontent.com/oqyh/cs2-Kill-Sound-GoldKingZ/main/Resources/left.gif' class=''>",
 	"menu.right.image": "<img src='https://raw.githubusercontent.com/oqyh/cs2-Kill-Sound-GoldKingZ/main/Resources/right.gif' class=''>",
+	"menu.more.down": "<img src='https://raw.githubusercontent.com/oqyh/cs2-Kill-Sound-GoldKingZ/main/Resources/arrow.gif' class=''> <img src='https://raw.githubusercontent.com/oqyh/cs2-Kill-Sound-GoldKingZ/main/Resources/arrow.gif' class=''> <img src='https://raw.githubusercontent.com/oqyh/cs2-Kill-Sound-GoldKingZ/main/Resources/arrow.gif' class=''>",
 	"menu.bottom": "           <font color='cyan'>[ WASD - To Native ]</font> <br><font color='purple'>[ <img src='https://raw.githubusercontent.com/oqyh/cs2-Kill-Sound-GoldKingZ/main/Resources/tab.gif' class=''> - To Exit ]<br>"
 }
 ```
@@ -235,6 +265,20 @@ You Cannot Control ["RoundPrepare" , "RoundStart" ] Becasue Its Already Announce
 
 ## .:[ Change Log ]:.
 ```
+(1.0.7)
+-Fix Some Bugs
+-Rework Menu Expose Toggle On / Off Without Hover Over
+-Fixed Fly Bug (Turn On Freeze While Jump)  
+-Added KS_ResetKillStreakOnEveryRound
+-Added KS_AddMenu_FreezeOnOpenMenu 
+-Added KS_AddMenu_QuakeSoundsToggle 
+-Added KS_AddMenu_QuakeCenterMessageToggle 
+-Added KS_AddMenu_QuakeChatMessageToggle 
+-Added Quake In Menu
+ -"ShowChat"
+ -"ShowCenter"
+
+
 (1.0.6)
 -Upgrade Net.7 To Net.8
 -Fix RoundPrepare, RoundStart Bug
