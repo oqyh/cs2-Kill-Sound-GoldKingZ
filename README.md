@@ -1,4 +1,4 @@
-# [CS2] Kill-Sound-GoldKingZ (1.0.7)
+# [CS2] Kill-Sound-GoldKingZ (1.0.8)
 
 ### Kill Sound ( Kill , HeadShot , Quake )
 
@@ -88,6 +88,8 @@
   //Only Allow These Groups To Have Access To KS_InGameMenu (Making Empty "" Means Everyone Has Access) [ex of groups: "@css/root,@css/admin,#css/admin"]
   "KS_OnlyAllowTheseGroupsToToggle": "",
 
+  //Auto Delete Inactive Players Cookies Older Than X Days plugins/Kill-Sound-GoldKingZ/Cookies/Kill_Sound_Cookies.json
+  "KS_AutoRemovePlayerCookieOlderThanXDays": 7,
 }
 ```
 
@@ -266,6 +268,10 @@ You Cannot Control ["RoundPrepare" , "RoundStart" ] Becasue Its Already Announce
 
 ## .:[ Change Log ]:.
 ```
+(1.0.8)
+-Added KS_AutoRemovePlayerCookieOlderThanXDays
+Auto Delete Inactive Players Cookies Older Than X Days plugins/Kill-Sound-GoldKingZ/Cookies/Kill_Sound_Cookies.json
+
 (1.0.7)
 -Fix Some Bugs
 -Rework Menu Expose Toggle On / Off Without Hover Over
