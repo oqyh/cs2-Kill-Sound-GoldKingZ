@@ -2,7 +2,8 @@
 
 ### Kill Sound ( Kill , HeadShot , Quake )
 
-![menugif](https://github.com/oqyh/cs2-Kill-Sound-GoldKingZ/assets/48490385/dcec4586-b3c5-408f-a0e6-31f3cfced078)
+
+![111111](https://github.com/oqyh/cs2-Kill-Sound-GoldKingZ/assets/48490385/327651ba-feda-47a8-88b7-2f928d8df206)
 
 
 ![configs](https://github.com/oqyh/cs2-Kill-Sound-GoldKingZ/assets/48490385/3c08cec9-6e29-4c00-8d74-bc9ae3cf4f85)
