@@ -1,4 +1,3 @@
-
 {
 	
 	"player.not.allowed": "{green}Gold KingZ {grey}| {darkred}Toggle Sounds Menu Is For {lime}VIPS {darkred}Only",
@@ -17,6 +16,15 @@
 
 	"player.toggle.headshothit.on": "{green}Gold KingZ {grey}| {grey}HeadShot Hit Sound Is {lime}On",
 	"player.toggle.headshothit.off": "{green}Gold KingZ {grey}| {grey}HeadShot Hit Sound Is {darkred}Off",
+
+	"player.toggle.quake.sounds.on": "{green}Gold KingZ {grey}| {grey}Quake Sounds Is {lime}On",
+	"player.toggle.quake.sounds.off": "{green}Gold KingZ {grey}| {grey}Quake Sounds Is {darkred}Off",
+
+	"player.toggle.quake.center.message.on": "{green}Gold KingZ {grey}| {grey}Quake Center Messages Is {lime}On",
+	"player.toggle.quake.center.message.off": "{green}Gold KingZ {grey}| {grey}Quake Center Messages Is {darkred}Off",
+
+	"player.toggle.quake.chat.message.on": "{green}Gold KingZ {grey}| {grey}Quake Chat Messages Is {lime}On",
+	"player.toggle.quake.chat.message.off": "{green}Gold KingZ {grey}| {grey}Quake Chat Messages Is {darkred}Off",
 
 
 	"chat.announce.quake.headshot.streak.5": "{green}Gold KingZ {grey}| {purple}{0} {grey}IS HEAD HUNTER!!! Got {yellow}{1} {grey}HeadShot Streak!",
@@ -76,15 +84,18 @@
 
 	"chat.announce.quake.roundstart": "{green}Gold KingZ {grey}| {lime}Round Start !",
 	"center.announce.quake.roundstart": "<font color='green'>Round Start <font color='lime'>!!! </font>",
-
-
+	
 
 	"menu.item.freeze": "Freeze Open Menu",
 	"menu.item.bodyhit": "Body Hit Sound",
 	"menu.item.bodykill": "Body Kill Sound",
 	"menu.item.headshothit": "HeadShot Hit Sound",
 	"menu.item.headshotkill": "HeadShot Kill Sound",
+	"menu.item.quake.sounds": "Quake Sounds",
+	"menu.item.quake.center.messages": "Quake Center Message",
+	"menu.item.quake.chat.messages": "Quake Chat Message",
 	"menu.left.image": "<img src='https://raw.githubusercontent.com/oqyh/cs2-Kill-Sound-GoldKingZ/main/Resources/left.gif' class=''>",
 	"menu.right.image": "<img src='https://raw.githubusercontent.com/oqyh/cs2-Kill-Sound-GoldKingZ/main/Resources/right.gif' class=''>",
+	"menu.more.down": "<img src='https://raw.githubusercontent.com/oqyh/cs2-Kill-Sound-GoldKingZ/main/Resources/arrow.gif' class=''> <img src='https://raw.githubusercontent.com/oqyh/cs2-Kill-Sound-GoldKingZ/main/Resources/arrow.gif' class=''> <img src='https://raw.githubusercontent.com/oqyh/cs2-Kill-Sound-GoldKingZ/main/Resources/arrow.gif' class=''>",
 	"menu.bottom": "           <font color='cyan'>[ WASD - To Native ]</font> <br><font color='purple'>[ <img src='https://raw.githubusercontent.com/oqyh/cs2-Kill-Sound-GoldKingZ/main/Resources/tab.gif' class=''> - To Exit ]<br>"
 }

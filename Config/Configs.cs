@@ -89,15 +89,20 @@ namespace Kill_Sound_GoldKingZ.Config
         {
             public bool KS_EnableQuakeSounds { get; set; }
             public bool KS_DisableQuakeSoundsOnWarmUp { get; set; }
+            public bool KS_ResetKillStreakOnEveryRound { get; set; }
             
             public string empty { get; set; }
-            public string KS_HeadShotKillSoundPath { get; set; }
+            public bool KS_AddMenu_FreezeOnOpenMenu { get; set; }
+            public string KS_AddMenu_HeadShotKillSoundPath { get; set; }
             
-            public string KS_BodyKillSoundPath { get; set; }
+            public string KS_AddMenu_BodyKillSoundPath { get; set; }
             
-            public string KS_HeadShotHitSoundPath { get; set; }
+            public string KS_AddMenu_HeadShotHitSoundPath { get; set; }
             
-            public string KS_BodyHitSoundPath { get; set; }
+            public string KS_AddMenu_BodyHitSoundPath { get; set; }
+            public bool KS_AddMenu_QuakeSoundsToggle { get; set; }
+            public bool KS_AddMenu_QuakeCenterMessageToggle { get; set; }
+            public bool KS_AddMenu_QuakeChatMessageToggle { get; set; }
             
             public string empty2 { get; set; }
             public bool KS_FreezeOnOpenMenuDefaultValue { get; set; }
@@ -114,18 +119,23 @@ namespace Kill_Sound_GoldKingZ.Config
             {
                 KS_EnableQuakeSounds = false;
                 KS_DisableQuakeSoundsOnWarmUp = true;
+                KS_ResetKillStreakOnEveryRound = true;
                 empty = "-----------------------------------------------------------------------------------";
-                KS_HeadShotKillSoundPath = "sounds/GoldKingZ/Training/bell_normal.vsnd_c";
-                KS_BodyKillSoundPath = "sounds/GoldKingZ/Training/timer_bell.vsnd_c";
-                KS_HeadShotHitSoundPath = "sounds/GoldKingZ/Training/bell_impact.vsnd_c";
-                KS_BodyHitSoundPath = "sounds/GoldKingZ/Training/timer_bell.vsnd_c";
+                KS_AddMenu_FreezeOnOpenMenu = true;
+                KS_AddMenu_HeadShotKillSoundPath = "sounds/GoldKingZ/Training/bell_normal.vsnd_c";
+                KS_AddMenu_BodyKillSoundPath = "sounds/GoldKingZ/Training/timer_bell.vsnd_c";
+                KS_AddMenu_HeadShotHitSoundPath = "sounds/GoldKingZ/Training/bell_impact.vsnd_c";
+                KS_AddMenu_BodyHitSoundPath = "sounds/GoldKingZ/Training/timer_bell.vsnd_c";
+                KS_AddMenu_QuakeSoundsToggle = true;
+                KS_AddMenu_QuakeCenterMessageToggle = true;
+                KS_AddMenu_QuakeChatMessageToggle = true;
                 empty2 = "-----------------------------------------------------------------------------------";
                 KS_FreezeOnOpenMenuDefaultValue = true;
                 KS_HeadShotKillSoundDefaultValue = true;
                 KS_BodyKillSoundDefaultValue = false;
                 KS_HeadShotHitSoundDefaultValue = false;
                 KS_BodyHitSoundDefaultValue = false;
-                KS_InGameMenu = "!soundmenu,!soundsmenu,!menusound,!menusounds";
+                KS_InGameMenu = "!quake,!quakesounds,!soundmenu,!soundsmenu,!menusound,!menusounds,!soundsettings,!soundsetting";
                 KS_OnlyAllowTheseGroupsToToggle = "";
                 empty3 = "-----------------------------------------------------------------------------------";
                 Information_For_You_Dont_Delete_it = " Vist  [https://github.com/oqyh/cs2-Kill-Sound-GoldKingZ/tree/main?tab=readme-ov-file#-configuration-] To Understand All Above";

@@ -344,7 +344,7 @@ public class Helper
 
             string json = System.Text.Json.JsonSerializer.Serialize(configData, options);
 
-            json = "// Note: To Use These You Need To Enable KS_EnableQuakeSounds First In config.json \n// Then Download https://github.com/Source2ZE/MultiAddonManager  With Gold KingZ WorkShop \n// https://steamcommunity.com/sharedfiles/filedetails/?id=3230015783\n// mm_extra_addons 3230015783 \n\n" + json;
+            json = "// Note: To Use These You Need To Enable KS_EnableQuakeSounds First In config.json \n// Then Download https://github.com/Source2ZE/MultiAddonManager  With Gold KingZ WorkShop \n// https://steamcommunity.com/sharedfiles/filedetails/?id=3230015783\n// mm_extra_addons 3230015783\n// You Can Find WorkShop Path Sound In  https://github.com/oqyh/cs2-Kill-Sound-GoldKingZ/blob/main/sounds/Gold%20KingZ%20WorkShop%20Sounds.txt \n\n" + json;
 
             File.WriteAllText(jsonFilePath, json);
         }
@@ -383,9 +383,12 @@ public class Helper
         public bool headshothit { get; set; }
         public bool bodyshotkill { get; set; }
         public bool bodyshothit { get; set; }
+        public bool quakesounds { get; set; }
+        public bool quakehmessages { get; set; }
+        public bool quakecmessages { get; set; }
         public DateTime DateAndTime { get; set; }
     }
-    public static void SaveToJsonFile(ulong PlayerSteamID, bool freezemenu, bool headshotkill, bool headshothit, bool bodyshotkill, bool bodyshothit, DateTime DateAndTime)
+    public static void SaveToJsonFile(ulong PlayerSteamID, bool freezemenu, bool headshotkill, bool headshothit, bool bodyshotkill, bool bodyshothit, bool quakesounds, bool quakehmessages, bool quakecmessages, DateTime DateAndTime)
     {
         string Fpath = Path.Combine(Configs.Shared.CookiesModule!, "../../plugins/Kill-Sound-GoldKingZ/Cookies/");
         string Fpathc = Path.Combine(Configs.Shared.CookiesModule!, "../../plugins/Kill-Sound-GoldKingZ/Cookies/Kill_Sound_Cookies.json");
@@ -414,6 +417,9 @@ public class Helper
                 existingPerson.headshothit = headshothit;
                 existingPerson.bodyshotkill = bodyshotkill;
                 existingPerson.bodyshothit = bodyshothit;
+                existingPerson.quakesounds = quakesounds;
+                existingPerson.quakehmessages = quakehmessages;
+                existingPerson.quakecmessages = quakecmessages;
                 existingPerson.DateAndTime = DateAndTime;
             }
             else
@@ -425,6 +431,9 @@ public class Helper
                     headshothit = headshothit,
                     bodyshotkill = bodyshotkill,
                     bodyshothit = bodyshothit,
+                    quakesounds = quakesounds,
+                    quakehmessages = quakehmessages,
+                    quakecmessages = quakecmessages,
                     DateAndTime = DateAndTime
                 };
                 allPersonsData.Add(newPerson);

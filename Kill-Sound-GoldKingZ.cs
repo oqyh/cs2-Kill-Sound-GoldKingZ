@@ -7,6 +7,8 @@ using System.Text;
 using CounterStrikeSharp.API.Modules.Memory;
 using Kill_Sound_GoldKingZ.Config;
 using CounterStrikeSharp.API.Modules.Timers;
+using CounterStrikeSharp.API.Modules.Utils;
+
 
 namespace Kill_Sound_GoldKingZ;
 
@@ -15,7 +17,7 @@ namespace Kill_Sound_GoldKingZ;
 public class KillSoundGoldKingZ : BasePlugin
 {
     public override string ModuleName => "Kill Sound ( Kill , HeadShot , Quake )";
-    public override string ModuleVersion => "1.0.6";
+    public override string ModuleVersion => "1.0.7";
     public override string ModuleAuthor => "Gold KingZ";
     public override string ModuleDescription => "https://github.com/oqyh";
     internal static IStringLocalizer? Stringlocalizer;
@@ -78,7 +80,7 @@ public class KillSoundGoldKingZ : BasePlugin
         {
             if(headshot)
             {
-                if (!string.IsNullOrEmpty(Configs.GetConfigData().KS_HeadShotKillSoundPath))
+                if (!string.IsNullOrEmpty(Configs.GetConfigData().KS_AddMenu_HeadShotKillSoundPath))
                 {
                     if(ConVar.Find("mp_teammates_are_enemies")!.GetPrimitiveValue<bool>() == false)
                     {
@@ -91,14 +93,14 @@ public class KillSoundGoldKingZ : BasePlugin
                                     //skip
                                 }else
                                 {
-                                    attacker.ExecuteClientCommand("play " + Configs.GetConfigData().KS_HeadShotKillSoundPath);
+                                    attacker.ExecuteClientCommand("play " + Configs.GetConfigData().KS_AddMenu_HeadShotKillSoundPath);
                                 }
                                 
                             }else
                             {
                                 if (personData.headshotkill)
                                 {
-                                    attacker.ExecuteClientCommand("play " + Configs.GetConfigData().KS_HeadShotKillSoundPath);
+                                    attacker.ExecuteClientCommand("play " + Configs.GetConfigData().KS_AddMenu_HeadShotKillSoundPath);
                                 }else
                                 {
                                     //skip
@@ -115,14 +117,14 @@ public class KillSoundGoldKingZ : BasePlugin
                                 //skip
                             }else
                             {
-                                attacker.ExecuteClientCommand("play " + Configs.GetConfigData().KS_HeadShotKillSoundPath);
+                                attacker.ExecuteClientCommand("play " + Configs.GetConfigData().KS_AddMenu_HeadShotKillSoundPath);
                             }
                             
                         }else
                         {
                             if (personData.headshotkill)
                             {
-                                attacker.ExecuteClientCommand("play " + Configs.GetConfigData().KS_HeadShotKillSoundPath);
+                                attacker.ExecuteClientCommand("play " + Configs.GetConfigData().KS_AddMenu_HeadShotKillSoundPath);
                             }else
                             {
                                 //skip
@@ -132,7 +134,7 @@ public class KillSoundGoldKingZ : BasePlugin
                 }
             }else
             {
-                if (!string.IsNullOrEmpty(Configs.GetConfigData().KS_BodyKillSoundPath))
+                if (!string.IsNullOrEmpty(Configs.GetConfigData().KS_AddMenu_BodyKillSoundPath))
                 {
                     if(ConVar.Find("mp_teammates_are_enemies")!.GetPrimitiveValue<bool>() == false)
                     {
@@ -145,14 +147,14 @@ public class KillSoundGoldKingZ : BasePlugin
                                     //skip
                                 }else
                                 {
-                                    attacker.ExecuteClientCommand("play " + Configs.GetConfigData().KS_BodyKillSoundPath);
+                                    attacker.ExecuteClientCommand("play " + Configs.GetConfigData().KS_AddMenu_BodyKillSoundPath);
                                 }
                                 
                             }else
                             {
                                 if (personData.bodyshotkill)
                                 {
-                                    attacker.ExecuteClientCommand("play " + Configs.GetConfigData().KS_BodyKillSoundPath);
+                                    attacker.ExecuteClientCommand("play " + Configs.GetConfigData().KS_AddMenu_BodyKillSoundPath);
                                 }else
                                 {
                                     //skip
@@ -169,14 +171,14 @@ public class KillSoundGoldKingZ : BasePlugin
                                 //skip
                             }else
                             {
-                                attacker.ExecuteClientCommand("play " + Configs.GetConfigData().KS_BodyKillSoundPath);
+                                attacker.ExecuteClientCommand("play " + Configs.GetConfigData().KS_AddMenu_BodyKillSoundPath);
                             }
                             
                         }else
                         {
                             if (personData.bodyshotkill)
                             {
-                                attacker.ExecuteClientCommand("play " + Configs.GetConfigData().KS_BodyKillSoundPath);
+                                attacker.ExecuteClientCommand("play " + Configs.GetConfigData().KS_AddMenu_BodyKillSoundPath);
                             }else
                             {
                                 //skip
@@ -207,7 +209,7 @@ public class KillSoundGoldKingZ : BasePlugin
         {
             if(hitgroup == 1)
             {
-                if (!string.IsNullOrEmpty(Configs.GetConfigData().KS_HeadShotHitSoundPath))
+                if (!string.IsNullOrEmpty(Configs.GetConfigData().KS_AddMenu_HeadShotHitSoundPath))
                 {
                     if(ConVar.Find("mp_teammates_are_enemies")!.GetPrimitiveValue<bool>() == false)
                     {
@@ -220,14 +222,14 @@ public class KillSoundGoldKingZ : BasePlugin
                                     //skip
                                 }else
                                 {
-                                    attacker.ExecuteClientCommand("play " + Configs.GetConfigData().KS_HeadShotHitSoundPath);
+                                    attacker.ExecuteClientCommand("play " + Configs.GetConfigData().KS_AddMenu_HeadShotHitSoundPath);
                                 }
                                 
                             }else
                             {
                                 if (personData.headshothit)
                                 {
-                                    attacker.ExecuteClientCommand("play " + Configs.GetConfigData().KS_HeadShotHitSoundPath);
+                                    attacker.ExecuteClientCommand("play " + Configs.GetConfigData().KS_AddMenu_HeadShotHitSoundPath);
                                 }else
                                 {
                                     //skip
@@ -245,14 +247,14 @@ public class KillSoundGoldKingZ : BasePlugin
                                 //skip
                             }else
                             {
-                                attacker.ExecuteClientCommand("play " + Configs.GetConfigData().KS_HeadShotHitSoundPath);
+                                attacker.ExecuteClientCommand("play " + Configs.GetConfigData().KS_AddMenu_HeadShotHitSoundPath);
                             }
                             
                         }else
                         {
                             if (personData.headshothit)
                             {
-                                attacker.ExecuteClientCommand("play " + Configs.GetConfigData().KS_HeadShotHitSoundPath);
+                                attacker.ExecuteClientCommand("play " + Configs.GetConfigData().KS_AddMenu_HeadShotHitSoundPath);
                             }else
                             {
                                 //skip
@@ -263,7 +265,7 @@ public class KillSoundGoldKingZ : BasePlugin
                 }
             }else
             {
-                if (!string.IsNullOrEmpty(Configs.GetConfigData().KS_BodyHitSoundPath))
+                if (!string.IsNullOrEmpty(Configs.GetConfigData().KS_AddMenu_BodyHitSoundPath))
                 {
                     if(ConVar.Find("mp_teammates_are_enemies")!.GetPrimitiveValue<bool>() == false)
                     {
@@ -276,14 +278,14 @@ public class KillSoundGoldKingZ : BasePlugin
                                     //skip
                                 }else
                                 {
-                                    attacker.ExecuteClientCommand("play " + Configs.GetConfigData().KS_BodyHitSoundPath);
+                                    attacker.ExecuteClientCommand("play " + Configs.GetConfigData().KS_AddMenu_BodyHitSoundPath);
                                 }
                                 
                             }else
                             {
                                 if (personData.bodyshothit)
                                 {
-                                    attacker.ExecuteClientCommand("play " + Configs.GetConfigData().KS_BodyHitSoundPath);
+                                    attacker.ExecuteClientCommand("play " + Configs.GetConfigData().KS_AddMenu_BodyHitSoundPath);
                                 }else
                                 {
                                     //skip
@@ -299,14 +301,14 @@ public class KillSoundGoldKingZ : BasePlugin
                                 //skip
                             }else
                             {
-                                attacker.ExecuteClientCommand("play " + Configs.GetConfigData().KS_BodyHitSoundPath);
+                                attacker.ExecuteClientCommand("play " + Configs.GetConfigData().KS_AddMenu_BodyHitSoundPath);
                             }
                             
                         }else
                         {
                             if (personData.bodyshothit)
                             {
-                                attacker.ExecuteClientCommand("play " + Configs.GetConfigData().KS_BodyHitSoundPath);
+                                attacker.ExecuteClientCommand("play " + Configs.GetConfigData().KS_AddMenu_BodyHitSoundPath);
                             }else
                             {
                                 //skip
@@ -357,29 +359,48 @@ public class KillSoundGoldKingZ : BasePlugin
                         {
                             if(players != null && players.IsValid && !players.IsBot)
                             {
-                                players.ExecuteClientCommand("play " + SsoundPath);
-                                if (SShowChat && !string.IsNullOrEmpty(Localizer["chat.announce.quake.selfkill"]))
+                                var playerid = players.SteamID;
+                                Helper.PersonData personData = Helper.RetrievePersonDataById(playerid);
+                                if(personData.quakesounds)
                                 {
-                                    Helper.AdvancedPrintToChat(players, Localizer["chat.announce.quake.selfkill"], victim.PlayerName);
-                                }
 
-                                if (SShowCenter && !string.IsNullOrEmpty(Localizer["center.announce.quake.selfkill"]))
+                                }else
                                 {
-                                    Server.NextFrame(() =>
+                                    players.ExecuteClientCommand("play " + SsoundPath);
+                                }
+                                if(personData.quakecmessages)
+                                {
+
+                                }else
+                                {
+                                    if (SShowChat && !string.IsNullOrEmpty(Localizer["chat.announce.quake.selfkill"]))
                                     {
-                                        if(Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                        Helper.AdvancedPrintToChat(players, Localizer["chat.announce.quake.selfkill"], victim.PlayerName);
+                                    }
+                                }
+                                if(personData.quakehmessages)
+                                {
+
+                                }else
+                                {
+                                    if (SShowCenter && !string.IsNullOrEmpty(Localizer["center.announce.quake.selfkill"]))
+                                    {
+                                        Server.NextFrame(() =>
                                         {
-                                            Globals.ShowHud_Kill.Remove(players.SteamID);
-                                        }
-                                        if(!Globals.ShowHud_Kill.ContainsKey(players.SteamID))
-                                        {
-                                            Globals.ShowHud_Kill_Name = victim.PlayerName;
-                                            Globals.ShowHud_Kill.Add(players.SteamID, Localizer["center.announce.quake.selfkill"]);
-                                        }
-                                        HUDTimer?.Kill();
-                                        HUDTimer = null;
-                                        HUDTimer = AddTimer(SIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
-                                    });
+                                            if(Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                            {
+                                                Globals.ShowHud_Kill.Remove(players.SteamID);
+                                            }
+                                            if(!Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                            {
+                                                Globals.ShowHud_Kill_Name = victim.PlayerName;
+                                                Globals.ShowHud_Kill.Add(players.SteamID, Localizer["center.announce.quake.selfkill"]);
+                                            }
+                                            HUDTimer?.Kill();
+                                            HUDTimer = null;
+                                            HUDTimer = AddTimer(SIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
+                                        });
+                                    }
                                 }
                                 
                             }
@@ -387,29 +408,51 @@ public class KillSoundGoldKingZ : BasePlugin
 
                     }else
                     {
-                        attacker.ExecuteClientCommand("play " + SsoundPath);
-                        if (SShowChat && !string.IsNullOrEmpty(Localizer["chat.quake.selfkill"]))
+                        var playerid = attacker.SteamID;
+                        Helper.PersonData personDataA = Helper.RetrievePersonDataById(playerid);
+                        if(personDataA.quakesounds)
                         {
-                            Helper.AdvancedPrintToChat(attacker, Localizer["chat.quake.selfkill"]);
+
+                        }else
+                        {
+                            attacker.ExecuteClientCommand("play " + SsoundPath);
                         }
 
-                        if (SShowCenter && !string.IsNullOrEmpty(Localizer["center.quake.selfkill"]))
+                        if(personDataA.quakecmessages)
                         {
-                            Server.NextFrame(() =>
+
+                        }else
+                        {
+                            if (SShowChat && !string.IsNullOrEmpty(Localizer["chat.quake.selfkill"]))
                             {
-                                if(Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
-                                {
-                                    Globals.ShowHud_Kill.Remove(attacker.SteamID);
-                                }
-                                if(!Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
-                                {
-                                    Globals.ShowHud_Kill.Add(attacker.SteamID, Localizer[$"center.quake.selfkill"]);
-                                }
-                                HUDTimer?.Kill();
-                                HUDTimer = null;
-                                HUDTimer = AddTimer(SIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
-                            });
+                                Helper.AdvancedPrintToChat(attacker, Localizer["chat.quake.selfkill"]);
+                            }
                         }
+                        
+                        if(personDataA.quakehmessages)
+                        {
+
+                        }else
+                        {
+                            if (SShowCenter && !string.IsNullOrEmpty(Localizer["center.quake.selfkill"]))
+                            {
+                                Server.NextFrame(() =>
+                                {
+                                    if(Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
+                                    {
+                                        Globals.ShowHud_Kill.Remove(attacker.SteamID);
+                                    }
+                                    if(!Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
+                                    {
+                                        Globals.ShowHud_Kill.Add(attacker.SteamID, Localizer[$"center.quake.selfkill"]);
+                                    }
+                                    HUDTimer?.Kill();
+                                    HUDTimer = null;
+                                    HUDTimer = AddTimer(SIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
+                                });
+                            }
+                        }
+                        
                     }
                 }
             }catch{}
@@ -482,59 +525,98 @@ public class KillSoundGoldKingZ : BasePlugin
                         {
                             if(players != null && players.IsValid && !players.IsBot)
                             {
-                                players.ExecuteClientCommand("play " + SsoundPath);
-                                if (SShowChat && !string.IsNullOrEmpty(Localizer["chat.announce.quake.selfkill"]))
+                                if(personData.quakesounds)
                                 {
-                                    Helper.AdvancedPrintToChat(players, Localizer["chat.announce.quake.selfkill"], victim.PlayerName);
-                                }
 
-                                if (SShowCenter && !string.IsNullOrEmpty(Localizer["center.announce.quake.selfkill"]))
+                                }else
                                 {
-                                    Server.NextFrame(() =>
-                                    {
-                                        if(Globals.ShowHud_Kill.ContainsKey(players.SteamID))
-                                        {
-                                            Globals.ShowHud_Kill.Remove(players.SteamID);
-                                        }
-                                        if(!Globals.ShowHud_Kill.ContainsKey(players.SteamID))
-                                        {
-                                            Globals.ShowHud_Kill_Name = victim.PlayerName;
-                                            Globals.ShowHud_Kill.Add(players.SteamID, Localizer["center.announce.quake.selfkill"]);
-                                        }
-                                        HUDTimer?.Kill();
-                                        HUDTimer = null;
-                                        HUDTimer = AddTimer(SIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
-                                    });
+                                    players.ExecuteClientCommand("play " + SsoundPath);
                                 }
+                                if(personData.quakecmessages)
+                                {
+
+                                }else
+                                {
+                                    if (SShowChat && !string.IsNullOrEmpty(Localizer["chat.announce.quake.selfkill"]))
+                                    {
+                                        Helper.AdvancedPrintToChat(players, Localizer["chat.announce.quake.selfkill"], victim.PlayerName);
+                                    }
+                                }
+                                
+                                if(personData.quakehmessages)
+                                {
+
+                                }else
+                                {
+                                    if (SShowCenter && !string.IsNullOrEmpty(Localizer["center.announce.quake.selfkill"]))
+                                    {
+                                        Server.NextFrame(() =>
+                                        {
+                                            if(Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                            {
+                                                Globals.ShowHud_Kill.Remove(players.SteamID);
+                                            }
+                                            if(!Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                            {
+                                                Globals.ShowHud_Kill_Name = victim.PlayerName;
+                                                Globals.ShowHud_Kill.Add(players.SteamID, Localizer["center.announce.quake.selfkill"]);
+                                            }
+                                            HUDTimer?.Kill();
+                                            HUDTimer = null;
+                                            HUDTimer = AddTimer(SIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
+                                        });
+                                    }
+                                }
+                                
                                 
                             }
                         });
 
                     }else
                     {
-                        attacker.ExecuteClientCommand("play " + SsoundPath);
-                        if (SShowChat && !string.IsNullOrEmpty(Localizer["chat.quake.selfkill"]))
+                        if(personData.quakesounds)
                         {
-                            Helper.AdvancedPrintToChat(attacker, Localizer["chat.quake.selfkill"]);
+
+                        }else
+                        {
+                            attacker.ExecuteClientCommand("play " + SsoundPath);
                         }
 
-                        if (SShowCenter && !string.IsNullOrEmpty(Localizer["center.quake.selfkill"]))
+                        if(personData.quakecmessages)
                         {
-                            Server.NextFrame(() =>
+
+                        }else
+                        {
+                            if (SShowChat && !string.IsNullOrEmpty(Localizer["chat.quake.selfkill"]))
                             {
-                                if(Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
-                                {
-                                    Globals.ShowHud_Kill.Remove(attacker.SteamID);
-                                }
-                                if(!Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
-                                {
-                                    Globals.ShowHud_Kill.Add(attacker.SteamID, Localizer[$"center.quake.selfkill"]);
-                                }
-                                HUDTimer?.Kill();
-                                HUDTimer = null;
-                                HUDTimer = AddTimer(SIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
-                            });
+                                Helper.AdvancedPrintToChat(attacker, Localizer["chat.quake.selfkill"]);
+                            }
                         }
+                        
+                        if(personData.quakehmessages)
+                        {
+
+                        }else
+                        {
+                            if (SShowCenter && !string.IsNullOrEmpty(Localizer["center.quake.selfkill"]))
+                            {
+                                Server.NextFrame(() =>
+                                {
+                                    if(Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
+                                    {
+                                        Globals.ShowHud_Kill.Remove(attacker.SteamID);
+                                    }
+                                    if(!Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
+                                    {
+                                        Globals.ShowHud_Kill.Add(attacker.SteamID, Localizer[$"center.quake.selfkill"]);
+                                    }
+                                    HUDTimer?.Kill();
+                                    HUDTimer = null;
+                                    HUDTimer = AddTimer(SIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
+                                });
+                            }
+                        }
+                        
                     }
                     return HookResult.Continue;
                 }
@@ -610,62 +692,104 @@ public class KillSoundGoldKingZ : BasePlugin
 							{
 								if(players != null && players.IsValid && !players.IsBot)
 								{
-                                    players.ExecuteClientCommand("play " + TsoundPath);
-									if (TShowChat && !string.IsNullOrEmpty(Localizer["chat.announce.quake.teamkill"]))
-									{
-										Helper.AdvancedPrintToChat(players, Localizer["chat.announce.quake.teamkill"], attacker.PlayerName, victim.PlayerName);
-									}
+                                    
+                                    if(personData.quakesounds)
+                                    {
 
-									if (TShowCenter && !string.IsNullOrEmpty(Localizer["center.announce.quake.teamkill"]))
-									{
-										Server.NextFrame(() =>
-										{
-											if(Globals.ShowHud_Kill.ContainsKey(players.SteamID))
-											{
-												Globals.ShowHud_Kill.Remove(players.SteamID);
-											}
-											if(!Globals.ShowHud_Kill.ContainsKey(players.SteamID))
-											{
-												Globals.ShowHud_Kill_Name = attacker.PlayerName;
-												Globals.ShowHud_Kill_Name2 = victim.PlayerName;
-												Globals.ShowHud_Kill.Add(players.SteamID, Localizer["center.announce.quake.teamkill"]);
-											}
-											HUDTimer?.Kill();
-                                            HUDTimer = null;
-                                            HUDTimer = AddTimer(TIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
-										});
-									}
+                                    }else
+                                    {
+                                        players.ExecuteClientCommand("play " + TsoundPath);
+                                    }
+
+                                    if(personData.quakecmessages)
+                                    {
+
+                                    }else
+                                    {
+                                        if (TShowChat && !string.IsNullOrEmpty(Localizer["chat.announce.quake.teamkill"]))
+                                        {
+                                            Helper.AdvancedPrintToChat(players, Localizer["chat.announce.quake.teamkill"], attacker.PlayerName, victim.PlayerName);
+                                        }
+                                    }
+									
+
+                                    if(personData.quakehmessages)
+                                    {
+
+                                    }else
+                                    {
+                                        if (TShowCenter && !string.IsNullOrEmpty(Localizer["center.announce.quake.teamkill"]))
+                                        {
+                                            Server.NextFrame(() =>
+                                            {
+                                                if(Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                                {
+                                                    Globals.ShowHud_Kill.Remove(players.SteamID);
+                                                }
+                                                if(!Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                                {
+                                                    Globals.ShowHud_Kill_Name = attacker.PlayerName;
+                                                    Globals.ShowHud_Kill_Name2 = victim.PlayerName;
+                                                    Globals.ShowHud_Kill.Add(players.SteamID, Localizer["center.announce.quake.teamkill"]);
+                                                }
+                                                HUDTimer?.Kill();
+                                                HUDTimer = null;
+                                                HUDTimer = AddTimer(TIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
+                                            });
+                                        }
+                                    }
+
+									
 									
 								}
 							});
 
 						}else
 						{
-							attacker.ExecuteClientCommand("play " + TsoundPath);
-							if (TShowChat && !string.IsNullOrEmpty(Localizer["chat.quake.teamkill"]))
-							{
-								Helper.AdvancedPrintToChat(attacker, Localizer["chat.quake.teamkill"], victim.PlayerName);
-							}
+                            if(personData.quakesounds)
+                            {
 
-							if (TShowCenter && !string.IsNullOrEmpty(Localizer["center.quake.teamkill"]))
-							{
-								Server.NextFrame(() =>
-								{
-									if(Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
-									{
-										Globals.ShowHud_Kill.Remove(attacker.SteamID);
-									}
-									if(!Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
-									{
-										Globals.ShowHud_Kill_Name = victim.PlayerName;
-										Globals.ShowHud_Kill.Add(attacker.SteamID, Localizer[$"center.quake.teamkill"]);
-									}
-									HUDTimer?.Kill();
-                                    HUDTimer = null;
-                                    HUDTimer = AddTimer(TIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
-								});
-							}
+                            }else
+                            {
+                                attacker.ExecuteClientCommand("play " + TsoundPath);
+                            }
 							
+                            if(personData.quakecmessages)
+                            {
+
+                            }else
+                            {
+                                if (TShowChat && !string.IsNullOrEmpty(Localizer["chat.quake.teamkill"]))
+                                {
+                                    Helper.AdvancedPrintToChat(attacker, Localizer["chat.quake.teamkill"], victim.PlayerName);
+                                }
+                            }
+							
+
+                            if(personData.quakehmessages)
+                            {
+
+                            }else
+                            {
+                                if (TShowCenter && !string.IsNullOrEmpty(Localizer["center.quake.teamkill"]))
+                                {
+                                    Server.NextFrame(() =>
+                                    {
+                                        if(Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
+                                        {
+                                            Globals.ShowHud_Kill.Remove(attacker.SteamID);
+                                        }
+                                        if(!Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
+                                        {
+                                            Globals.ShowHud_Kill_Name = victim.PlayerName;
+                                            Globals.ShowHud_Kill.Add(attacker.SteamID, Localizer[$"center.quake.teamkill"]);
+                                        }
+                                        HUDTimer?.Kill();
+                                        HUDTimer = null;
+                                        HUDTimer = AddTimer(TIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
+                                    });
+                                }
+                            }
 						}
 						return HookResult.Continue;
                     }
@@ -695,63 +819,102 @@ public class KillSoundGoldKingZ : BasePlugin
                             {
                                 if(players != null && players.IsValid && !players.IsBot)
                                 {
-                                    players.ExecuteClientCommand("play " + FsoundPath);
-                                    if (FShowChat && !string.IsNullOrEmpty(Localizer["chat.announce.quake.firstblood"]))
+                                    
+                                    if(personData.quakesounds)
                                     {
-                                        Helper.AdvancedPrintToChat(players, Localizer["chat.announce.quake.firstblood"], attacker.PlayerName, victim.PlayerName);
-                                    }
 
-                                    if (FShowCenter && !string.IsNullOrEmpty(Localizer["center.announce.quake.firstblood"]))
+                                    }else
                                     {
-                                        Server.NextFrame(() =>
+                                        players.ExecuteClientCommand("play " + FsoundPath);
+                                    }
+                                    if(personData.quakecmessages)
+                                    {
+
+                                    }else
+                                    {
+                                        if (FShowChat && !string.IsNullOrEmpty(Localizer["chat.announce.quake.firstblood"]))
                                         {
-                                            if(Globals.ShowHud_Kill.ContainsKey(players.SteamID))
-                                            {
-                                                Globals.ShowHud_Kill.Remove(players.SteamID);
-                                            }
-                                            if(!Globals.ShowHud_Kill.ContainsKey(players.SteamID))
-                                            {
-                                                Globals.ShowHud_Kill_Name = attacker.PlayerName;
-                                                Globals.ShowHud_Kill_Name2 = victim.PlayerName;
-                                                Globals.ShowHud_Kill.Add(players.SteamID, Localizer["center.announce.quake.firstblood"]);
-                                            }
-
-                                            HUDTimer?.Kill();
-                                            HUDTimer = null;
-                                            HUDTimer = AddTimer(FIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
-                                        });
+                                            Helper.AdvancedPrintToChat(players, Localizer["chat.announce.quake.firstblood"], attacker.PlayerName, victim.PlayerName);
+                                        }
                                     }
+                                    
+                                    if(personData.quakehmessages)
+                                    {
+
+                                    }else
+                                    {
+                                        if (FShowCenter && !string.IsNullOrEmpty(Localizer["center.announce.quake.firstblood"]))
+                                        {
+                                            Server.NextFrame(() =>
+                                            {
+                                                if(Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                                {
+                                                    Globals.ShowHud_Kill.Remove(players.SteamID);
+                                                }
+                                                if(!Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                                {
+                                                    Globals.ShowHud_Kill_Name = attacker.PlayerName;
+                                                    Globals.ShowHud_Kill_Name2 = victim.PlayerName;
+                                                    Globals.ShowHud_Kill.Add(players.SteamID, Localizer["center.announce.quake.firstblood"]);
+                                                }
+
+                                                HUDTimer?.Kill();
+                                                HUDTimer = null;
+                                                HUDTimer = AddTimer(FIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
+                                            });
+                                        }
+                                    }
+                                    
                                     
                                 }
                             });
 
                         }else
                         {
-                            attacker.ExecuteClientCommand("play " + FsoundPath);
-                            if (FShowChat && !string.IsNullOrEmpty(Localizer["chat.quake.firstblood"]))
+                            if(personData.quakesounds)
                             {
-                                Helper.AdvancedPrintToChat(attacker, Localizer["chat.quake.firstblood"], victim.PlayerName);
-                            }
 
-                            if (FShowCenter && !string.IsNullOrEmpty(Localizer["center.quake.firstblood"]))
+                            }else
                             {
-                                Server.NextFrame(() =>
-                                {
-                                    if(Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
-                                    {
-                                        Globals.ShowHud_Kill.Remove(attacker.SteamID);
-                                    }
-                                    if(!Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
-                                    {
-                                        Globals.ShowHud_Kill_Name = victim.PlayerName;
-                                        Globals.ShowHud_Kill.Add(attacker.SteamID, Localizer[$"center.quake.firstblood"]);
-                                    }
-                                    HUDTimer?.Kill();
-                                    HUDTimer = null;
-                                    HUDTimer = AddTimer(FIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
-                                });
+                                attacker.ExecuteClientCommand("play " + FsoundPath);
                             }
                             
+                            if(personData.quakecmessages)
+                            {
+
+                            }else
+                            {
+                                if (FShowChat && !string.IsNullOrEmpty(Localizer["chat.quake.firstblood"]))
+                                {
+                                    Helper.AdvancedPrintToChat(attacker, Localizer["chat.quake.firstblood"], victim.PlayerName);
+                                }
+                            }
+                            
+
+                            if(personData.quakehmessages)
+                            {
+
+                            }else
+                            {
+                                if (FShowCenter && !string.IsNullOrEmpty(Localizer["center.quake.firstblood"]))
+                                {
+                                    Server.NextFrame(() =>
+                                    {
+                                        if(Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
+                                        {
+                                            Globals.ShowHud_Kill.Remove(attacker.SteamID);
+                                        }
+                                        if(!Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
+                                        {
+                                            Globals.ShowHud_Kill_Name = victim.PlayerName;
+                                            Globals.ShowHud_Kill.Add(attacker.SteamID, Localizer[$"center.quake.firstblood"]);
+                                        }
+                                        HUDTimer?.Kill();
+                                        HUDTimer = null;
+                                        HUDTimer = AddTimer(FIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
+                                    });
+                                }
+                            }
                         }
                         Globals.First_Blood = false;
                         return HookResult.Continue; 
@@ -795,119 +958,185 @@ public class KillSoundGoldKingZ : BasePlugin
                                 {
                                     if(players != null && players.IsValid && !players.IsBot)
                                     {
-                                        players.ExecuteClientCommand("play " + NsoundPath);
-                                        if(NSteak)
+                                        if(personData.quakesounds)
                                         {
-                                            if (NShowChat && !string.IsNullOrEmpty(Localizer[$"chat.announce.quake.knife.streak.{numberofknifekill}"]))
-                                            {
-                                                Helper.AdvancedPrintToChat(players, Localizer[$"chat.announce.quake.knife.streak.{numberofknifekill}"], attacker.PlayerName, numberofknifekill);
-                                            }
 
-                                            if (NShowCenter && !string.IsNullOrEmpty(Localizer[$"center.announce.quake.knife.streak.{numberofknifekill}"]))
-                                            {
-                                                Server.NextFrame(() =>
-                                                {
-                                                    if(Globals.ShowHud_Kill.ContainsKey(players.SteamID))
-                                                    {
-                                                        Globals.ShowHud_Kill.Remove(players.SteamID);
-                                                    }
-                                                    if(!Globals.ShowHud_Kill.ContainsKey(players.SteamID))
-                                                    {
-                                                        Globals.ShowHud_Kill_Name2 = "";
-                                                        Globals.ShowHud_Kill_Name = attacker.PlayerName;
-                                                        Globals.ShowHud_Kill_int = numberofknifekill;
-                                                        Globals.ShowHud_Kill.Add(players.SteamID, Localizer[$"center.announce.quake.knife.streak.{numberofknifekill}"]);
-                                                    }
-                                                    HUDTimer?.Kill();
-                                                    HUDTimer = null;
-                                                    HUDTimer = AddTimer(NIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
-                                                });
-                                            }
                                         }else
                                         {
-                                            if (NShowChat && !string.IsNullOrEmpty(Localizer["chat.announce.quake.knife"]))
+                                            players.ExecuteClientCommand("play " + NsoundPath);
+                                        }
+                                        
+                                        if(NSteak)
+                                        {
+                                            if(personData.quakecmessages)
                                             {
-                                                Helper.AdvancedPrintToChat(players, Localizer["chat.announce.quake.knife"], attacker.PlayerName, victim.PlayerName);
-                                            }
 
-                                            if (NShowCenter && !string.IsNullOrEmpty(Localizer["center.announce.quake.knife"]))
+                                            }else
                                             {
-                                                Server.NextFrame(() =>
+                                                if (NShowChat && !string.IsNullOrEmpty(Localizer[$"chat.announce.quake.knife.streak.{numberofknifekill}"]))
                                                 {
-                                                    if(Globals.ShowHud_Kill.ContainsKey(players.SteamID))
-                                                    {
-                                                        Globals.ShowHud_Kill.Remove(players.SteamID);
-                                                    }
-                                                    if(!Globals.ShowHud_Kill.ContainsKey(players.SteamID))
-                                                    {
-                                                        Globals.ShowHud_Kill_Name = attacker.PlayerName;
-                                                        Globals.ShowHud_Kill_Name2 = victim.PlayerName;
-                                                        Globals.ShowHud_Kill.Add(players.SteamID, Localizer["center.announce.quake.knife"]);
-                                                    }
-                                                    HUDTimer?.Kill();
-                                                    HUDTimer = null;
-                                                    HUDTimer = AddTimer(NIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
-                                                });
+                                                    Helper.AdvancedPrintToChat(players, Localizer[$"chat.announce.quake.knife.streak.{numberofknifekill}"], attacker.PlayerName, numberofknifekill);
+                                                }
                                             }
+                                            
+                                            if(personData.quakehmessages)
+                                            {
+
+                                            }else
+                                            {
+                                                if (NShowCenter && !string.IsNullOrEmpty(Localizer[$"center.announce.quake.knife.streak.{numberofknifekill}"]))
+                                                {
+                                                    Server.NextFrame(() =>
+                                                    {
+                                                        if(Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                                        {
+                                                            Globals.ShowHud_Kill.Remove(players.SteamID);
+                                                        }
+                                                        if(!Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                                        {
+                                                            Globals.ShowHud_Kill_Name2 = "";
+                                                            Globals.ShowHud_Kill_Name = attacker.PlayerName;
+                                                            Globals.ShowHud_Kill_int = numberofknifekill;
+                                                            Globals.ShowHud_Kill.Add(players.SteamID, Localizer[$"center.announce.quake.knife.streak.{numberofknifekill}"]);
+                                                        }
+                                                        HUDTimer?.Kill();
+                                                        HUDTimer = null;
+                                                        HUDTimer = AddTimer(NIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
+                                                    });
+                                                }
+                                            }
+                                            
+                                        }else
+                                        {
+                                            if(personData.quakecmessages)
+                                            {
+
+                                            }else
+                                            {
+                                                if (NShowChat && !string.IsNullOrEmpty(Localizer["chat.announce.quake.knife"]))
+                                                {
+                                                    Helper.AdvancedPrintToChat(players, Localizer["chat.announce.quake.knife"], attacker.PlayerName, victim.PlayerName);
+                                                }
+                                            }
+                                            
+                                            if(personData.quakehmessages)
+                                            {
+
+                                            }else
+                                            {
+                                                if (NShowCenter && !string.IsNullOrEmpty(Localizer["center.announce.quake.knife"]))
+                                                {
+                                                    Server.NextFrame(() =>
+                                                    {
+                                                        if(Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                                        {
+                                                            Globals.ShowHud_Kill.Remove(players.SteamID);
+                                                        }
+                                                        if(!Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                                        {
+                                                            Globals.ShowHud_Kill_Name = attacker.PlayerName;
+                                                            Globals.ShowHud_Kill_Name2 = victim.PlayerName;
+                                                            Globals.ShowHud_Kill.Add(players.SteamID, Localizer["center.announce.quake.knife"]);
+                                                        }
+                                                        HUDTimer?.Kill();
+                                                        HUDTimer = null;
+                                                        HUDTimer = AddTimer(NIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
+                                                    });
+                                                }
+                                            }
+                                            
                                         }
                                     }
                                 });
 
                             }else
                             {
-                                attacker.ExecuteClientCommand("play " + NsoundPath);
-                                if(NSteak)
+                                if(personData.quakesounds)
                                 {
-                                    if (NShowChat && !string.IsNullOrEmpty(Localizer[$"chat.quake.knife.streak.{numberofknifekill}"]))
-                                    {
-                                        Helper.AdvancedPrintToChat(attacker, Localizer[$"chat.quake.knife.streak.{numberofknifekill}"], numberofknifekill);
-                                    }
 
-                                    if (NShowCenter && !string.IsNullOrEmpty(Localizer[$"center.quake.knife.streak.{numberofknifekill}"]))
-                                    {
-                                        Server.NextFrame(() =>
-                                        {
-                                            if(Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
-                                            {
-                                                Globals.ShowHud_Kill.Remove(attacker.SteamID);
-                                            }
-                                            if(!Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
-                                            {
-                                                Globals.ShowHud_Kill_Name2 = "";
-                                                Globals.ShowHud_Kill_int = numberofknifekill;
-                                                Globals.ShowHud_Kill.Add(attacker.SteamID, Localizer[$"center.quake.knife.streak.{numberofknifekill}"]);
-                                            }
-                                            HUDTimer?.Kill();
-                                            HUDTimer = null;
-                                            HUDTimer = AddTimer(NIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
-                                        });
-                                    }
                                 }else
                                 {
-                                    if (NShowChat && !string.IsNullOrEmpty(Localizer["chat.quake.knife"]))
+                                    attacker.ExecuteClientCommand("play " + NsoundPath);
+                                }
+                                
+                                if(NSteak)
+                                {
+                                    if(personData.quakecmessages)
                                     {
-                                        Helper.AdvancedPrintToChat(attacker, Localizer["chat.quake.knife"], victim.PlayerName);
-                                    }
-
-                                    if (NShowCenter && !string.IsNullOrEmpty(Localizer["center.quake.knife"]))
+                                        
+                                    }else
                                     {
-                                        Server.NextFrame(() =>
+                                        if (NShowChat && !string.IsNullOrEmpty(Localizer[$"chat.quake.knife.streak.{numberofknifekill}"]))
                                         {
-                                            if(Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
-                                            {
-                                                Globals.ShowHud_Kill.Remove(attacker.SteamID);
-                                            }
-                                            if(!Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
-                                            {
-                                                Globals.ShowHud_Kill_Name = "";
-                                                Globals.ShowHud_Kill_Name = victim.PlayerName;
-                                                Globals.ShowHud_Kill.Add(attacker.SteamID, Localizer[$"center.quake.knife"]);
-                                            }
-                                            HUDTimer?.Kill();
-                                            HUDTimer = null;
-                                            HUDTimer = AddTimer(NIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
-                                        });
+                                            Helper.AdvancedPrintToChat(attacker, Localizer[$"chat.quake.knife.streak.{numberofknifekill}"], numberofknifekill);
+                                        }
                                     }
+                                    
+                                    if(personData.quakehmessages)
+                                    {
+
+                                    }else
+                                    {
+                                        if (NShowCenter && !string.IsNullOrEmpty(Localizer[$"center.quake.knife.streak.{numberofknifekill}"]))
+                                        {
+                                            Server.NextFrame(() =>
+                                            {
+                                                if(Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
+                                                {
+                                                    Globals.ShowHud_Kill.Remove(attacker.SteamID);
+                                                }
+                                                if(!Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
+                                                {
+                                                    Globals.ShowHud_Kill_Name2 = "";
+                                                    Globals.ShowHud_Kill_int = numberofknifekill;
+                                                    Globals.ShowHud_Kill.Add(attacker.SteamID, Localizer[$"center.quake.knife.streak.{numberofknifekill}"]);
+                                                }
+                                                HUDTimer?.Kill();
+                                                HUDTimer = null;
+                                                HUDTimer = AddTimer(NIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
+                                            });
+                                        }
+                                    }
+                                    
+                                }else
+                                {
+                                    if(personData.quakecmessages)
+                                    {
+
+                                    }else
+                                    {
+                                        if (NShowChat && !string.IsNullOrEmpty(Localizer["chat.quake.knife"]))
+                                        {
+                                            Helper.AdvancedPrintToChat(attacker, Localizer["chat.quake.knife"], victim.PlayerName);
+                                        }
+                                    }
+                                    
+                                    if(personData.quakehmessages)
+                                    {
+
+                                    }else
+                                    {
+                                        if (NShowCenter && !string.IsNullOrEmpty(Localizer["center.quake.knife"]))
+                                        {
+                                            Server.NextFrame(() =>
+                                            {
+                                                if(Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
+                                                {
+                                                    Globals.ShowHud_Kill.Remove(attacker.SteamID);
+                                                }
+                                                if(!Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
+                                                {
+                                                    Globals.ShowHud_Kill_Name = "";
+                                                    Globals.ShowHud_Kill_Name = victim.PlayerName;
+                                                    Globals.ShowHud_Kill.Add(attacker.SteamID, Localizer[$"center.quake.knife"]);
+                                                }
+                                                HUDTimer?.Kill();
+                                                HUDTimer = null;
+                                                HUDTimer = AddTimer(NIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
+                                            });
+                                        }
+                                    }
+                                    
                                 }
                             }
                             Globals.lastPlayTimesKnife[playeridattacker] = DateTime.Now;
@@ -952,60 +1181,91 @@ public class KillSoundGoldKingZ : BasePlugin
                                 {
                                     if(players != null && players.IsValid && !players.IsBot)
                                     {
-                                        players.ExecuteClientCommand("play " + GsoundPath);
-                                        if(GSteak)
+                                        if(personData.quakesounds)
                                         {
-                                            if (GShowChat && !string.IsNullOrEmpty(Localizer[$"chat.announce.quake.grenade.streak.{numberofnadekill}"]))
-                                            {
-                                                Helper.AdvancedPrintToChat(players, Localizer[$"chat.announce.quake.grenade.streak.{numberofnadekill}"], attacker.PlayerName, numberofnadekill);
-                                            }
 
-
-                                            if (GShowCenter && !string.IsNullOrEmpty(Localizer[$"center.announce.quake.grenade.streak.{numberofnadekill}"]))
-                                            {
-                                                Server.NextFrame(() =>
-                                                {
-                                                    if(Globals.ShowHud_Kill.ContainsKey(players.SteamID))
-                                                    {
-                                                        Globals.ShowHud_Kill.Remove(players.SteamID);
-                                                    }
-                                                    if(!Globals.ShowHud_Kill.ContainsKey(players.SteamID))
-                                                    {
-                                                        Globals.ShowHud_Kill_Name2 = "";
-                                                        Globals.ShowHud_Kill_Name = attacker.PlayerName;
-                                                        Globals.ShowHud_Kill_int = numberofnadekill;
-                                                        Globals.ShowHud_Kill.Add(players.SteamID, Localizer[$"center.announce.quake.grenade.streak.{numberofnadekill}"]);
-                                                    }
-                                                    HUDTimer?.Kill();
-                                                    HUDTimer = null;
-                                                    HUDTimer = AddTimer(GIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
-                                                });
-                                            }
                                         }else
                                         {
-                                            if (GShowChat && !string.IsNullOrEmpty(Localizer["chat.announce.quake.grenade"]))
+                                            players.ExecuteClientCommand("play " + GsoundPath);
+                                        }
+                                        
+                                        if(GSteak)
+                                        {
+                                            if(personData.quakecmessages)
                                             {
-                                                Helper.AdvancedPrintToChat(players, Localizer["chat.announce.quake.grenade"], attacker.PlayerName, victim.PlayerName);
-                                            }
 
-                                            if (GShowCenter && !string.IsNullOrEmpty(Localizer["center.announce.quake.grenade"]))
+                                            }else
                                             {
-                                                Server.NextFrame(() =>
+                                                if (GShowChat && !string.IsNullOrEmpty(Localizer[$"chat.announce.quake.grenade.streak.{numberofnadekill}"]))
                                                 {
-                                                    if(Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                                    Helper.AdvancedPrintToChat(players, Localizer[$"chat.announce.quake.grenade.streak.{numberofnadekill}"], attacker.PlayerName, numberofnadekill);
+                                                }
+                                            }
+                                            
+
+                                            if(personData.quakehmessages)
+                                            {
+
+                                            }else
+                                            {
+                                                if (GShowCenter && !string.IsNullOrEmpty(Localizer[$"center.announce.quake.grenade.streak.{numberofnadekill}"]))
+                                                {
+                                                    Server.NextFrame(() =>
                                                     {
-                                                        Globals.ShowHud_Kill.Remove(players.SteamID);
-                                                    }
-                                                    if(!Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                                        if(Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                                        {
+                                                            Globals.ShowHud_Kill.Remove(players.SteamID);
+                                                        }
+                                                        if(!Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                                        {
+                                                            Globals.ShowHud_Kill_Name2 = "";
+                                                            Globals.ShowHud_Kill_Name = attacker.PlayerName;
+                                                            Globals.ShowHud_Kill_int = numberofnadekill;
+                                                            Globals.ShowHud_Kill.Add(players.SteamID, Localizer[$"center.announce.quake.grenade.streak.{numberofnadekill}"]);
+                                                        }
+                                                        HUDTimer?.Kill();
+                                                        HUDTimer = null;
+                                                        HUDTimer = AddTimer(GIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
+                                                    });
+                                                }
+                                            }
+                                            
+                                        }else
+                                        {
+                                            if(personData.quakecmessages)
+                                            {
+
+                                            }else
+                                            {
+                                                if (GShowChat && !string.IsNullOrEmpty(Localizer["chat.announce.quake.grenade"]))
+                                                {
+                                                    Helper.AdvancedPrintToChat(players, Localizer["chat.announce.quake.grenade"], attacker.PlayerName, victim.PlayerName);
+                                                }
+                                            }
+                                            if(personData.quakehmessages)
+                                            {
+
+                                            }else
+                                            {
+                                                if (GShowCenter && !string.IsNullOrEmpty(Localizer["center.announce.quake.grenade"]))
+                                                {
+                                                    Server.NextFrame(() =>
                                                     {
-                                                        Globals.ShowHud_Kill_Name = attacker.PlayerName;
-                                                        Globals.ShowHud_Kill_Name2 = victim.PlayerName;
-                                                        Globals.ShowHud_Kill.Add(players.SteamID, Localizer["center.announce.quake.grenade"]);
-                                                    }
-                                                    HUDTimer?.Kill();
-                                                    HUDTimer = null;
-                                                    HUDTimer = AddTimer(GIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
-                                                });
+                                                        if(Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                                        {
+                                                            Globals.ShowHud_Kill.Remove(players.SteamID);
+                                                        }
+                                                        if(!Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                                        {
+                                                            Globals.ShowHud_Kill_Name = attacker.PlayerName;
+                                                            Globals.ShowHud_Kill_Name2 = victim.PlayerName;
+                                                            Globals.ShowHud_Kill.Add(players.SteamID, Localizer["center.announce.quake.grenade"]);
+                                                        }
+                                                        HUDTimer?.Kill();
+                                                        HUDTimer = null;
+                                                        HUDTimer = AddTimer(GIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
+                                                    });
+                                                }
                                             }
                                         }
                                     }
@@ -1013,59 +1273,92 @@ public class KillSoundGoldKingZ : BasePlugin
 
                             }else
                             {
-                                attacker.ExecuteClientCommand("play " + GsoundPath);
-                                if(GSteak)
+                                if(personData.quakesounds)
                                 {
-                                    if (GShowChat && !string.IsNullOrEmpty(Localizer[$"chat.quake.grenade.streak.{numberofnadekill}"]))
-                                    {
-                                        Helper.AdvancedPrintToChat(attacker, Localizer[$"chat.quake.grenade.streak.{numberofnadekill}"], numberofnadekill);
-                                    }
 
-                                    if (GShowCenter && !string.IsNullOrEmpty(Localizer[$"center.quake.grenade.streak.{numberofnadekill}"]))
-                                    {
-                                        Server.NextFrame(() =>
-                                        {
-                                            if(Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
-                                            {
-                                                Globals.ShowHud_Kill.Remove(attacker.SteamID);
-                                            }
-                                            if(!Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
-                                            {
-                                                Globals.ShowHud_Kill_Name2 = "";
-                                                Globals.ShowHud_Kill_Name = "";
-                                                Globals.ShowHud_Kill_int = numberofnadekill;
-                                                Globals.ShowHud_Kill.Add(attacker.SteamID, Localizer[$"center.quake.grenade.streak.{numberofnadekill}"]);
-                                            }
-                                            HUDTimer?.Kill();
-                                            HUDTimer = null;
-                                            HUDTimer = AddTimer(GIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
-                                        });
-                                    }
                                 }else
                                 {
-                                    if (GShowChat && !string.IsNullOrEmpty(Localizer["chat.quake.grenade"]))
+                                    attacker.ExecuteClientCommand("play " + GsoundPath);
+                                }
+                                
+                                if(GSteak)
+                                {
+                                    if(personData.quakecmessages)
                                     {
-                                        Helper.AdvancedPrintToChat(attacker, Localizer["chat.quake.grenade"], victim.PlayerName);
-                                    }
 
-                                    if (GShowCenter && !string.IsNullOrEmpty(Localizer["center.quake.grenade"]))
+                                    }else
                                     {
-                                        Server.NextFrame(() =>
+                                        if (GShowChat && !string.IsNullOrEmpty(Localizer[$"chat.quake.grenade.streak.{numberofnadekill}"]))
                                         {
-                                            if(Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
-                                            {
-                                                Globals.ShowHud_Kill.Remove(attacker.SteamID);
-                                            }
-                                            if(!Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
-                                            {
-                                                Globals.ShowHud_Kill_Name = victim.PlayerName;
-                                                Globals.ShowHud_Kill.Add(attacker.SteamID, Localizer[$"center.quake.grenade"]);
-                                            }
-                                            HUDTimer?.Kill();
-                                            HUDTimer = null;
-                                            HUDTimer = AddTimer(GIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
-                                        });
+                                            Helper.AdvancedPrintToChat(attacker, Localizer[$"chat.quake.grenade.streak.{numberofnadekill}"], numberofnadekill);
+                                        }
                                     }
+                                    
+                                    if(personData.quakehmessages)
+                                    {
+
+                                    }else
+                                    {
+                                        if (GShowCenter && !string.IsNullOrEmpty(Localizer[$"center.quake.grenade.streak.{numberofnadekill}"]))
+                                        {
+                                            Server.NextFrame(() =>
+                                            {
+                                                if(Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
+                                                {
+                                                    Globals.ShowHud_Kill.Remove(attacker.SteamID);
+                                                }
+                                                if(!Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
+                                                {
+                                                    Globals.ShowHud_Kill_Name2 = "";
+                                                    Globals.ShowHud_Kill_Name = "";
+                                                    Globals.ShowHud_Kill_int = numberofnadekill;
+                                                    Globals.ShowHud_Kill.Add(attacker.SteamID, Localizer[$"center.quake.grenade.streak.{numberofnadekill}"]);
+                                                }
+                                                HUDTimer?.Kill();
+                                                HUDTimer = null;
+                                                HUDTimer = AddTimer(GIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
+                                            });
+                                        }
+                                    }
+                                    
+                                }else
+                                {
+                                    if(personData.quakecmessages)
+                                    {
+
+                                    }else
+                                    {
+                                        if (GShowChat && !string.IsNullOrEmpty(Localizer["chat.quake.grenade"]))
+                                        {
+                                            Helper.AdvancedPrintToChat(attacker, Localizer["chat.quake.grenade"], victim.PlayerName);
+                                        }
+                                    }
+                                    
+                                    if(personData.quakehmessages)
+                                    {
+
+                                    }else
+                                    {
+                                        if (GShowCenter && !string.IsNullOrEmpty(Localizer["center.quake.grenade"]))
+                                        {
+                                            Server.NextFrame(() =>
+                                            {
+                                                if(Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
+                                                {
+                                                    Globals.ShowHud_Kill.Remove(attacker.SteamID);
+                                                }
+                                                if(!Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
+                                                {
+                                                    Globals.ShowHud_Kill_Name = victim.PlayerName;
+                                                    Globals.ShowHud_Kill.Add(attacker.SteamID, Localizer[$"center.quake.grenade"]);
+                                                }
+                                                HUDTimer?.Kill();
+                                                HUDTimer = null;
+                                                HUDTimer = AddTimer(GIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
+                                            });
+                                        }
+                                    }
+                                    
                                 }
                             }
                             Globals.lastPlayTimesNade[playeridattacker] = DateTime.Now;
@@ -1110,60 +1403,93 @@ public class KillSoundGoldKingZ : BasePlugin
                                 {
                                     if(players != null && players.IsValid && !players.IsBot)
                                     {
-                                        players.ExecuteClientCommand("play " + MsoundPath);
-                                        if(MSteak)
+                                        if(personData.quakesounds)
                                         {
-                                            if (MShowChat && !string.IsNullOrEmpty(Localizer[$"chat.announce.quake.molly.streak.{numberofmollykill}"]))
-                                            {
-                                                Helper.AdvancedPrintToChat(players, Localizer[$"chat.announce.quake.molly.streak.{numberofmollykill}"], attacker.PlayerName, numberofmollykill);
-                                            }
 
-                                            if (MShowCenter && !string.IsNullOrEmpty(Localizer[$"center.announce.quake.molly.streak.{numberofmollykill}"]))
-                                            {
-                                                Server.NextFrame(() =>
-                                                {
-                                                    if(Globals.ShowHud_Kill.ContainsKey(players.SteamID))
-                                                    {
-                                                        Globals.ShowHud_Kill.Remove(players.SteamID);
-                                                    }
-                                                    if(!Globals.ShowHud_Kill.ContainsKey(players.SteamID))
-                                                    {
-                                                        Globals.ShowHud_Kill_Name2 = "";
-                                                        Globals.ShowHud_Kill_Name = attacker.PlayerName;
-                                                        Globals.ShowHud_Kill_int = numberofmollykill;
-                                                        Globals.ShowHud_Kill.Add(players.SteamID, Localizer[$"center.announce.quake.molly.streak.{numberofmollykill}"]);
-                                                    }
-                                                    HUDTimer?.Kill();
-                                                    HUDTimer = null;
-                                                    HUDTimer = AddTimer(MIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
-                                                });
-                                            }
                                         }else
                                         {
-                                            if (MShowChat && !string.IsNullOrEmpty(Localizer["chat.announce.quake.molly"]))
+                                            players.ExecuteClientCommand("play " + MsoundPath);
+                                        }
+                                        
+                                        if(MSteak)
+                                        {
+                                            if(personData.quakecmessages)
                                             {
-                                                Helper.AdvancedPrintToChat(players, Localizer["chat.announce.quake.molly"], attacker.PlayerName, victim.PlayerName);
-                                            }
 
-                                            if (MShowCenter && !string.IsNullOrEmpty(Localizer["center.announce.quake.molly"]))
+                                            }else
                                             {
-                                                Server.NextFrame(() =>
+                                                if (MShowChat && !string.IsNullOrEmpty(Localizer[$"chat.announce.quake.molly.streak.{numberofmollykill}"]))
                                                 {
-                                                    if(Globals.ShowHud_Kill.ContainsKey(players.SteamID))
-                                                    {
-                                                        Globals.ShowHud_Kill.Remove(players.SteamID);
-                                                    }
-                                                    if(!Globals.ShowHud_Kill.ContainsKey(players.SteamID))
-                                                    {
-                                                        Globals.ShowHud_Kill_Name = attacker.PlayerName;
-                                                        Globals.ShowHud_Kill_Name2 = victim.PlayerName;
-                                                        Globals.ShowHud_Kill.Add(players.SteamID, Localizer["center.announce.quake.molly"]);
-                                                    }
-                                                    HUDTimer?.Kill();
-                                                    HUDTimer = null;
-                                                    HUDTimer = AddTimer(MIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
-                                                });
+                                                    Helper.AdvancedPrintToChat(players, Localizer[$"chat.announce.quake.molly.streak.{numberofmollykill}"], attacker.PlayerName, numberofmollykill);
+                                                }
                                             }
+                                            
+                                            if(personData.quakehmessages)
+                                            {
+
+                                            }else
+                                            {
+                                                if (MShowCenter && !string.IsNullOrEmpty(Localizer[$"center.announce.quake.molly.streak.{numberofmollykill}"]))
+                                                {
+                                                    Server.NextFrame(() =>
+                                                    {
+                                                        if(Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                                        {
+                                                            Globals.ShowHud_Kill.Remove(players.SteamID);
+                                                        }
+                                                        if(!Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                                        {
+                                                            Globals.ShowHud_Kill_Name2 = "";
+                                                            Globals.ShowHud_Kill_Name = attacker.PlayerName;
+                                                            Globals.ShowHud_Kill_int = numberofmollykill;
+                                                            Globals.ShowHud_Kill.Add(players.SteamID, Localizer[$"center.announce.quake.molly.streak.{numberofmollykill}"]);
+                                                        }
+                                                        HUDTimer?.Kill();
+                                                        HUDTimer = null;
+                                                        HUDTimer = AddTimer(MIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
+                                                    });
+                                                }
+                                            }
+                                            
+                                        }else
+                                        {
+                                            if(personData.quakecmessages)
+                                            {
+
+                                            }else
+                                            {
+                                                if (MShowChat && !string.IsNullOrEmpty(Localizer["chat.announce.quake.molly"]))
+                                                {
+                                                    Helper.AdvancedPrintToChat(players, Localizer["chat.announce.quake.molly"], attacker.PlayerName, victim.PlayerName);
+                                                }
+                                            }
+                                            
+                                            if(personData.quakehmessages)
+                                            {
+
+                                            }else
+                                            {
+                                                if (MShowCenter && !string.IsNullOrEmpty(Localizer["center.announce.quake.molly"]))
+                                                {
+                                                    Server.NextFrame(() =>
+                                                    {
+                                                        if(Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                                        {
+                                                            Globals.ShowHud_Kill.Remove(players.SteamID);
+                                                        }
+                                                        if(!Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                                        {
+                                                            Globals.ShowHud_Kill_Name = attacker.PlayerName;
+                                                            Globals.ShowHud_Kill_Name2 = victim.PlayerName;
+                                                            Globals.ShowHud_Kill.Add(players.SteamID, Localizer["center.announce.quake.molly"]);
+                                                        }
+                                                        HUDTimer?.Kill();
+                                                        HUDTimer = null;
+                                                        HUDTimer = AddTimer(MIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
+                                                    });
+                                                }
+                                            }
+                                            
                                         }
                                     }
                                 });
@@ -1172,57 +1498,90 @@ public class KillSoundGoldKingZ : BasePlugin
                             {
                                 if(MSteak)
                                 {
-                                    attacker.ExecuteClientCommand("play " + MsoundPath);
-                                    if (MShowChat && !string.IsNullOrEmpty(Localizer[$"chat.quake.molly.streak.{numberofmollykill}"]))
+                                    if(personData.quakesounds)
                                     {
-                                        Helper.AdvancedPrintToChat(attacker, Localizer[$"chat.quake.molly.streak.{numberofmollykill}"], numberofmollykill);
+
+                                    }else
+                                    {
+                                        attacker.ExecuteClientCommand("play " + MsoundPath);
                                     }
 
-                                    if (MShowCenter && !string.IsNullOrEmpty(Localizer[$"center.quake.molly.streak.{numberofmollykill}"]))
+                                    if(personData.quakecmessages)
                                     {
-                                        Server.NextFrame(() =>
+
+                                    }else
+                                    {
+                                        if (MShowChat && !string.IsNullOrEmpty(Localizer[$"chat.quake.molly.streak.{numberofmollykill}"]))
                                         {
-                                            if(Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
-                                            {
-                                                Globals.ShowHud_Kill.Remove(attacker.SteamID);
-                                            }
-                                            if(!Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
-                                            {
-                                                Globals.ShowHud_Kill_Name2 = "";
-                                                Globals.ShowHud_Kill_Name = "";
-                                                Globals.ShowHud_Kill_int = numberofmollykill;
-                                                Globals.ShowHud_Kill.Add(attacker.SteamID, Localizer[$"center.quake.molly.streak.{numberofmollykill}"]);
-                                            }
-                                            HUDTimer?.Kill();
-                                            HUDTimer = null;
-                                            HUDTimer = AddTimer(MIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
-                                        });
+                                            Helper.AdvancedPrintToChat(attacker, Localizer[$"chat.quake.molly.streak.{numberofmollykill}"], numberofmollykill);
+                                        }
                                     }
+                                    
+                                    if(personData.quakehmessages)
+                                    {
+
+                                    }else
+                                    {
+                                        if (MShowCenter && !string.IsNullOrEmpty(Localizer[$"center.quake.molly.streak.{numberofmollykill}"]))
+                                        {
+                                            Server.NextFrame(() =>
+                                            {
+                                                if(Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
+                                                {
+                                                    Globals.ShowHud_Kill.Remove(attacker.SteamID);
+                                                }
+                                                if(!Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
+                                                {
+                                                    Globals.ShowHud_Kill_Name2 = "";
+                                                    Globals.ShowHud_Kill_Name = "";
+                                                    Globals.ShowHud_Kill_int = numberofmollykill;
+                                                    Globals.ShowHud_Kill.Add(attacker.SteamID, Localizer[$"center.quake.molly.streak.{numberofmollykill}"]);
+                                                }
+                                                HUDTimer?.Kill();
+                                                HUDTimer = null;
+                                                HUDTimer = AddTimer(MIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
+                                            });
+                                        }
+                                    }
+                                    
                                 }else
                                 {
-                                    if (MShowChat && !string.IsNullOrEmpty(Localizer["chat.quake.molly"]))
+                                    if(personData.quakecmessages)
                                     {
-                                        Helper.AdvancedPrintToChat(attacker, Localizer["chat.quake.molly"], victim.PlayerName);
-                                    }
 
-                                    if (MShowCenter && !string.IsNullOrEmpty(Localizer["center.quake.molly"]))
+                                    }else
                                     {
-                                        Server.NextFrame(() =>
+                                        if (MShowChat && !string.IsNullOrEmpty(Localizer["chat.quake.molly"]))
                                         {
-                                            if(Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
-                                            {
-                                                Globals.ShowHud_Kill.Remove(attacker.SteamID);
-                                            }
-                                            if(!Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
-                                            {
-                                                Globals.ShowHud_Kill_Name = victim.PlayerName;
-                                                Globals.ShowHud_Kill.Add(attacker.SteamID, Localizer[$"center.quake.molly"]);
-                                            }
-                                            HUDTimer?.Kill();
-                                            HUDTimer = null;
-                                            HUDTimer = AddTimer(MIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
-                                        });
+                                            Helper.AdvancedPrintToChat(attacker, Localizer["chat.quake.molly"], victim.PlayerName);
+                                        }
                                     }
+                                    
+                                    if(personData.quakehmessages)
+                                    {
+
+                                    }else
+                                    {
+                                        if (MShowCenter && !string.IsNullOrEmpty(Localizer["center.quake.molly"]))
+                                        {
+                                            Server.NextFrame(() =>
+                                            {
+                                                if(Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
+                                                {
+                                                    Globals.ShowHud_Kill.Remove(attacker.SteamID);
+                                                }
+                                                if(!Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
+                                                {
+                                                    Globals.ShowHud_Kill_Name = victim.PlayerName;
+                                                    Globals.ShowHud_Kill.Add(attacker.SteamID, Localizer[$"center.quake.molly"]);
+                                                }
+                                                HUDTimer?.Kill();
+                                                HUDTimer = null;
+                                                HUDTimer = AddTimer(MIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
+                                            });
+                                        }
+                                    }
+                                    
                                 }
                             }
                             Globals.lastPlayTimesMolly[playeridattacker] = DateTime.Now;
@@ -1267,120 +1626,186 @@ public class KillSoundGoldKingZ : BasePlugin
                                 {
                                     if(players != null && players.IsValid && !players.IsBot)
                                     {
-                                        players.ExecuteClientCommand("play " + ZsoundPath);
-                                        if(ZSteak)
+                                        if(personData.quakesounds)
                                         {
-                                            if (ZShowChat && !string.IsNullOrEmpty(Localizer[$"chat.announce.quake.taser.streak.{numberoftaserkill}"]))
-                                            {
-                                                Helper.AdvancedPrintToChat(players, Localizer[$"chat.announce.quake.taser.streak.{numberoftaserkill}"], attacker.PlayerName, numberoftaserkill);
-                                            }
 
-
-                                            if (ZShowCenter && !string.IsNullOrEmpty(Localizer[$"center.announce.quake.taser.streak.{numberoftaserkill}"]))
-                                            {
-                                                Server.NextFrame(() =>
-                                                {
-                                                    if(Globals.ShowHud_Kill.ContainsKey(players.SteamID))
-                                                    {
-                                                        Globals.ShowHud_Kill.Remove(players.SteamID);
-                                                    }
-                                                    if(!Globals.ShowHud_Kill.ContainsKey(players.SteamID))
-                                                    {
-                                                        Globals.ShowHud_Kill_Name2 = "";
-                                                        Globals.ShowHud_Kill_Name = attacker.PlayerName;
-                                                        Globals.ShowHud_Kill_int = numberoftaserkill;
-                                                        Globals.ShowHud_Kill.Add(players.SteamID, Localizer[$"center.announce.quake.taser.streak.{numberoftaserkill}"]);
-                                                    }
-                                                    HUDTimer?.Kill();
-                                                    HUDTimer = null;
-                                                    HUDTimer = AddTimer(ZIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
-                                                });
-                                            }
                                         }else
                                         {
-                                            if (ZShowChat && !string.IsNullOrEmpty(Localizer["chat.announce.quake.taser"]))
+                                            players.ExecuteClientCommand("play " + ZsoundPath);
+                                        }
+                                        
+                                        if(ZSteak)
+                                        {
+                                            if(personData.quakecmessages)
                                             {
-                                                Helper.AdvancedPrintToChat(players, Localizer["chat.announce.quake.taser"], attacker.PlayerName, victim.PlayerName);
+
+                                            }else
+                                            {
+                                                if (ZShowChat && !string.IsNullOrEmpty(Localizer[$"chat.announce.quake.taser.streak.{numberoftaserkill}"]))
+                                                {
+                                                    Helper.AdvancedPrintToChat(players, Localizer[$"chat.announce.quake.taser.streak.{numberoftaserkill}"], attacker.PlayerName, numberoftaserkill);
+                                                }
+                                            }
+                                            
+                                            if(personData.quakehmessages)
+                                            {
+
+                                            }else
+                                            {
+                                                if (ZShowCenter && !string.IsNullOrEmpty(Localizer[$"center.announce.quake.taser.streak.{numberoftaserkill}"]))
+                                                {
+                                                    Server.NextFrame(() =>
+                                                    {
+                                                        if(Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                                        {
+                                                            Globals.ShowHud_Kill.Remove(players.SteamID);
+                                                        }
+                                                        if(!Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                                        {
+                                                            Globals.ShowHud_Kill_Name2 = "";
+                                                            Globals.ShowHud_Kill_Name = attacker.PlayerName;
+                                                            Globals.ShowHud_Kill_int = numberoftaserkill;
+                                                            Globals.ShowHud_Kill.Add(players.SteamID, Localizer[$"center.announce.quake.taser.streak.{numberoftaserkill}"]);
+                                                        }
+                                                        HUDTimer?.Kill();
+                                                        HUDTimer = null;
+                                                        HUDTimer = AddTimer(ZIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
+                                                    });
+                                                }
                                             }
 
-                                            if (ZShowCenter && !string.IsNullOrEmpty(Localizer["center.announce.quake.taser"]))
+                                            
+                                        }else
+                                        {
+                                            if(personData.quakecmessages)
                                             {
-                                                Server.NextFrame(() =>
+
+                                            }else
+                                            {
+                                                if (ZShowChat && !string.IsNullOrEmpty(Localizer["chat.announce.quake.taser"]))
                                                 {
-                                                    if(Globals.ShowHud_Kill.ContainsKey(players.SteamID))
-                                                    {
-                                                        Globals.ShowHud_Kill.Remove(players.SteamID);
-                                                    }
-                                                    if(!Globals.ShowHud_Kill.ContainsKey(players.SteamID))
-                                                    {
-                                                        Globals.ShowHud_Kill_Name = attacker.PlayerName;
-                                                        Globals.ShowHud_Kill_Name2 = victim.PlayerName;
-                                                        Globals.ShowHud_Kill.Add(players.SteamID, Localizer["center.announce.quake.taser"]);
-                                                    }
-                                                    HUDTimer?.Kill();
-                                                    HUDTimer = null;
-                                                    HUDTimer = AddTimer(ZIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
-                                                });
+                                                    Helper.AdvancedPrintToChat(players, Localizer["chat.announce.quake.taser"], attacker.PlayerName, victim.PlayerName);
+                                                }
                                             }
+                                            
+                                            if(personData.quakehmessages)
+                                            {
+
+                                            }else
+                                            {
+                                                if (ZShowCenter && !string.IsNullOrEmpty(Localizer["center.announce.quake.taser"]))
+                                                {
+                                                    Server.NextFrame(() =>
+                                                    {
+                                                        if(Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                                        {
+                                                            Globals.ShowHud_Kill.Remove(players.SteamID);
+                                                        }
+                                                        if(!Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                                        {
+                                                            Globals.ShowHud_Kill_Name = attacker.PlayerName;
+                                                            Globals.ShowHud_Kill_Name2 = victim.PlayerName;
+                                                            Globals.ShowHud_Kill.Add(players.SteamID, Localizer["center.announce.quake.taser"]);
+                                                        }
+                                                        HUDTimer?.Kill();
+                                                        HUDTimer = null;
+                                                        HUDTimer = AddTimer(ZIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
+                                                    });
+                                                }
+                                            }
+                                            
                                         }
                                     }
                                 });
 
                             }else
                             {
-                                attacker.ExecuteClientCommand("play " + ZsoundPath);
-                                if(ZSteak)
+                                if(personData.quakesounds)
                                 {
-                                    if (ZShowChat && !string.IsNullOrEmpty(Localizer[$"chat.quake.taser.streak.{numberoftaserkill}"]))
-                                    {
-                                        Helper.AdvancedPrintToChat(attacker, Localizer[$"chat.quake.taser.streak.{numberoftaserkill}"], numberoftaserkill);
-                                    }
 
-                                    if (ZShowCenter && !string.IsNullOrEmpty(Localizer[$"center.quake.taser.streak.{numberoftaserkill}"]))
-                                    {
-                                        Server.NextFrame(() =>
-                                        {
-                                            if(Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
-                                            {
-                                                Globals.ShowHud_Kill.Remove(attacker.SteamID);
-                                            }
-                                            if(!Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
-                                            {
-                                                Globals.ShowHud_Kill_Name2 = "";
-                                                Globals.ShowHud_Kill_Name = "";
-                                                Globals.ShowHud_Kill_int = numberoftaserkill;
-                                                Globals.ShowHud_Kill.Add(attacker.SteamID, Localizer[$"center.quake.taser.streak.{numberoftaserkill}"]);
-                                            }
-                                            HUDTimer?.Kill();
-                                            HUDTimer = null;
-                                            HUDTimer = AddTimer(ZIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
-                                        });
-                                    }
                                 }else
                                 {
-                                    if (ZShowChat && !string.IsNullOrEmpty(Localizer["chat.quake.taser"]))
+                                    attacker.ExecuteClientCommand("play " + ZsoundPath);
+                                }
+                                
+                                if(ZSteak)
+                                {
+                                    if(personData.quakecmessages)
                                     {
-                                        Helper.AdvancedPrintToChat(attacker, Localizer["chat.quake.taser"], victim.PlayerName);
-                                    }
 
-                                    if (ZShowCenter && !string.IsNullOrEmpty(Localizer["center.quake.taser"]))
+                                    }else
                                     {
-                                        Server.NextFrame(() =>
+                                        if (ZShowChat && !string.IsNullOrEmpty(Localizer[$"chat.quake.taser.streak.{numberoftaserkill}"]))
                                         {
-                                            if(Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
-                                            {
-                                                Globals.ShowHud_Kill.Remove(attacker.SteamID);
-                                            }
-                                            if(!Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
-                                            {
-                                                Globals.ShowHud_Kill_Name = victim.PlayerName;
-                                                Globals.ShowHud_Kill.Add(attacker.SteamID, Localizer[$"center.quake.taser"]);
-                                            }
-                                            HUDTimer?.Kill();
-                                            HUDTimer = null;
-                                            HUDTimer = AddTimer(ZIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
-                                        });
+                                            Helper.AdvancedPrintToChat(attacker, Localizer[$"chat.quake.taser.streak.{numberoftaserkill}"], numberoftaserkill);
+                                        }
                                     }
+                                    
+                                    if(personData.quakehmessages)
+                                    {
+
+                                    }else
+                                    {
+                                        if (ZShowCenter && !string.IsNullOrEmpty(Localizer[$"center.quake.taser.streak.{numberoftaserkill}"]))
+                                        {
+                                            Server.NextFrame(() =>
+                                            {
+                                                if(Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
+                                                {
+                                                    Globals.ShowHud_Kill.Remove(attacker.SteamID);
+                                                }
+                                                if(!Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
+                                                {
+                                                    Globals.ShowHud_Kill_Name2 = "";
+                                                    Globals.ShowHud_Kill_Name = "";
+                                                    Globals.ShowHud_Kill_int = numberoftaserkill;
+                                                    Globals.ShowHud_Kill.Add(attacker.SteamID, Localizer[$"center.quake.taser.streak.{numberoftaserkill}"]);
+                                                }
+                                                HUDTimer?.Kill();
+                                                HUDTimer = null;
+                                                HUDTimer = AddTimer(ZIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
+                                            });
+                                        }
+                                    }
+                                    
+                                }else
+                                {
+                                    if(personData.quakecmessages)
+                                    {
+
+                                    }else
+                                    {
+                                        if (ZShowChat && !string.IsNullOrEmpty(Localizer["chat.quake.taser"]))
+                                        {
+                                            Helper.AdvancedPrintToChat(attacker, Localizer["chat.quake.taser"], victim.PlayerName);
+                                        }
+                                    }
+                                    
+                                    if(personData.quakehmessages)
+                                    {
+
+                                    }else
+                                    {
+                                        if (ZShowCenter && !string.IsNullOrEmpty(Localizer["center.quake.taser"]))
+                                        {
+                                            Server.NextFrame(() =>
+                                            {
+                                                if(Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
+                                                {
+                                                    Globals.ShowHud_Kill.Remove(attacker.SteamID);
+                                                }
+                                                if(!Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
+                                                {
+                                                    Globals.ShowHud_Kill_Name = victim.PlayerName;
+                                                    Globals.ShowHud_Kill.Add(attacker.SteamID, Localizer[$"center.quake.taser"]);
+                                                }
+                                                HUDTimer?.Kill();
+                                                HUDTimer = null;
+                                                HUDTimer = AddTimer(ZIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
+                                            });
+                                        }
+                                    }
+                                    
                                 }
                             }
                             Globals.lastPlayTimesTaser[playeridattacker] = DateTime.Now;
@@ -1426,120 +1851,187 @@ public class KillSoundGoldKingZ : BasePlugin
                                 {
                                     if(players != null && players.IsValid && !players.IsBot)
                                     {
-                                        players.ExecuteClientCommand("play " + HsoundPath);
-                                        if(HSteak)
+                                        if(personData.quakesounds)
                                         {
-                                            if (HShowChat && !string.IsNullOrEmpty(Localizer[$"chat.announce.quake.headshot.streak.{numberofkillsHS}"]))
-                                            {
-                                                Helper.AdvancedPrintToChat(players, Localizer[$"chat.announce.quake.headshot.streak.{numberofkillsHS}"], attacker.PlayerName, numberofkillsHS);
-                                            }
 
-
-                                            if (HShowCenter && !string.IsNullOrEmpty(Localizer[$"center.announce.quake.headshot.streak.{numberofkillsHS}"]))
-                                            {
-                                                Server.NextFrame(() =>
-                                                {
-                                                    if(Globals.ShowHud_Kill.ContainsKey(players.SteamID))
-                                                    {
-                                                        Globals.ShowHud_Kill.Remove(players.SteamID);
-                                                    }
-                                                    if(!Globals.ShowHud_Kill.ContainsKey(players.SteamID))
-                                                    {
-                                                        Globals.ShowHud_Kill_Name2 = "";
-                                                        Globals.ShowHud_Kill_Name = attacker.PlayerName;
-                                                        Globals.ShowHud_Kill_int = numberofkillsHS;
-                                                        Globals.ShowHud_Kill.Add(players.SteamID, Localizer[$"center.announce.quake.headshot.streak.{numberofkillsHS}"]);
-                                                    }
-                                                    HUDTimer?.Kill();
-                                                    HUDTimer = null;
-                                                    HUDTimer = AddTimer(HIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
-                                                });
-                                            }
                                         }else
                                         {
-                                            if (HShowChat && !string.IsNullOrEmpty(Localizer["chat.announce.quake.headshot"]))
+                                            players.ExecuteClientCommand("play " + HsoundPath);
+                                        }
+                                        
+                                        if(HSteak)
+                                        {
+                                            if(personData.quakecmessages)
                                             {
-                                                Helper.AdvancedPrintToChat(players, Localizer["chat.announce.quake.headshot"], attacker.PlayerName, victim.PlayerName);
-                                            }
 
-                                            if (HShowCenter && !string.IsNullOrEmpty(Localizer["center.announce.quake.headshot"]))
+                                            }else
                                             {
-                                                Server.NextFrame(() =>
+                                                if (HShowChat && !string.IsNullOrEmpty(Localizer[$"chat.announce.quake.headshot.streak.{numberofkillsHS}"]))
                                                 {
-                                                    if(Globals.ShowHud_Kill.ContainsKey(players.SteamID))
-                                                    {
-                                                        Globals.ShowHud_Kill.Remove(players.SteamID);
-                                                    }
-                                                    if(!Globals.ShowHud_Kill.ContainsKey(players.SteamID))
-                                                    {
-                                                        Globals.ShowHud_Kill_Name = attacker.PlayerName;
-                                                        Globals.ShowHud_Kill_Name2 = victim.PlayerName;
-                                                        Globals.ShowHud_Kill.Add(players.SteamID, Localizer["center.announce.quake.headshot"]);
-                                                    }
-                                                    HUDTimer?.Kill();
-                                                    HUDTimer = null;
-                                                    HUDTimer = AddTimer(HIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
-                                                });
+                                                    Helper.AdvancedPrintToChat(players, Localizer[$"chat.announce.quake.headshot.streak.{numberofkillsHS}"], attacker.PlayerName, numberofkillsHS);
+                                                }
                                             }
+                                            
+
+                                            if(personData.quakehmessages)
+                                            {
+
+                                            }else
+                                            {
+                                                if (HShowCenter && !string.IsNullOrEmpty(Localizer[$"center.announce.quake.headshot.streak.{numberofkillsHS}"]))
+                                                {
+                                                    Server.NextFrame(() =>
+                                                    {
+                                                        if(Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                                        {
+                                                            Globals.ShowHud_Kill.Remove(players.SteamID);
+                                                        }
+                                                        if(!Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                                        {
+                                                            Globals.ShowHud_Kill_Name2 = "";
+                                                            Globals.ShowHud_Kill_Name = attacker.PlayerName;
+                                                            Globals.ShowHud_Kill_int = numberofkillsHS;
+                                                            Globals.ShowHud_Kill.Add(players.SteamID, Localizer[$"center.announce.quake.headshot.streak.{numberofkillsHS}"]);
+                                                        }
+                                                        HUDTimer?.Kill();
+                                                        HUDTimer = null;
+                                                        HUDTimer = AddTimer(HIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
+                                                    });
+                                                }
+                                            }
+                                            
+                                        }else
+                                        {
+                                            if(personData.quakecmessages)
+                                            {
+
+                                            }else
+                                            {
+                                                if (HShowChat && !string.IsNullOrEmpty(Localizer["chat.announce.quake.headshot"]))
+                                                {
+                                                    Helper.AdvancedPrintToChat(players, Localizer["chat.announce.quake.headshot"], attacker.PlayerName, victim.PlayerName);
+                                                }
+                                            }
+                                            
+                                            if(personData.quakehmessages)
+                                            {
+
+                                            }else
+                                            {
+                                                if (HShowCenter && !string.IsNullOrEmpty(Localizer["center.announce.quake.headshot"]))
+                                                {
+                                                    Server.NextFrame(() =>
+                                                    {
+                                                        if(Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                                        {
+                                                            Globals.ShowHud_Kill.Remove(players.SteamID);
+                                                        }
+                                                        if(!Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                                        {
+                                                            Globals.ShowHud_Kill_Name = attacker.PlayerName;
+                                                            Globals.ShowHud_Kill_Name2 = victim.PlayerName;
+                                                            Globals.ShowHud_Kill.Add(players.SteamID, Localizer["center.announce.quake.headshot"]);
+                                                        }
+                                                        HUDTimer?.Kill();
+                                                        HUDTimer = null;
+                                                        HUDTimer = AddTimer(HIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
+                                                    });
+                                                }
+                                            }
+                                            
                                         }
                                     }
                                 });
 
                             }else
                             {
-                                attacker.ExecuteClientCommand("play " + HsoundPath);
-                                if(HSteak)
+                                if(personData.quakesounds)
                                 {
-                                    if (HShowChat && !string.IsNullOrEmpty(Localizer[$"chat.quake.headshot.streak.{numberofkillsHS}"]))
-                                    {
-                                        Helper.AdvancedPrintToChat(attacker, Localizer[$"chat.quake.headshot.streak.{numberofkillsHS}"], numberofkillsHS);
-                                    }
 
-                                    if (HShowCenter && !string.IsNullOrEmpty(Localizer[$"center.quake.headshot.streak.{numberofkillsHS}"]))
-                                    {
-                                        Server.NextFrame(() =>
-                                        {
-                                            if(Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
-                                            {
-                                                Globals.ShowHud_Kill.Remove(attacker.SteamID);
-                                            }
-                                            if(!Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
-                                            {
-                                                Globals.ShowHud_Kill_Name2 = "";
-                                                Globals.ShowHud_Kill_int = numberofkillsHS;
-                                                Globals.ShowHud_Kill_Name = "";
-                                                Globals.ShowHud_Kill.Add(attacker.SteamID, Localizer[$"center.quake.headshot.streak.{numberofkillsHS}"]);
-                                            }
-                                            HUDTimer?.Kill();
-                                            HUDTimer = null;
-                                            HUDTimer = AddTimer(HIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
-                                        });
-                                    }
                                 }else
                                 {
-                                    if (HShowChat && !string.IsNullOrEmpty(Localizer["chat.quake.headshot"]))
+                                    attacker.ExecuteClientCommand("play " + HsoundPath);
+                                }
+                                
+                                if(HSteak)
+                                {
+                                    if(personData.quakecmessages)
                                     {
-                                        Helper.AdvancedPrintToChat(attacker, Localizer["chat.quake.headshot"], victim.PlayerName);
+
+                                    }else
+                                    {   
+                                        if (HShowChat && !string.IsNullOrEmpty(Localizer[$"chat.quake.headshot.streak.{numberofkillsHS}"]))
+                                        {
+                                            Helper.AdvancedPrintToChat(attacker, Localizer[$"chat.quake.headshot.streak.{numberofkillsHS}"], numberofkillsHS);
+                                        }
                                     }
 
-                                    if (HShowCenter && !string.IsNullOrEmpty(Localizer["center.quake.headshot"]))
+                                    
+                                    if(personData.quakehmessages)
                                     {
-                                        Server.NextFrame(() =>
+
+                                    }else
+                                    {
+                                        if (HShowCenter && !string.IsNullOrEmpty(Localizer[$"center.quake.headshot.streak.{numberofkillsHS}"]))
                                         {
-                                            if(Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
+                                            Server.NextFrame(() =>
                                             {
-                                                Globals.ShowHud_Kill.Remove(attacker.SteamID);
-                                            }
-                                            if(!Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
-                                            {
-                                                Globals.ShowHud_Kill_Name = victim.PlayerName;
-                                                Globals.ShowHud_Kill.Add(attacker.SteamID, Localizer[$"center.quake.headshot"]);
-                                            }
-                                            HUDTimer?.Kill();
-                                            HUDTimer = null;
-                                            HUDTimer = AddTimer(HIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
-                                        });
+                                                if(Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
+                                                {
+                                                    Globals.ShowHud_Kill.Remove(attacker.SteamID);
+                                                }
+                                                if(!Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
+                                                {
+                                                    Globals.ShowHud_Kill_Name2 = "";
+                                                    Globals.ShowHud_Kill_int = numberofkillsHS;
+                                                    Globals.ShowHud_Kill_Name = "";
+                                                    Globals.ShowHud_Kill.Add(attacker.SteamID, Localizer[$"center.quake.headshot.streak.{numberofkillsHS}"]);
+                                                }
+                                                HUDTimer?.Kill();
+                                                HUDTimer = null;
+                                                HUDTimer = AddTimer(HIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
+                                            });
+                                        }
                                     }
+                                    
+                                }else
+                                {
+                                    if(personData.quakecmessages)
+                                    {
+
+                                    }else
+                                    {
+                                        if (HShowChat && !string.IsNullOrEmpty(Localizer["chat.quake.headshot"]))
+                                        {
+                                            Helper.AdvancedPrintToChat(attacker, Localizer["chat.quake.headshot"], victim.PlayerName);
+                                        }
+                                    }
+                                    
+                                    if(personData.quakehmessages)
+                                    {
+
+                                    }else
+                                    {
+                                        if (HShowCenter && !string.IsNullOrEmpty(Localizer["center.quake.headshot"]))
+                                        {
+                                            Server.NextFrame(() =>
+                                            {
+                                                if(Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
+                                                {
+                                                    Globals.ShowHud_Kill.Remove(attacker.SteamID);
+                                                }
+                                                if(!Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
+                                                {
+                                                    Globals.ShowHud_Kill_Name = victim.PlayerName;
+                                                    Globals.ShowHud_Kill.Add(attacker.SteamID, Localizer[$"center.quake.headshot"]);
+                                                }
+                                                HUDTimer?.Kill();
+                                                HUDTimer = null;
+                                                HUDTimer = AddTimer(HIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
+                                            });
+                                        }
+                                    }
+                                    
                                 }
                             }
                             Globals.lastPlayTimesHS[playeridattacker] = DateTime.Now;
@@ -1584,120 +2076,186 @@ public class KillSoundGoldKingZ : BasePlugin
                                 {
                                     if(players != null && players.IsValid && !players.IsBot)
                                     {
-                                        players.ExecuteClientCommand("play " + soundPath);
-                                        if(KSteak)
+                                        if(personData.quakesounds)
                                         {
-                                            if (KShowChat && !string.IsNullOrEmpty(Localizer[$"chat.announce.quake.kill.streak.{numberofkills}"]))
-                                            {
-                                                Helper.AdvancedPrintToChat(players, Localizer[$"chat.announce.quake.kill.streak.{numberofkills}"], attacker.PlayerName, numberofkills);
-                                            }
 
-
-                                            if (KShowCenter && !string.IsNullOrEmpty(Localizer[$"center.announce.quake.kill.streak.{numberofkills}"]))
-                                            {
-                                                Server.NextFrame(() =>
-                                                {
-                                                    if(Globals.ShowHud_Kill.ContainsKey(players.SteamID))
-                                                    {
-                                                        Globals.ShowHud_Kill.Remove(players.SteamID);
-                                                    }
-                                                    if(!Globals.ShowHud_Kill.ContainsKey(players.SteamID))
-                                                    {
-                                                        Globals.ShowHud_Kill_Name2 = "";
-                                                        Globals.ShowHud_Kill_Name = attacker.PlayerName;
-                                                        Globals.ShowHud_Kill_int = numberofkills;
-                                                        Globals.ShowHud_Kill.Add(players.SteamID, Localizer[$"center.announce.quake.kill.streak.{numberofkills}"]);
-                                                    }
-                                                    HUDTimer?.Kill();
-                                                    HUDTimer = null;
-                                                    HUDTimer = AddTimer(IntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
-                                                });
-                                            }
                                         }else
                                         {
-                                            if (KShowChat && !string.IsNullOrEmpty(Localizer["chat.announce.quake.kill"]))
+                                            players.ExecuteClientCommand("play " + soundPath);
+                                        }
+                                        
+                                        if(KSteak)
+                                        {
+                                            if(personData.quakecmessages)
                                             {
-                                                Helper.AdvancedPrintToChat(players, Localizer["chat.announce.quake.kill"], attacker.PlayerName, victim.PlayerName);
-                                            }
 
-                                            if (KShowCenter && !string.IsNullOrEmpty(Localizer["center.announce.quake.kill"]))
+                                            }else
                                             {
-                                                Server.NextFrame(() =>
+                                                if (KShowChat && !string.IsNullOrEmpty(Localizer[$"chat.announce.quake.kill.streak.{numberofkills}"]))
                                                 {
-                                                    if(Globals.ShowHud_Kill.ContainsKey(players.SteamID))
-                                                    {
-                                                        Globals.ShowHud_Kill.Remove(players.SteamID);
-                                                    }
-                                                    if(!Globals.ShowHud_Kill.ContainsKey(players.SteamID))
-                                                    {
-                                                        Globals.ShowHud_Kill_Name = attacker.PlayerName;
-                                                        Globals.ShowHud_Kill_Name2 = victim.PlayerName;
-                                                        Globals.ShowHud_Kill.Add(players.SteamID, Localizer["center.announce.quake.kill"]);
-                                                    }
-                                                    HUDTimer?.Kill();
-                                                    HUDTimer = null;
-                                                    HUDTimer = AddTimer(IntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
-                                                });
+                                                    Helper.AdvancedPrintToChat(players, Localizer[$"chat.announce.quake.kill.streak.{numberofkills}"], attacker.PlayerName, numberofkills);
+                                                }
                                             }
+                                            
+
+                                            if(personData.quakehmessages)
+                                            {
+
+                                            }else
+                                            {
+                                                if (KShowCenter && !string.IsNullOrEmpty(Localizer[$"center.announce.quake.kill.streak.{numberofkills}"]))
+                                                {
+                                                    Server.NextFrame(() =>
+                                                    {
+                                                        if(Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                                        {
+                                                            Globals.ShowHud_Kill.Remove(players.SteamID);
+                                                        }
+                                                        if(!Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                                        {
+                                                            Globals.ShowHud_Kill_Name2 = "";
+                                                            Globals.ShowHud_Kill_Name = attacker.PlayerName;
+                                                            Globals.ShowHud_Kill_int = numberofkills;
+                                                            Globals.ShowHud_Kill.Add(players.SteamID, Localizer[$"center.announce.quake.kill.streak.{numberofkills}"]);
+                                                        }
+                                                        HUDTimer?.Kill();
+                                                        HUDTimer = null;
+                                                        HUDTimer = AddTimer(IntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
+                                                    });
+                                                }
+                                            }
+                                            
+                                        }else
+                                        {
+                                            if(personData.quakecmessages)
+                                            {
+
+                                            }else
+                                            {
+                                                if (KShowChat && !string.IsNullOrEmpty(Localizer["chat.announce.quake.kill"]))
+                                                {
+                                                    Helper.AdvancedPrintToChat(players, Localizer["chat.announce.quake.kill"], attacker.PlayerName, victim.PlayerName);
+                                                }
+                                            }
+                                            
+                                            if(personData.quakehmessages)
+                                            {
+
+                                            }else
+                                            {
+                                                if (KShowCenter && !string.IsNullOrEmpty(Localizer["center.announce.quake.kill"]))
+                                                {
+                                                    Server.NextFrame(() =>
+                                                    {
+                                                        if(Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                                        {
+                                                            Globals.ShowHud_Kill.Remove(players.SteamID);
+                                                        }
+                                                        if(!Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                                        {
+                                                            Globals.ShowHud_Kill_Name = attacker.PlayerName;
+                                                            Globals.ShowHud_Kill_Name2 = victim.PlayerName;
+                                                            Globals.ShowHud_Kill.Add(players.SteamID, Localizer["center.announce.quake.kill"]);
+                                                        }
+                                                        HUDTimer?.Kill();
+                                                        HUDTimer = null;
+                                                        HUDTimer = AddTimer(IntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
+                                                    });
+                                                }
+                                            }
+                                            
                                         }
                                     }
                                 });
 
                             }else
                             {
-                                attacker.ExecuteClientCommand("play " + soundPath);
-                                if(KSteak)
+                                if(personData.quakesounds)
                                 {
-                                    if (KShowChat && !string.IsNullOrEmpty(Localizer[$"chat.quake.kill.streak.{numberofkills}"]))
-                                    {
-                                        Helper.AdvancedPrintToChat(attacker, Localizer[$"chat.quake.kill.streak.{numberofkills}"], numberofkills);
-                                    }
 
-                                    if (KShowCenter && !string.IsNullOrEmpty(Localizer[$"center.quake.kill.streak.{numberofkills}"]))
-                                    {
-                                        Server.NextFrame(() =>
-                                        {
-                                            if(Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
-                                            {
-                                                Globals.ShowHud_Kill.Remove(attacker.SteamID);
-                                            }
-                                            if(!Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
-                                            {
-                                                Globals.ShowHud_Kill_Name2 = "";
-                                                Globals.ShowHud_Kill_int = numberofkills;
-                                                Globals.ShowHud_Kill_Name = "";
-                                                Globals.ShowHud_Kill.Add(attacker.SteamID, Localizer[$"center.quake.kill.streak.{numberofkills}"]);
-                                            }
-                                            HUDTimer?.Kill();
-                                            HUDTimer = null;
-                                            HUDTimer = AddTimer(IntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
-                                        });
-                                    }
                                 }else
                                 {
-                                    if (KShowChat && !string.IsNullOrEmpty(Localizer["chat.quake.kill"]))
+                                    attacker.ExecuteClientCommand("play " + soundPath);
+                                }
+                                
+                                if(KSteak)
+                                {
+                                    if(personData.quakecmessages)
                                     {
-                                        Helper.AdvancedPrintToChat(attacker, Localizer["chat.quake.kill"], victim.PlayerName);
-                                    }
 
-                                    if (KShowCenter && !string.IsNullOrEmpty(Localizer["center.quake.kill"]))
+                                    }else
                                     {
-                                        Server.NextFrame(() =>
+                                        if (KShowChat && !string.IsNullOrEmpty(Localizer[$"chat.quake.kill.streak.{numberofkills}"]))
                                         {
-                                            if(Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
-                                            {
-                                                Globals.ShowHud_Kill.Remove(attacker.SteamID);
-                                            }
-                                            if(!Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
-                                            {
-                                                Globals.ShowHud_Kill_Name = victim.PlayerName;
-                                                Globals.ShowHud_Kill.Add(attacker.SteamID, Localizer[$"center.quake.kill"]);
-                                            }
-                                            HUDTimer?.Kill();
-                                            HUDTimer = null;
-                                            HUDTimer = AddTimer(IntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
-                                        });
+                                            Helper.AdvancedPrintToChat(attacker, Localizer[$"chat.quake.kill.streak.{numberofkills}"], numberofkills);
+                                        }
                                     }
+                                    
+                                    if(personData.quakehmessages)
+                                    {
+
+                                    }else
+                                    {
+                                        if (KShowCenter && !string.IsNullOrEmpty(Localizer[$"center.quake.kill.streak.{numberofkills}"]))
+                                        {
+                                            Server.NextFrame(() =>
+                                            {
+                                                if(Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
+                                                {
+                                                    Globals.ShowHud_Kill.Remove(attacker.SteamID);
+                                                }
+                                                if(!Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
+                                                {
+                                                    Globals.ShowHud_Kill_Name2 = "";
+                                                    Globals.ShowHud_Kill_int = numberofkills;
+                                                    Globals.ShowHud_Kill_Name = "";
+                                                    Globals.ShowHud_Kill.Add(attacker.SteamID, Localizer[$"center.quake.kill.streak.{numberofkills}"]);
+                                                }
+                                                HUDTimer?.Kill();
+                                                HUDTimer = null;
+                                                HUDTimer = AddTimer(IntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
+                                            });
+                                        }
+                                    }
+                                    
+                                }else
+                                {
+                                    if(personData.quakecmessages)
+                                    {
+
+                                    }else
+                                    {
+                                        if (KShowChat && !string.IsNullOrEmpty(Localizer["chat.quake.kill"]))
+                                        {
+                                            Helper.AdvancedPrintToChat(attacker, Localizer["chat.quake.kill"], victim.PlayerName);
+                                        }
+                                    }
+                                    
+                                    if(personData.quakehmessages)
+                                    {
+
+                                    }else
+                                    {
+                                        if (KShowCenter && !string.IsNullOrEmpty(Localizer["center.quake.kill"]))
+                                        {
+                                            Server.NextFrame(() =>
+                                            {
+                                                if(Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
+                                                {
+                                                    Globals.ShowHud_Kill.Remove(attacker.SteamID);
+                                                }
+                                                if(!Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
+                                                {
+                                                    Globals.ShowHud_Kill_Name = victim.PlayerName;
+                                                    Globals.ShowHud_Kill.Add(attacker.SteamID, Localizer[$"center.quake.kill"]);
+                                                }
+                                                HUDTimer?.Kill();
+                                                HUDTimer = null;
+                                                HUDTimer = AddTimer(IntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
+                                            });
+                                        }
+                                    }
+                                    
                                 }
                             }
                             Globals.lastPlayTimes[playeridattacker] = DateTime.Now;
@@ -1720,19 +2278,22 @@ public class KillSoundGoldKingZ : BasePlugin
         {
             Globals.Timers.Stop();
         }
-        
-        Globals.Kill_Streak.Clear();
-        Globals.Kill_StreakHS.Clear();
-        Globals.Kill_Knife.Clear();
-        Globals.Kill_Nade.Clear();
-        Globals.Kill_Molly.Clear();
-        Globals.Kill_Taser.Clear();
-        Globals.lastPlayTimes.Clear();
-        Globals.lastPlayTimesHS.Clear();
-        Globals.lastPlayTimesKnife.Clear();
-        Globals.lastPlayTimesNade.Clear();
-        Globals.lastPlayTimesMolly.Clear();
-        Globals.lastPlayTimesTaser.Clear();
+
+        if(Configs.GetConfigData().KS_ResetKillStreakOnEveryRound)
+        {
+            Globals.Kill_Streak.Clear();
+            Globals.Kill_StreakHS.Clear();
+            Globals.Kill_Knife.Clear();
+            Globals.Kill_Nade.Clear();
+            Globals.Kill_Molly.Clear();
+            Globals.Kill_Taser.Clear();
+            Globals.lastPlayTimes.Clear();
+            Globals.lastPlayTimesHS.Clear();
+            Globals.lastPlayTimesKnife.Clear();
+            Globals.lastPlayTimesNade.Clear();
+            Globals.lastPlayTimesMolly.Clear();
+            Globals.lastPlayTimesTaser.Clear();
+        }
         Globals.ShowHud_Kill.Clear();
 
         try
@@ -1759,29 +2320,50 @@ public class KillSoundGoldKingZ : BasePlugin
                 {
                     if(players != null && players.IsValid && !players.IsBot)
                     {
-                        players.ExecuteClientCommand("play " + PsoundPath);
-                        if (PShowChat && !string.IsNullOrEmpty(Localizer["chat.announce.quake.roundprepare"]))
+                        var playerid = players.SteamID;
+                        Helper.PersonData personData = Helper.RetrievePersonDataById(playerid);
+                        if(personData.quakesounds)
                         {
-                            Helper.AdvancedPrintToChat(players, Localizer["chat.announce.quake.roundprepare"]);
-                        }
 
-                        if (PShowCenter && !string.IsNullOrEmpty(Localizer["center.announce.quake.roundprepare"]))
+                        }else
                         {
-                            Server.NextFrame(() =>
-                            {
-                                if(Globals.ShowHud_Kill.ContainsKey(players.SteamID))
-                                {
-                                    Globals.ShowHud_Kill.Remove(players.SteamID);
-                                }
-                                if(!Globals.ShowHud_Kill.ContainsKey(players.SteamID))
-                                {
-                                    Globals.ShowHud_Kill.Add(players.SteamID, Localizer["center.announce.quake.roundprepare"]);
-                                }
-                                HUDTimer?.Kill();
-                                HUDTimer = null;
-                                HUDTimer = AddTimer(PIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
-                            });
+                            players.ExecuteClientCommand("play " + PsoundPath);
                         }
+                        if(personData.quakecmessages)
+                        {
+
+                        }else
+                        {
+                            if (PShowChat && !string.IsNullOrEmpty(Localizer["chat.announce.quake.roundprepare"]))
+                            {
+                                Helper.AdvancedPrintToChat(players, Localizer["chat.announce.quake.roundprepare"]);
+                            }
+                        }
+                        
+                        if(personData.quakehmessages)
+                        {
+
+                        }else
+                        {
+                            if (PShowCenter && !string.IsNullOrEmpty(Localizer["center.announce.quake.roundprepare"]))
+                            {
+                                Server.NextFrame(() =>
+                                {
+                                    if(Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                    {
+                                        Globals.ShowHud_Kill.Remove(players.SteamID);
+                                    }
+                                    if(!Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                    {
+                                        Globals.ShowHud_Kill.Add(players.SteamID, Localizer["center.announce.quake.roundprepare"]);
+                                    }
+                                    HUDTimer?.Kill();
+                                    HUDTimer = null;
+                                    HUDTimer = AddTimer(PIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
+                                });
+                            }
+                        }
+                        
                         
                     }
                 });
@@ -1969,29 +2551,51 @@ public class KillSoundGoldKingZ : BasePlugin
 						{
 							if(players != null && players.IsValid && !players.IsBot)
 							{
-								players.ExecuteClientCommand("play " + RsoundPath);
-								if (RShowChat && !string.IsNullOrEmpty(Localizer["chat.announce.quake.roundstart"]))
-								{
-									Helper.AdvancedPrintToChat(players, Localizer["chat.announce.quake.roundstart"]);
-								}
+                                var playerid = players.SteamID;
+                                Helper.PersonData personData = Helper.RetrievePersonDataById(playerid);
+                                if(personData.quakesounds)
+                                {
 
-								if (RShowCenter && !string.IsNullOrEmpty(Localizer["center.announce.quake.roundstart"]))
-								{
-									Server.NextFrame(() =>
-									{
-										if(Globals.ShowHud_Kill.ContainsKey(players.SteamID))
-										{
-											Globals.ShowHud_Kill.Remove(players.SteamID);
-										}
-										if(!Globals.ShowHud_Kill.ContainsKey(players.SteamID))
-										{
-											Globals.ShowHud_Kill.Add(players.SteamID, Localizer["center.announce.quake.roundstart"]);
-										}
-										HUDTimer?.Kill();
-                                        HUDTimer = null;
-                                        HUDTimer = AddTimer(RIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
-									});
-								}
+                                }else
+                                {
+                                    players.ExecuteClientCommand("play " + RsoundPath);
+                                }
+
+								if(personData.quakecmessages)
+                                {
+
+                                }else
+                                {
+                                    if (RShowChat && !string.IsNullOrEmpty(Localizer["chat.announce.quake.roundstart"]))
+                                    {
+                                        Helper.AdvancedPrintToChat(players, Localizer["chat.announce.quake.roundstart"]);
+                                    }
+                                }
+								
+                                if(personData.quakehmessages)
+                                {
+
+                                }else
+                                {
+                                    if (RShowCenter && !string.IsNullOrEmpty(Localizer["center.announce.quake.roundstart"]))
+                                    {
+                                        Server.NextFrame(() =>
+                                        {
+                                            if(Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                            {
+                                                Globals.ShowHud_Kill.Remove(players.SteamID);
+                                            }
+                                            if(!Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                            {
+                                                Globals.ShowHud_Kill.Add(players.SteamID, Localizer["center.announce.quake.roundstart"]);
+                                            }
+                                            HUDTimer?.Kill();
+                                            HUDTimer = null;
+                                            HUDTimer = AddTimer(RIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
+                                        });
+                                    }
+                                }
+								
 							}
 						});
                     }
@@ -2034,7 +2638,7 @@ public class KillSoundGoldKingZ : BasePlugin
                 List<string> MenuSetupList = new List<string>();
                 List<bool> boolValuesList = new List<bool>();
 
-                if (!string.IsNullOrEmpty(Configs.GetConfigData().KS_BodyHitSoundPath))
+                if (Configs.GetConfigData().KS_AddMenu_FreezeOnOpenMenu)
                 {
                     MenuSetupList.Add(Localizer["menu.item.freeze"]);
                     if(Configs.GetConfigData().KS_FreezeOnOpenMenuDefaultValue)
@@ -2046,7 +2650,7 @@ public class KillSoundGoldKingZ : BasePlugin
                     }
                 }
 
-                if (!string.IsNullOrEmpty(Configs.GetConfigData().KS_BodyHitSoundPath))
+                if (!string.IsNullOrEmpty(Configs.GetConfigData().KS_AddMenu_BodyHitSoundPath))
                 {
                     MenuSetupList.Add(Localizer["menu.item.bodyhit"]);
                     if(Configs.GetConfigData().KS_BodyHitSoundDefaultValue)
@@ -2058,7 +2662,7 @@ public class KillSoundGoldKingZ : BasePlugin
                     }
                 }
 
-                if (!string.IsNullOrEmpty(Configs.GetConfigData().KS_BodyKillSoundPath))
+                if (!string.IsNullOrEmpty(Configs.GetConfigData().KS_AddMenu_BodyKillSoundPath))
                 {
                     MenuSetupList.Add(Localizer["menu.item.bodykill"]);
                     if(Configs.GetConfigData().KS_BodyKillSoundDefaultValue)
@@ -2070,7 +2674,7 @@ public class KillSoundGoldKingZ : BasePlugin
                     }
                 }
 
-                if (!string.IsNullOrEmpty(Configs.GetConfigData().KS_HeadShotHitSoundPath))
+                if (!string.IsNullOrEmpty(Configs.GetConfigData().KS_AddMenu_HeadShotHitSoundPath))
                 {
                     MenuSetupList.Add(Localizer["menu.item.headshothit"]);
                     
@@ -2083,7 +2687,7 @@ public class KillSoundGoldKingZ : BasePlugin
                     }
                 }
 
-                if (!string.IsNullOrEmpty(Configs.GetConfigData().KS_HeadShotKillSoundPath))
+                if (!string.IsNullOrEmpty(Configs.GetConfigData().KS_AddMenu_HeadShotKillSoundPath))
                 {
                     MenuSetupList.Add(Localizer["menu.item.headshotkill"]);
                     if(Configs.GetConfigData().KS_HeadShotKillSoundDefaultValue)
@@ -2094,6 +2698,22 @@ public class KillSoundGoldKingZ : BasePlugin
                         boolValuesList.Add(!personData.headshotkill);
                     }
                     
+                }
+
+                if (Configs.GetConfigData().KS_AddMenu_QuakeSoundsToggle)
+                {
+                    MenuSetupList.Add(Localizer["menu.item.quake.sounds"]);
+                    boolValuesList.Add(personData.quakesounds);
+                }
+                if (Configs.GetConfigData().KS_AddMenu_QuakeCenterMessageToggle)
+                {
+                    MenuSetupList.Add(Localizer["menu.item.quake.center.messages"]);
+                    boolValuesList.Add(personData.quakehmessages);
+                }
+                if (Configs.GetConfigData().KS_AddMenu_QuakeChatMessageToggle)
+                {
+                    MenuSetupList.Add(Localizer["menu.item.quake.chat.messages"]);
+                    boolValuesList.Add(personData.quakecmessages);
                 }
                 
                 string[] MenuSetup = MenuSetupList.ToArray();
@@ -2130,7 +2750,7 @@ public class KillSoundGoldKingZ : BasePlugin
                     Globals.currentIndexDict[playerid] = currentIndex;
                     player.ExecuteClientCommand("play sounds/ui/csgo_ui_contract_type4.vsnd_c");
                     Globals.buttonPressed[playerid] = true;
-                }else if ((player.Buttons == PlayerButtons.Moveleft || player.Buttons == PlayerButtons.Moveright) && !Globals.buttonPressed[playerid])
+                }else if ((player.Buttons == PlayerButtons.Moveleft || player.Buttons == PlayerButtons.Moveright) && !Globals.buttonPressed[playerid] && ((PlayerFlags)player.Pawn.Value!.Flags & PlayerFlags.FL_ONGROUND) == PlayerFlags.FL_ONGROUND)
                 {
                     int currentLineIndex = Globals.currentIndexDict[playerid];
                     string currentLineName = MenuSetup[currentLineIndex];
@@ -2189,7 +2809,7 @@ public class KillSoundGoldKingZ : BasePlugin
                             }
                         }
                         
-                        Helper.SaveToJsonFile(playerid, personData.freezemenu, personData.headshotkill, personData.headshothit, personData.bodyshotkill, personData.bodyshothit, personDate);
+                        Helper.SaveToJsonFile(playerid, personData.freezemenu, personData.headshotkill, personData.headshothit, personData.bodyshotkill, personData.bodyshothit,personData.quakesounds,personData.quakehmessages,personData.quakecmessages, personDate);
                     }
                     else if (currentLineName == Localizer["menu.item.bodyhit"])
                     {
@@ -2227,7 +2847,7 @@ public class KillSoundGoldKingZ : BasePlugin
                             }
                         }
                         
-                        Helper.SaveToJsonFile(playerid, personData.freezemenu, personData.headshotkill, personData.headshothit, personData.bodyshotkill, personData.bodyshothit, personDate);
+                        Helper.SaveToJsonFile(playerid, personData.freezemenu, personData.headshotkill, personData.headshothit, personData.bodyshotkill, personData.bodyshothit,personData.quakesounds,personData.quakehmessages,personData.quakecmessages, personDate);
                     }
                     else if (currentLineName == Localizer["menu.item.bodykill"])
                     {
@@ -2264,7 +2884,7 @@ public class KillSoundGoldKingZ : BasePlugin
                                 }
                             }
                         }
-                        Helper.SaveToJsonFile(playerid, personData.freezemenu, personData.headshotkill, personData.headshothit, personData.bodyshotkill, personData.bodyshothit, personDate);
+                        Helper.SaveToJsonFile(playerid, personData.freezemenu, personData.headshotkill, personData.headshothit, personData.bodyshotkill, personData.bodyshothit,personData.quakesounds,personData.quakehmessages,personData.quakecmessages, personDate);
                     }
                     else if (currentLineName == Localizer["menu.item.headshothit"])
                     {
@@ -2301,7 +2921,7 @@ public class KillSoundGoldKingZ : BasePlugin
                                 }
                             }
                         }
-                        Helper.SaveToJsonFile(playerid, personData.freezemenu, personData.headshotkill, personData.headshothit, personData.bodyshotkill, personData.bodyshothit, personDate);
+                        Helper.SaveToJsonFile(playerid, personData.freezemenu, personData.headshotkill, personData.headshothit, personData.bodyshotkill, personData.bodyshothit,personData.quakesounds,personData.quakehmessages,personData.quakecmessages, personDate);
                     }
                     else if (currentLineName == Localizer["menu.item.headshotkill"])
                     {
@@ -2338,7 +2958,64 @@ public class KillSoundGoldKingZ : BasePlugin
                                 }
                             }
                         }
-                        Helper.SaveToJsonFile(playerid, personData.freezemenu, personData.headshotkill, personData.headshothit, personData.bodyshotkill, personData.bodyshothit, personDate);
+                        Helper.SaveToJsonFile(playerid, personData.freezemenu, personData.headshotkill, personData.headshothit, personData.bodyshotkill, personData.bodyshothit,personData.quakesounds,personData.quakehmessages,personData.quakecmessages, personDate);
+                    }
+                    else if (currentLineName == Localizer["menu.item.quake.sounds"])
+                    {
+                        personData.quakesounds = !personData.quakesounds;
+                        if(personData.quakesounds)
+                        {
+                            if (!string.IsNullOrEmpty(Localizer["player.toggle.quake.sounds.off"]))
+                            {
+                                Helper.AdvancedPrintToChat(player, Localizer["player.toggle.quake.sounds.off"]);
+                            }
+                        }else
+                        {
+                            
+                            if (!string.IsNullOrEmpty(Localizer["player.toggle.quake.sounds.on"]))
+                            {
+                                Helper.AdvancedPrintToChat(player, Localizer["player.toggle.quake.sounds.on"]);
+                            }
+                        }
+                        Helper.SaveToJsonFile(playerid, personData.freezemenu, personData.headshotkill, personData.headshothit, personData.bodyshotkill, personData.bodyshothit,personData.quakesounds,personData.quakehmessages,personData.quakecmessages, personDate);
+                    }
+                    else if (currentLineName == Localizer["menu.item.quake.center.messages"])
+                    {
+                        personData.quakehmessages = !personData.quakehmessages;
+                        if(personData.quakehmessages)
+                        {
+                            if (!string.IsNullOrEmpty(Localizer["player.toggle.quake.center.message.off"]))
+                            {
+                                Helper.AdvancedPrintToChat(player, Localizer["player.toggle.quake.center.message.off"]);
+                            }
+                        }else
+                        {
+                            
+                            if (!string.IsNullOrEmpty(Localizer["player.toggle.quake.center.message.on"]))
+                            {
+                                Helper.AdvancedPrintToChat(player, Localizer["player.toggle.quake.center.message.on"]);
+                            }
+                        }
+                        Helper.SaveToJsonFile(playerid, personData.freezemenu, personData.headshotkill, personData.headshothit, personData.bodyshotkill, personData.bodyshothit,personData.quakesounds,personData.quakehmessages,personData.quakecmessages, personDate);
+                    }
+                    else if (currentLineName == Localizer["menu.item.quake.chat.messages"])
+                    {
+                        personData.quakecmessages = !personData.quakecmessages;
+                        if(personData.quakecmessages)
+                        {
+                            if (!string.IsNullOrEmpty(Localizer["player.toggle.quake.chat.message.off"]))
+                            {
+                                Helper.AdvancedPrintToChat(player, Localizer["player.toggle.quake.chat.message.off"]);
+                            }
+                        }else
+                        {
+                            
+                            if (!string.IsNullOrEmpty(Localizer["player.toggle.quake.chat.message.on"]))
+                            {
+                                Helper.AdvancedPrintToChat(player, Localizer["player.toggle.quake.chat.message.on"]);
+                            }
+                        }
+                        Helper.SaveToJsonFile(playerid, personData.freezemenu, personData.headshotkill, personData.headshothit, personData.bodyshotkill, personData.bodyshothit,personData.quakesounds,personData.quakehmessages,personData.quakecmessages, personDate);
                     }
                     
                     player.ExecuteClientCommand("play sounds/ui/item_sticker_select.vsnd_c");
@@ -2384,13 +3061,14 @@ public class KillSoundGoldKingZ : BasePlugin
                         }
                         else
                         {
-                            string lineHtml = $"<font color='white'>{currentMenuOption}</font><br>";
+                            string statusText = status ?  "<font color='red'>Off</font>" : "<font color='lime'>On</font>";
+                            string lineHtml = $"<font color='white' class='fontSize-sm'>  {currentMenuOption} : {statusText}  </font><br>";
                             builder.AppendLine(lineHtml);
                         }
                     }
                     if (startIndex + visibleOptions < MenuSetup.Length)
                     {
-                        string moreItemsIndicator = "<font color='red' class='fontSize-m horizontal-center'>ꜜ↓ꜜ</font>";
+                        string moreItemsIndicator = Localizer["menu.more.down"];
                         builder.AppendLine(moreItemsIndicator);
                     }
                     builder.AppendLine("<br>" + BottomMenu);
