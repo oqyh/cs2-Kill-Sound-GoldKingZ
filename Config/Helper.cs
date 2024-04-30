@@ -440,7 +440,7 @@ public class Helper
             }
 
             
-            allPersonsData.RemoveAll(p => (DateTime.Now - p.DateAndTime).TotalDays > 100);
+            allPersonsData.RemoveAll(p => (DateTime.Now - p.DateAndTime).TotalDays > Configs.GetConfigData().KS_AutoRemovePlayerCookieOlderThanXDays);
             
             
 
@@ -474,7 +474,7 @@ public class Helper
                 PersonData targetPerson = allPersonsData.Find(p => p.PlayerSteamID == targetId)!;
 
                
-                if (targetPerson != null && (DateTime.Now - targetPerson.DateAndTime<= TimeSpan.FromDays(100)))
+                if (targetPerson != null && (DateTime.Now - targetPerson.DateAndTime<= TimeSpan.FromDays(Configs.GetConfigData().KS_AutoRemovePlayerCookieOlderThanXDays)))
                 {
                     return targetPerson;
                 }

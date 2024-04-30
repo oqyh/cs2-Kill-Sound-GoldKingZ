@@ -112,6 +112,7 @@ namespace Kill_Sound_GoldKingZ.Config
             public bool KS_BodyHitSoundDefaultValue { get; set; }
             public string KS_InGameMenu { get; set; }
             public string KS_OnlyAllowTheseGroupsToToggle { get; set; }
+            public int KS_AutoRemovePlayerCookieOlderThanXDays { get; set; }
             public string empty3 { get; set; }
             public string Information_For_You_Dont_Delete_it { get; set; }
             
@@ -137,6 +138,7 @@ namespace Kill_Sound_GoldKingZ.Config
                 KS_BodyHitSoundDefaultValue = false;
                 KS_InGameMenu = "!quake,!quakesounds,!soundmenu,!soundsmenu,!menusound,!menusounds,!soundsettings,!soundsetting";
                 KS_OnlyAllowTheseGroupsToToggle = "";
+                KS_AutoRemovePlayerCookieOlderThanXDays = 7;
                 empty3 = "-----------------------------------------------------------------------------------";
                 Information_For_You_Dont_Delete_it = " Vist  [https://github.com/oqyh/cs2-Kill-Sound-GoldKingZ/tree/main?tab=readme-ov-file#-configuration-] To Understand All Above";
             }
