@@ -412,14 +412,30 @@ public class Helper
 
             if (existingPerson != null)
             {
-                existingPerson.freezemenu = freezemenu;
-                existingPerson.headshotkill = headshotkill;
-                existingPerson.headshothit = headshothit;
-                existingPerson.bodyshotkill = bodyshotkill;
-                existingPerson.bodyshothit = bodyshothit;
-                existingPerson.quakesounds = quakesounds;
-                existingPerson.quakehmessages = quakehmessages;
-                existingPerson.quakecmessages = quakecmessages;
+                if (existingPerson.freezemenu != freezemenu)
+                    existingPerson.freezemenu = freezemenu;
+
+                if (existingPerson.headshotkill != headshotkill)
+                    existingPerson.headshotkill = headshotkill;
+
+                if (existingPerson.headshothit != headshothit)
+                    existingPerson.headshothit = headshothit;
+
+                if (existingPerson.bodyshotkill != bodyshotkill)
+                    existingPerson.bodyshotkill = bodyshotkill;
+
+                if (existingPerson.bodyshothit != bodyshothit)
+                    existingPerson.bodyshothit = bodyshothit;
+
+                if (existingPerson.quakesounds != quakesounds)
+                    existingPerson.quakesounds = quakesounds;
+
+                if (existingPerson.quakehmessages != quakehmessages)
+                    existingPerson.quakehmessages = quakehmessages;
+
+                if (existingPerson.quakecmessages != quakecmessages)
+                    existingPerson.quakecmessages = quakecmessages;
+
                 existingPerson.DateAndTime = DateAndTime;
             }
             else
@@ -427,6 +443,7 @@ public class Helper
                 PersonData newPerson = new PersonData
                 {
                     PlayerSteamID = PlayerSteamID,
+                    freezemenu = freezemenu,
                     headshotkill = headshotkill,
                     headshothit = headshothit,
                     bodyshotkill = bodyshotkill,
