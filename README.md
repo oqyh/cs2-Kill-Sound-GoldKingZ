@@ -1,4 +1,4 @@
-# [CS2] Kill-Sound-GoldKingZ (1.0.8)
+# [CS2] Kill-Sound-GoldKingZ (1.0.9)
 
 ### Kill Sound ( Kill , HeadShot , Quake )
 
@@ -268,6 +268,10 @@ You Cannot Control ["RoundPrepare" , "RoundStart" ] Becasue Its Already Announce
 
 ## .:[ Change Log ]:.
 ```
+(1.0.9)
+-Fix Toggle On Cookies
+
+
 (1.0.8)
 -Added KS_AutoRemovePlayerCookieOlderThanXDays
 Auto Delete Inactive Players Cookies Older Than X Days plugins/Kill-Sound-GoldKingZ/Cookies/Kill_Sound_Cookies.json
