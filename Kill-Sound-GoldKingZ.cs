@@ -18,7 +18,7 @@ namespace Kill_Sound_GoldKingZ;
 public class KillSoundGoldKingZ : BasePlugin
 {
     public override string ModuleName => "Kill Sound ( Kill , HeadShot , Quake )";
-    public override string ModuleVersion => "1.1.0";
+    public override string ModuleVersion => "1.1.1";
     public override string ModuleAuthor => "Gold KingZ";
     public override string ModuleDescription => "https://github.com/oqyh";
     internal static IStringLocalizer? Stringlocalizer;
@@ -689,20 +689,6 @@ public class KillSoundGoldKingZ : BasePlugin
             
             if (Globals.Kill_Streak.ContainsKey(playeridattacker) || Globals.Kill_StreakHS.ContainsKey(playeridattacker) || Globals.Kill_Knife.ContainsKey(playeridattacker) || Globals.Kill_Nade.ContainsKey(playeridattacker) || Globals.Kill_Molly.ContainsKey(playeridattacker) || Globals.Kill_Taser.ContainsKey(playeridattacker))
             {
-                if (attackerteam != victimteam) Globals.Kill_Streak[playeridattacker]++;
-                if (headshot) Globals.Kill_StreakHS[playeridattacker]++;
-                if (knifekill) Globals.Kill_Knife[playeridattacker]++;
-                if (NadeKill) Globals.Kill_Nade[playeridattacker]++;
-                if (MollyKill) Globals.Kill_Molly[playeridattacker]++;
-                if (TaserKill) Globals.Kill_Taser[playeridattacker]++;
-
-                int numberofkills = Globals.Kill_Streak[playeridattacker];
-                int numberofkillsHS = Globals.Kill_StreakHS[playeridattacker];
-                int numberofknifekill = Globals.Kill_Knife[playeridattacker];
-                int numberofnadekill = Globals.Kill_Nade[playeridattacker];
-                int numberofmollykill = Globals.Kill_Molly[playeridattacker];
-                int numberoftaserkill = Globals.Kill_Taser[playeridattacker];
-
                 try
                 {
                     string _json = Path.Combine(ModuleDirectory, "../../plugins/Kill-Sound-GoldKingZ/config/Kill_Settings.json");
@@ -721,119 +707,134 @@ public class KillSoundGoldKingZ : BasePlugin
                         if (!json["TeamKill"].ContainsKey("ShowChat")) TShowChat = false; else bool.TryParse(json["TeamKill"]["ShowChat"]?.ToString(), out TShowChat);
                         if (!json["TeamKill"].ContainsKey("ShowCenter")) TShowCenter = false; else bool.TryParse(json["TeamKill"]["ShowCenter"]?.ToString(), out TShowCenter);
                     }
-					
-                    if (attackerteam == victimteam && !string.IsNullOrEmpty(TsoundPath))
+
+					if (!string.IsNullOrEmpty(TsoundPath))
                     {
-						if(Tanouncement)
-						{
-							var allplayers = Helper.GetAllController();
-							allplayers.ForEach(players => 
-							{
-								if(players != null && players.IsValid && !players.IsBot)
-								{
-                                    Helper.PersonData personDataa = Helper.RetrievePersonDataById(players.SteamID);
-                                    if(personDataa.quakesounds)
+                        if(attackerteam == victimteam && ConVar.Find("mp_teammates_are_enemies")!.GetPrimitiveValue<bool>() == false)
+                        {
+                            if(Tanouncement)
+                            {
+                                var allplayers = Helper.GetAllController();
+                                allplayers.ForEach(players => 
+                                {
+                                    if(players != null && players.IsValid && !players.IsBot)
                                     {
-
-                                    }else
-                                    {
-                                        players.ExecuteClientCommand("play " + TsoundPath);
-                                    }
-
-                                    if(personDataa.quakecmessages)
-                                    {
-
-                                    }else
-                                    {
-                                        if (TShowChat && !string.IsNullOrEmpty(Localizer["chat.announce.quake.teamkill"]))
+                                        Helper.PersonData personDataa = Helper.RetrievePersonDataById(players.SteamID);
+                                        if(personDataa.quakesounds)
                                         {
-                                            Helper.AdvancedPrintToChat(players, Localizer["chat.announce.quake.teamkill"], attacker.PlayerName, victim.PlayerName);
+
+                                        }else
+                                        {
+                                            players.ExecuteClientCommand("play " + TsoundPath);
                                         }
-                                    }
-									
 
-                                    if(personDataa.quakehmessages)
-                                    {
-
-                                    }else
-                                    {
-                                        if (TShowCenter && !string.IsNullOrEmpty(Localizer["center.announce.quake.teamkill"]))
+                                        if(personDataa.quakecmessages)
                                         {
-                                            Server.NextFrame(() =>
+
+                                        }else
+                                        {
+                                            if (TShowChat && !string.IsNullOrEmpty(Localizer["chat.announce.quake.teamkill"]))
                                             {
-                                                if(Globals.ShowHud_Kill.ContainsKey(players.SteamID))
-                                                {
-                                                    Globals.ShowHud_Kill.Remove(players.SteamID);
-                                                }
-                                                if(!Globals.ShowHud_Kill.ContainsKey(players.SteamID))
-                                                {
-                                                    Globals.ShowHud_Kill_Name = attacker.PlayerName;
-                                                    Globals.ShowHud_Kill_Name2 = victim.PlayerName;
-                                                    Globals.ShowHud_Kill.Add(players.SteamID, Localizer["center.announce.quake.teamkill"]);
-                                                }
-                                                HUDTimer?.Kill();
-                                                HUDTimer = null;
-                                                HUDTimer = AddTimer(TIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
-                                            });
+                                                Helper.AdvancedPrintToChat(players, Localizer["chat.announce.quake.teamkill"], attacker.PlayerName, victim.PlayerName);
+                                            }
                                         }
+                                        
+
+                                        if(personDataa.quakehmessages)
+                                        {
+
+                                        }else
+                                        {
+                                            if (TShowCenter && !string.IsNullOrEmpty(Localizer["center.announce.quake.teamkill"]))
+                                            {
+                                                Server.NextFrame(() =>
+                                                {
+                                                    if(Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                                    {
+                                                        Globals.ShowHud_Kill.Remove(players.SteamID);
+                                                    }
+                                                    if(!Globals.ShowHud_Kill.ContainsKey(players.SteamID))
+                                                    {
+                                                        Globals.ShowHud_Kill_Name = attacker.PlayerName;
+                                                        Globals.ShowHud_Kill_Name2 = victim.PlayerName;
+                                                        Globals.ShowHud_Kill.Add(players.SteamID, Localizer["center.announce.quake.teamkill"]);
+                                                    }
+                                                    HUDTimer?.Kill();
+                                                    HUDTimer = null;
+                                                    HUDTimer = AddTimer(TIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
+                                                });
+                                            }
+                                        }
+
+                                        
+                                        
                                     }
-
-									
-									
-								}
-							});
-
-						}else
-						{
-                            if(personData.quakesounds)
-                            {
+                                });
 
                             }else
                             {
-                                attacker.ExecuteClientCommand("play " + TsoundPath);
-                            }
-							
-                            if(personData.quakecmessages)
-                            {
-
-                            }else
-                            {
-                                if (TShowChat && !string.IsNullOrEmpty(Localizer["chat.quake.teamkill"]))
+                                if(personData.quakesounds)
                                 {
-                                    Helper.AdvancedPrintToChat(attacker, Localizer["chat.quake.teamkill"], victim.PlayerName);
+
+                                }else
+                                {
+                                    attacker.ExecuteClientCommand("play " + TsoundPath);
                                 }
-                            }
-							
-
-                            if(personData.quakehmessages)
-                            {
-
-                            }else
-                            {
-                                if (TShowCenter && !string.IsNullOrEmpty(Localizer["center.quake.teamkill"]))
+                                
+                                if(personData.quakecmessages)
                                 {
-                                    Server.NextFrame(() =>
+
+                                }else
+                                {
+                                    if (TShowChat && !string.IsNullOrEmpty(Localizer["chat.quake.teamkill"]))
                                     {
-                                        if(Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
+                                        Helper.AdvancedPrintToChat(attacker, Localizer["chat.quake.teamkill"], victim.PlayerName);
+                                    }
+                                }
+                                
+
+                                if(personData.quakehmessages)
+                                {
+
+                                }else
+                                {
+                                    if (TShowCenter && !string.IsNullOrEmpty(Localizer["center.quake.teamkill"]))
+                                    {
+                                        Server.NextFrame(() =>
                                         {
-                                            Globals.ShowHud_Kill.Remove(attacker.SteamID);
-                                        }
-                                        if(!Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
-                                        {
-                                            Globals.ShowHud_Kill_Name = victim.PlayerName;
-                                            Globals.ShowHud_Kill.Add(attacker.SteamID, Localizer[$"center.quake.teamkill"]);
-                                        }
-                                        HUDTimer?.Kill();
-                                        HUDTimer = null;
-                                        HUDTimer = AddTimer(TIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
-                                    });
+                                            if(Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
+                                            {
+                                                Globals.ShowHud_Kill.Remove(attacker.SteamID);
+                                            }
+                                            if(!Globals.ShowHud_Kill.ContainsKey(attacker.SteamID))
+                                            {
+                                                Globals.ShowHud_Kill_Name = victim.PlayerName;
+                                                Globals.ShowHud_Kill.Add(attacker.SteamID, Localizer[$"center.quake.teamkill"]);
+                                            }
+                                            HUDTimer?.Kill();
+                                            HUDTimer = null;
+                                            HUDTimer = AddTimer(TIntervalHUD, HUDTimer_Callback, TimerFlags.STOP_ON_MAPCHANGE);
+                                        });
+                                    }
                                 }
                             }
-						}
-						return HookResult.Continue;
+                            return HookResult.Continue;
+                        }
                     }
 
-                    
+                    if (attackerteam != victimteam || ConVar.Find("mp_teammates_are_enemies")!.GetPrimitiveValue<bool>() && attackerteam == victimteam) Globals.Kill_Streak[playeridattacker]++;
+                    if (headshot) Globals.Kill_StreakHS[playeridattacker]++;
+                    if (knifekill) Globals.Kill_Knife[playeridattacker]++;
+                    if (NadeKill) Globals.Kill_Nade[playeridattacker]++;
+                    if (MollyKill) Globals.Kill_Molly[playeridattacker]++;
+                    if (TaserKill) Globals.Kill_Taser[playeridattacker]++;
+
+                    int numberofkills = Globals.Kill_Streak[playeridattacker];
+                    int numberofkillsHS = Globals.Kill_StreakHS[playeridattacker];
+                    int numberofknifekill = Globals.Kill_Knife[playeridattacker];
+                    int numberofnadekill = Globals.Kill_Nade[playeridattacker];
+                    int numberofmollykill = Globals.Kill_Molly[playeridattacker];
+                    int numberoftaserkill = Globals.Kill_Taser[playeridattacker];
                     
                     string FsoundPath = "";
                     float FIntervalHUD = 10;
