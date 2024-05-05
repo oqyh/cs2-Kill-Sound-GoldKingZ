@@ -56,42 +56,45 @@ public class KillSoundGoldKingZ : BasePlugin
             }
         }
 
-        async Task PerformDatabaseOperationAsync()
+        if(Configs.GetConfigData().KS_UseMySql)
         {
-            try
+            async Task PerformDatabaseOperationAsync()
             {
-                var connectionSettings = JsonConvert.DeserializeObject<MySqlDataManager.MySqlConnectionSettings>(await File.ReadAllTextAsync(Path.Combine(Path.Combine(ModuleDirectory, "config"), "MySql_Settings.json")));
-                var connectionString = new MySqlConnectionStringBuilder
+                try
                 {
-                    Server = connectionSettings!.MySqlHost,
-                    Port = (uint)connectionSettings.MySqlPort,
-                    Database = connectionSettings.MySqlDatabase,
-                    UserID = connectionSettings.MySqlUsername,
-                    Password = connectionSettings.MySqlPassword
-                }.ConnectionString;
-
-                using (var connection = new MySqlConnection(connectionString))
-                {
-                    await connection.OpenAsync();
-                    var personData = await MySqlDataManager.RetrievePersonDataByIdAsync(playerid, connection);
-                    if (personData.PlayerSteamID != 0)
+                    var connectionSettings = JsonConvert.DeserializeObject<MySqlDataManager.MySqlConnectionSettings>(await File.ReadAllTextAsync(Path.Combine(Path.Combine(ModuleDirectory, "config"), "MySql_Settings.json")));
+                    var connectionString = new MySqlConnectionStringBuilder
                     {
-                        DateTime personDate = DateTime.Now;
+                        Server = connectionSettings!.MySqlHost,
+                        Port = (uint)connectionSettings.MySqlPort,
+                        Database = connectionSettings.MySqlDatabase,
+                        UserID = connectionSettings.MySqlUsername,
+                        Password = connectionSettings.MySqlPassword
+                    }.ConnectionString;
 
-                        Helper.SaveToJsonFile(playerid, Configs.GetConfigData().KS_DefaultValue_FreezeOnOpenMenu ? !personData.freezemenu : personData.freezemenu, Configs.GetConfigData().KS_DefaultValue_HeadShotKillSound ? !personData.headshotkill : personData.headshotkill, Configs.GetConfigData().KS_DefaultValue_HeadShotHitSound ? !personData.headshothit : personData.headshothit, Configs.GetConfigData().KS_DefaultValue_BodyKillSound ? !personData.bodyshotkill : personData.bodyshotkill, Configs.GetConfigData().KS_DefaultValue_BodyHitSound ? !personData.bodyshothit : personData.bodyshothit, personData.quakesounds, personData.quakehmessages, personData.quakecmessages, personDate);
+                    using (var connection = new MySqlConnection(connectionString))
+                    {
+                        await connection.OpenAsync();
+                        var personData = await MySqlDataManager.RetrievePersonDataByIdAsync(playerid, connection);
+                        if (personData.PlayerSteamID != 0)
+                        {
+                            DateTime personDate = DateTime.Now;
+
+                            Helper.SaveToJsonFile(playerid, Configs.GetConfigData().KS_DefaultValue_FreezeOnOpenMenu ? !personData.freezemenu : personData.freezemenu, Configs.GetConfigData().KS_DefaultValue_HeadShotKillSound ? !personData.headshotkill : personData.headshotkill, Configs.GetConfigData().KS_DefaultValue_HeadShotHitSound ? !personData.headshothit : personData.headshothit, Configs.GetConfigData().KS_DefaultValue_BodyKillSound ? !personData.bodyshotkill : personData.bodyshotkill, Configs.GetConfigData().KS_DefaultValue_BodyHitSound ? !personData.bodyshothit : personData.bodyshothit, personData.quakesounds, personData.quakehmessages, personData.quakecmessages, personDate);
+                        }
+                        
                     }
-                    
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"======================== ERROR =============================");
+                    Console.WriteLine($"An error occurred: {ex.Message}");
+                    Console.WriteLine($"======================== ERROR =============================");
                 }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"======================== ERROR =============================");
-                Console.WriteLine($"An error occurred: {ex.Message}");
-                Console.WriteLine($"======================== ERROR =============================");
-            }
-        }
 
-        Task.Run(PerformDatabaseOperationAsync);
+            Task.Run(PerformDatabaseOperationAsync);
+        }
 
         return HookResult.Continue;
     }
@@ -2462,40 +2465,43 @@ public class KillSoundGoldKingZ : BasePlugin
         Globals.buttonPressed.Remove(playerid);
         Globals.ShowHud_Kill.Remove(playerid);
 
-        Task.Run(async () =>
+        if(Configs.GetConfigData().KS_UseMySql)
         {
-            try
+            Task.Run(async () =>
             {
-                var connectionSettings = JsonConvert.DeserializeObject<MySqlDataManager.MySqlConnectionSettings>(await File.ReadAllTextAsync(Path.Combine(Path.Combine(ModuleDirectory, "config"), "MySql_Settings.json")));
-                var connectionString = new MySqlConnectionStringBuilder
+                try
                 {
-                    Server = connectionSettings!.MySqlHost,
-                    Port = (uint)connectionSettings.MySqlPort,
-                    Database = connectionSettings.MySqlDatabase,
-                    UserID = connectionSettings.MySqlUsername,
-                    Password = connectionSettings.MySqlPassword
-                }.ConnectionString;
-                
-                using (var connection = new MySqlConnection(connectionString))
-                {
-                    await connection.OpenAsync();
-                    await MySqlDataManager.CreatePersonDataTableIfNotExistsAsync(connection);
-
-                    DateTime personDate = DateTime.Now;
-                    var personData = Helper.RetrievePersonDataById(playerid);
-                    if (personData.PlayerSteamID != 0)
+                    var connectionSettings = JsonConvert.DeserializeObject<MySqlDataManager.MySqlConnectionSettings>(await File.ReadAllTextAsync(Path.Combine(Path.Combine(ModuleDirectory, "config"), "MySql_Settings.json")));
+                    var connectionString = new MySqlConnectionStringBuilder
                     {
-                        await MySqlDataManager.SaveToMySqlAsync(playerid, Configs.GetConfigData().KS_DefaultValue_FreezeOnOpenMenu ? !personData.freezemenu : personData.freezemenu, Configs.GetConfigData().KS_DefaultValue_HeadShotKillSound ? !personData.headshotkill : personData.headshotkill, Configs.GetConfigData().KS_DefaultValue_HeadShotHitSound ? !personData.headshothit : personData.headshothit, Configs.GetConfigData().KS_DefaultValue_BodyKillSound ? !personData.bodyshotkill : personData.bodyshotkill, Configs.GetConfigData().KS_DefaultValue_BodyHitSound ? !personData.bodyshothit : personData.bodyshothit, personData.quakesounds, personData.quakehmessages, personData.quakecmessages, personDate, connection, connectionSettings);
+                        Server = connectionSettings!.MySqlHost,
+                        Port = (uint)connectionSettings.MySqlPort,
+                        Database = connectionSettings.MySqlDatabase,
+                        UserID = connectionSettings.MySqlUsername,
+                        Password = connectionSettings.MySqlPassword
+                    }.ConnectionString;
+                    
+                    using (var connection = new MySqlConnection(connectionString))
+                    {
+                        await connection.OpenAsync();
+                        await MySqlDataManager.CreatePersonDataTableIfNotExistsAsync(connection);
+
+                        DateTime personDate = DateTime.Now;
+                        var personData = Helper.RetrievePersonDataById(playerid);
+                        if (personData.PlayerSteamID != 0)
+                        {
+                            await MySqlDataManager.SaveToMySqlAsync(playerid, Configs.GetConfigData().KS_DefaultValue_FreezeOnOpenMenu ? !personData.freezemenu : personData.freezemenu, Configs.GetConfigData().KS_DefaultValue_HeadShotKillSound ? !personData.headshotkill : personData.headshotkill, Configs.GetConfigData().KS_DefaultValue_HeadShotHitSound ? !personData.headshothit : personData.headshothit, Configs.GetConfigData().KS_DefaultValue_BodyKillSound ? !personData.bodyshotkill : personData.bodyshotkill, Configs.GetConfigData().KS_DefaultValue_BodyHitSound ? !personData.bodyshothit : personData.bodyshothit, personData.quakesounds, personData.quakehmessages, personData.quakecmessages, personDate, connection, connectionSettings);
+                        }
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"======================== ERROR =============================");
-                Console.WriteLine($"An error occurred: {ex.Message}");
-                Console.WriteLine($"======================== ERROR =============================");
-            }
-        });
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"======================== ERROR =============================");
+                    Console.WriteLine($"An error occurred: {ex.Message}");
+                    Console.WriteLine($"======================== ERROR =============================");
+                }
+            });
+        }
 
         return HookResult.Continue;
     }
