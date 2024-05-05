@@ -273,7 +273,7 @@ You Cannot Control ["RoundPrepare" , "RoundStart" ] Becasue Its Already Announce
 ## .:[ Change Log ]:.
 ```
 (1.1.1)
--support FFA DM 
+-Support FFA DM 
 
 (1.1.0)
 -Fix Toggle Crossing Each Attackers
