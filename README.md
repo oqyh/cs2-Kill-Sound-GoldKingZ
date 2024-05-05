@@ -1,4 +1,4 @@
-# [CS2] Kill-Sound-GoldKingZ (1.0.9)
+# [CS2] Kill-Sound-GoldKingZ (1.1.0)
 
 ### Kill Sound ( Kill , HeadShot , Quake )
 
@@ -16,6 +16,8 @@
 
 [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json)
 
+[MySqlConnector](https://www.nuget.org/packages/MySqlConnector)
+
 ## .:[ Configuration ]:.
 
 > [!CAUTION]
@@ -31,15 +33,17 @@
 
 ```json
 {
-  //To Enable Kill_Settings.json 
+  //Enable Kill_Settings.json?
   "KS_EnableQuakeSounds": false,
 
   //If KS_EnableQuakeSounds Enabled Do You Like To Disable Quake Sounds On WarmUp?
-  "KS_DisableQuakeSoundsOnWarmUp": false,
+  "KS_DisableQuakeSoundsOnWarmUp": true,
 
   //If KS_EnableQuakeSounds Do You Like To Reset Kill Streaks On Every Round?
-  "KS_ResetKillStreakOnEveryRound": false,
+  "KS_ResetKillStreakOnEveryRound": true,
 
+  //Enable MySql MySql_Settings.json?
+  "KS_UseMySql": false,
 //-----------------------------------------------------------------------------------
 
   //Do You Like To Add Freeze On Open Menu Option In The Menu?
@@ -68,19 +72,19 @@
 
 //-----------------------------------------------------------------------------------
   //Default Value Of FreezeOnOpenMenu
-  "KS_FreezeOnOpenMenuDefaultValue": true,
+  "KS_DefaultValue_FreezeOnOpenMenu": true,
 
   //Default Value Of HeadShotKillSound
-  "KS_HeadShotKillSoundDefaultValue": true,
+  "KS_DefaultValue_HeadShotKillSound": true,
 
   //Default Value Of BodyKillSound
-  "KS_BodyKillSoundDefaultValue": false,
+  "KS_DefaultValue_BodyKillSound": false,
 
   //Default Value Of HeadShotHitSound
-  "KS_HeadShotHitSoundDefaultValue": false,
+  "KS_DefaultValue_HeadShotHitSound": false,
 
   //Default Value Of BodyHitSound
-  "KS_BodyHitSoundDefaultValue": false,
+  "KS_DefaultValue_BodyHitSound": false,
 
   //Commands In Game To Open Sound Menu
   "KS_InGameMenu": "!soundmenu,!soundsmenu,!menusound,!menusounds",
@@ -268,6 +272,11 @@ You Cannot Control ["RoundPrepare" , "RoundStart" ] Becasue Its Already Announce
 
 ## .:[ Change Log ]:.
 ```
+(1.1.0)
+-Fix Toggle Crossing Each Attackers
+-Changing Config.json Names DefaultValue To KS_DefaultValue_
+-Added Mysql KS_UseMySql
+
 (1.0.9)
 -Fix Toggle On Cookies
 
