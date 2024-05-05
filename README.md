@@ -1,4 +1,4 @@
-# [CS2] Kill-Sound-GoldKingZ (1.1.0)
+# [CS2] Kill-Sound-GoldKingZ (1.1.1)
 
 ### Kill Sound ( Kill , HeadShot , Quake )
 
@@ -272,6 +272,9 @@ You Cannot Control ["RoundPrepare" , "RoundStart" ] Becasue Its Already Announce
 
 ## .:[ Change Log ]:.
 ```
+(1.1.1)
+-support FFA DM 
+
 (1.1.0)
 -Fix Toggle Crossing Each Attackers
 -Changing Config.json Names DefaultValue To KS_DefaultValue_
