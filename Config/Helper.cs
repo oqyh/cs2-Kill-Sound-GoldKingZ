@@ -349,6 +349,30 @@ public class Helper
             File.WriteAllText(jsonFilePath, json);
         }
     }
+
+    public static void CreateDefaultWeaponsJson2(string jsonFilePath)
+    {
+        if (!File.Exists(jsonFilePath))
+        {
+            var configData = new Dictionary<string, object>
+            {
+                {"MySqlHost", "your_mysql_host"},
+                {"MySqlDatabase", "your_mysql_database"},
+                {"MySqlUsername", "your_mysql_username"},
+                {"MySqlPassword", "your_mysql_password"},
+                {"MySqlPort", 3306}
+            };
+
+            var options = new JsonSerializerOptions
+            {
+                WriteIndented = true
+            };
+
+            string json = System.Text.Json.JsonSerializer.Serialize(configData, options);
+
+            File.WriteAllText(jsonFilePath, json);
+        }
+    }
     public static string RemoveLeadingSpaces(string content)
     {
         string[] lines = content.Split('\n');

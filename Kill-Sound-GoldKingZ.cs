@@ -8,7 +8,8 @@ using CounterStrikeSharp.API.Modules.Memory;
 using Kill_Sound_GoldKingZ.Config;
 using CounterStrikeSharp.API.Modules.Timers;
 using CounterStrikeSharp.API.Modules.Utils;
-
+using Newtonsoft.Json;
+using MySqlConnector;
 
 namespace Kill_Sound_GoldKingZ;
 
@@ -17,7 +18,7 @@ namespace Kill_Sound_GoldKingZ;
 public class KillSoundGoldKingZ : BasePlugin
 {
     public override string ModuleName => "Kill Sound ( Kill , HeadShot , Quake )";
-    public override string ModuleVersion => "1.0.9";
+    public override string ModuleVersion => "1.1.0";
     public override string ModuleAuthor => "Gold KingZ";
     public override string ModuleDescription => "https://github.com/oqyh";
     internal static IStringLocalizer? Stringlocalizer;
@@ -36,9 +37,6 @@ public class KillSoundGoldKingZ : BasePlugin
         RegisterEventHandler<EventPlayerChat>(OnEventPlayerChat, HookMode.Post);
         RegisterListener<Listeners.OnTick>(OnTick);
         RegisterEventHandler<EventPlayerConnectFull>(OnEventPlayerConnectFull);
-        //loaddefault();
-        //RegisterEventHandler<EventRoundAnnounceMatchStart>(OnMatchStart);
-
     }
 
     
@@ -57,6 +55,43 @@ public class KillSoundGoldKingZ : BasePlugin
                 Globals.allow_groups.Add(playerid, true);
             }
         }
+
+        async Task PerformDatabaseOperationAsync()
+        {
+            try
+            {
+                var connectionSettings = JsonConvert.DeserializeObject<MySqlDataManager.MySqlConnectionSettings>(await File.ReadAllTextAsync(Path.Combine(Path.Combine(ModuleDirectory, "config"), "MySql_Settings.json")));
+                var connectionString = new MySqlConnectionStringBuilder
+                {
+                    Server = connectionSettings!.MySqlHost,
+                    Port = (uint)connectionSettings.MySqlPort,
+                    Database = connectionSettings.MySqlDatabase,
+                    UserID = connectionSettings.MySqlUsername,
+                    Password = connectionSettings.MySqlPassword
+                }.ConnectionString;
+
+                using (var connection = new MySqlConnection(connectionString))
+                {
+                    await connection.OpenAsync();
+                    var personData = await MySqlDataManager.RetrievePersonDataByIdAsync(playerid, connection);
+                    if (personData.PlayerSteamID != 0)
+                    {
+                        DateTime personDate = DateTime.Now;
+
+                        Helper.SaveToJsonFile(playerid, Configs.GetConfigData().KS_DefaultValue_FreezeOnOpenMenu ? !personData.freezemenu : personData.freezemenu, Configs.GetConfigData().KS_DefaultValue_HeadShotKillSound ? !personData.headshotkill : personData.headshotkill, Configs.GetConfigData().KS_DefaultValue_HeadShotHitSound ? !personData.headshothit : personData.headshothit, Configs.GetConfigData().KS_DefaultValue_BodyKillSound ? !personData.bodyshotkill : personData.bodyshotkill, Configs.GetConfigData().KS_DefaultValue_BodyHitSound ? !personData.bodyshothit : personData.bodyshothit, personData.quakesounds, personData.quakehmessages, personData.quakecmessages, personDate);
+                    }
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"======================== ERROR =============================");
+                Console.WriteLine($"An error occurred: {ex.Message}");
+                Console.WriteLine($"======================== ERROR =============================");
+            }
+        }
+
+        Task.Run(PerformDatabaseOperationAsync);
 
         return HookResult.Continue;
     }
@@ -86,7 +121,7 @@ public class KillSoundGoldKingZ : BasePlugin
                     {
                         if(attackerteam != victimteam)
                         {
-                            if(Configs.GetConfigData().KS_HeadShotKillSoundDefaultValue)
+                            if(Configs.GetConfigData().KS_DefaultValue_HeadShotKillSound)
                             {
                                 if (personData.headshotkill)
                                 {
@@ -110,7 +145,7 @@ public class KillSoundGoldKingZ : BasePlugin
                         }
                     }else
                     {
-                        if(Configs.GetConfigData().KS_HeadShotKillSoundDefaultValue)
+                        if(Configs.GetConfigData().KS_DefaultValue_HeadShotKillSound)
                         {
                             if (personData.headshotkill)
                             {
@@ -140,7 +175,7 @@ public class KillSoundGoldKingZ : BasePlugin
                     {
                         if(attackerteam != victimteam)
                         {
-                            if(Configs.GetConfigData().KS_BodyKillSoundDefaultValue)
+                            if(Configs.GetConfigData().KS_DefaultValue_BodyKillSound)
                             {
                                 if (personData.bodyshotkill)
                                 {
@@ -164,7 +199,7 @@ public class KillSoundGoldKingZ : BasePlugin
                         }
                     }else
                     {
-                        if(Configs.GetConfigData().KS_BodyKillSoundDefaultValue)
+                        if(Configs.GetConfigData().KS_DefaultValue_BodyKillSound)
                         {
                             if (personData.bodyshotkill)
                             {
@@ -215,7 +250,7 @@ public class KillSoundGoldKingZ : BasePlugin
                     {
                         if(attackerteam != victimteam)
                         {
-                            if(Configs.GetConfigData().KS_HeadShotHitSoundDefaultValue)
+                            if(Configs.GetConfigData().KS_DefaultValue_HeadShotHitSound)
                             {
                                 if (personData.headshothit)
                                 {
@@ -240,7 +275,7 @@ public class KillSoundGoldKingZ : BasePlugin
                         }
                     }else
                     {
-                        if(Configs.GetConfigData().KS_HeadShotHitSoundDefaultValue)
+                        if(Configs.GetConfigData().KS_DefaultValue_HeadShotHitSound)
                         {
                             if (personData.headshothit)
                             {
@@ -271,7 +306,7 @@ public class KillSoundGoldKingZ : BasePlugin
                     {
                         if(attackerteam != victimteam)
                         {
-                            if(Configs.GetConfigData().KS_BodyHitSoundDefaultValue)
+                            if(Configs.GetConfigData().KS_DefaultValue_BodyHitSound)
                             {
                                 if (personData.bodyshothit)
                                 {
@@ -294,7 +329,7 @@ public class KillSoundGoldKingZ : BasePlugin
                         }
                     }else
                     {
-                        if(Configs.GetConfigData().KS_BodyHitSoundDefaultValue)
+                        if(Configs.GetConfigData().KS_DefaultValue_BodyHitSound)
                         {
                             if (personData.bodyshothit)
                             {
@@ -525,14 +560,15 @@ public class KillSoundGoldKingZ : BasePlugin
                         {
                             if(players != null && players.IsValid && !players.IsBot)
                             {
-                                if(personData.quakesounds)
+                                Helper.PersonData personDataa = Helper.RetrievePersonDataById(players.SteamID);
+                                if(personDataa.quakesounds)
                                 {
 
                                 }else
                                 {
                                     players.ExecuteClientCommand("play " + SsoundPath);
                                 }
-                                if(personData.quakecmessages)
+                                if(personDataa.quakecmessages)
                                 {
 
                                 }else
@@ -543,7 +579,7 @@ public class KillSoundGoldKingZ : BasePlugin
                                     }
                                 }
                                 
-                                if(personData.quakehmessages)
+                                if(personDataa.quakehmessages)
                                 {
 
                                 }else
@@ -692,8 +728,8 @@ public class KillSoundGoldKingZ : BasePlugin
 							{
 								if(players != null && players.IsValid && !players.IsBot)
 								{
-                                    
-                                    if(personData.quakesounds)
+                                    Helper.PersonData personDataa = Helper.RetrievePersonDataById(players.SteamID);
+                                    if(personDataa.quakesounds)
                                     {
 
                                     }else
@@ -701,7 +737,7 @@ public class KillSoundGoldKingZ : BasePlugin
                                         players.ExecuteClientCommand("play " + TsoundPath);
                                     }
 
-                                    if(personData.quakecmessages)
+                                    if(personDataa.quakecmessages)
                                     {
 
                                     }else
@@ -713,7 +749,7 @@ public class KillSoundGoldKingZ : BasePlugin
                                     }
 									
 
-                                    if(personData.quakehmessages)
+                                    if(personDataa.quakehmessages)
                                     {
 
                                     }else
@@ -819,15 +855,15 @@ public class KillSoundGoldKingZ : BasePlugin
                             {
                                 if(players != null && players.IsValid && !players.IsBot)
                                 {
-                                    
-                                    if(personData.quakesounds)
+                                    Helper.PersonData personDataa = Helper.RetrievePersonDataById(players.SteamID);
+                                    if(personDataa.quakesounds)
                                     {
 
                                     }else
                                     {
                                         players.ExecuteClientCommand("play " + FsoundPath);
                                     }
-                                    if(personData.quakecmessages)
+                                    if(personDataa.quakecmessages)
                                     {
 
                                     }else
@@ -838,7 +874,7 @@ public class KillSoundGoldKingZ : BasePlugin
                                         }
                                     }
                                     
-                                    if(personData.quakehmessages)
+                                    if(personDataa.quakehmessages)
                                     {
 
                                     }else
@@ -958,7 +994,8 @@ public class KillSoundGoldKingZ : BasePlugin
                                 {
                                     if(players != null && players.IsValid && !players.IsBot)
                                     {
-                                        if(personData.quakesounds)
+                                        Helper.PersonData personDataa = Helper.RetrievePersonDataById(players.SteamID);
+                                        if(personDataa.quakesounds)
                                         {
 
                                         }else
@@ -968,7 +1005,7 @@ public class KillSoundGoldKingZ : BasePlugin
                                         
                                         if(NSteak)
                                         {
-                                            if(personData.quakecmessages)
+                                            if(personDataa.quakecmessages)
                                             {
 
                                             }else
@@ -979,7 +1016,7 @@ public class KillSoundGoldKingZ : BasePlugin
                                                 }
                                             }
                                             
-                                            if(personData.quakehmessages)
+                                            if(personDataa.quakehmessages)
                                             {
 
                                             }else
@@ -1008,7 +1045,7 @@ public class KillSoundGoldKingZ : BasePlugin
                                             
                                         }else
                                         {
-                                            if(personData.quakecmessages)
+                                            if(personDataa.quakecmessages)
                                             {
 
                                             }else
@@ -1019,7 +1056,7 @@ public class KillSoundGoldKingZ : BasePlugin
                                                 }
                                             }
                                             
-                                            if(personData.quakehmessages)
+                                            if(personDataa.quakehmessages)
                                             {
 
                                             }else
@@ -1181,7 +1218,8 @@ public class KillSoundGoldKingZ : BasePlugin
                                 {
                                     if(players != null && players.IsValid && !players.IsBot)
                                     {
-                                        if(personData.quakesounds)
+                                        Helper.PersonData personDataa = Helper.RetrievePersonDataById(players.SteamID);
+                                        if(personDataa.quakesounds)
                                         {
 
                                         }else
@@ -1191,7 +1229,7 @@ public class KillSoundGoldKingZ : BasePlugin
                                         
                                         if(GSteak)
                                         {
-                                            if(personData.quakecmessages)
+                                            if(personDataa.quakecmessages)
                                             {
 
                                             }else
@@ -1203,7 +1241,7 @@ public class KillSoundGoldKingZ : BasePlugin
                                             }
                                             
 
-                                            if(personData.quakehmessages)
+                                            if(personDataa.quakehmessages)
                                             {
 
                                             }else
@@ -1232,7 +1270,7 @@ public class KillSoundGoldKingZ : BasePlugin
                                             
                                         }else
                                         {
-                                            if(personData.quakecmessages)
+                                            if(personDataa.quakecmessages)
                                             {
 
                                             }else
@@ -1242,7 +1280,7 @@ public class KillSoundGoldKingZ : BasePlugin
                                                     Helper.AdvancedPrintToChat(players, Localizer["chat.announce.quake.grenade"], attacker.PlayerName, victim.PlayerName);
                                                 }
                                             }
-                                            if(personData.quakehmessages)
+                                            if(personDataa.quakehmessages)
                                             {
 
                                             }else
@@ -1403,7 +1441,8 @@ public class KillSoundGoldKingZ : BasePlugin
                                 {
                                     if(players != null && players.IsValid && !players.IsBot)
                                     {
-                                        if(personData.quakesounds)
+                                        Helper.PersonData personDataa = Helper.RetrievePersonDataById(players.SteamID);
+                                        if(personDataa.quakesounds)
                                         {
 
                                         }else
@@ -1413,7 +1452,7 @@ public class KillSoundGoldKingZ : BasePlugin
                                         
                                         if(MSteak)
                                         {
-                                            if(personData.quakecmessages)
+                                            if(personDataa.quakecmessages)
                                             {
 
                                             }else
@@ -1424,7 +1463,7 @@ public class KillSoundGoldKingZ : BasePlugin
                                                 }
                                             }
                                             
-                                            if(personData.quakehmessages)
+                                            if(personDataa.quakehmessages)
                                             {
 
                                             }else
@@ -1453,7 +1492,7 @@ public class KillSoundGoldKingZ : BasePlugin
                                             
                                         }else
                                         {
-                                            if(personData.quakecmessages)
+                                            if(personDataa.quakecmessages)
                                             {
 
                                             }else
@@ -1464,7 +1503,7 @@ public class KillSoundGoldKingZ : BasePlugin
                                                 }
                                             }
                                             
-                                            if(personData.quakehmessages)
+                                            if(personDataa.quakehmessages)
                                             {
 
                                             }else
@@ -1626,7 +1665,8 @@ public class KillSoundGoldKingZ : BasePlugin
                                 {
                                     if(players != null && players.IsValid && !players.IsBot)
                                     {
-                                        if(personData.quakesounds)
+                                        Helper.PersonData personDataa = Helper.RetrievePersonDataById(players.SteamID);
+                                        if(personDataa.quakesounds)
                                         {
 
                                         }else
@@ -1636,7 +1676,7 @@ public class KillSoundGoldKingZ : BasePlugin
                                         
                                         if(ZSteak)
                                         {
-                                            if(personData.quakecmessages)
+                                            if(personDataa.quakecmessages)
                                             {
 
                                             }else
@@ -1647,7 +1687,7 @@ public class KillSoundGoldKingZ : BasePlugin
                                                 }
                                             }
                                             
-                                            if(personData.quakehmessages)
+                                            if(personDataa.quakehmessages)
                                             {
 
                                             }else
@@ -1677,7 +1717,7 @@ public class KillSoundGoldKingZ : BasePlugin
                                             
                                         }else
                                         {
-                                            if(personData.quakecmessages)
+                                            if(personDataa.quakecmessages)
                                             {
 
                                             }else
@@ -1688,7 +1728,7 @@ public class KillSoundGoldKingZ : BasePlugin
                                                 }
                                             }
                                             
-                                            if(personData.quakehmessages)
+                                            if(personDataa.quakehmessages)
                                             {
 
                                             }else
@@ -1851,9 +1891,10 @@ public class KillSoundGoldKingZ : BasePlugin
                                 {
                                     if(players != null && players.IsValid && !players.IsBot)
                                     {
-                                        if(personData.quakesounds)
+                                        Helper.PersonData personDataa = Helper.RetrievePersonDataById(players.SteamID);
+                                        if(personDataa.quakesounds)
                                         {
-
+                                            //skip
                                         }else
                                         {
                                             players.ExecuteClientCommand("play " + HsoundPath);
@@ -1861,7 +1902,7 @@ public class KillSoundGoldKingZ : BasePlugin
                                         
                                         if(HSteak)
                                         {
-                                            if(personData.quakecmessages)
+                                            if(personDataa.quakecmessages)
                                             {
 
                                             }else
@@ -1873,7 +1914,7 @@ public class KillSoundGoldKingZ : BasePlugin
                                             }
                                             
 
-                                            if(personData.quakehmessages)
+                                            if(personDataa.quakehmessages)
                                             {
 
                                             }else
@@ -1902,7 +1943,7 @@ public class KillSoundGoldKingZ : BasePlugin
                                             
                                         }else
                                         {
-                                            if(personData.quakecmessages)
+                                            if(personDataa.quakecmessages)
                                             {
 
                                             }else
@@ -1913,7 +1954,7 @@ public class KillSoundGoldKingZ : BasePlugin
                                                 }
                                             }
                                             
-                                            if(personData.quakehmessages)
+                                            if(personDataa.quakehmessages)
                                             {
 
                                             }else
@@ -2076,7 +2117,8 @@ public class KillSoundGoldKingZ : BasePlugin
                                 {
                                     if(players != null && players.IsValid && !players.IsBot)
                                     {
-                                        if(personData.quakesounds)
+                                        Helper.PersonData personDataa = Helper.RetrievePersonDataById(players.SteamID);
+                                        if(personDataa.quakesounds)
                                         {
 
                                         }else
@@ -2086,7 +2128,7 @@ public class KillSoundGoldKingZ : BasePlugin
                                         
                                         if(KSteak)
                                         {
-                                            if(personData.quakecmessages)
+                                            if(personDataa.quakecmessages)
                                             {
 
                                             }else
@@ -2098,7 +2140,7 @@ public class KillSoundGoldKingZ : BasePlugin
                                             }
                                             
 
-                                            if(personData.quakehmessages)
+                                            if(personDataa.quakehmessages)
                                             {
 
                                             }else
@@ -2127,7 +2169,7 @@ public class KillSoundGoldKingZ : BasePlugin
                                             
                                         }else
                                         {
-                                            if(personData.quakecmessages)
+                                            if(personDataa.quakecmessages)
                                             {
 
                                             }else
@@ -2138,7 +2180,7 @@ public class KillSoundGoldKingZ : BasePlugin
                                                 }
                                             }
                                             
-                                            if(personData.quakehmessages)
+                                            if(personDataa.quakehmessages)
                                             {
 
                                             }else
@@ -2399,6 +2441,8 @@ public class KillSoundGoldKingZ : BasePlugin
         
         if (player == null || !player.IsValid || player.IsBot || player.IsHLTV) return HookResult.Continue;
         var playerid = player.SteamID;
+        Helper.PersonData personData = Helper.RetrievePersonDataById(playerid);
+        DateTime personDate = DateTime.Now;
 
         Globals.Kill_Streak.Remove(playerid);
         Globals.Kill_StreakHS.Remove(playerid);
@@ -2417,6 +2461,41 @@ public class KillSoundGoldKingZ : BasePlugin
         Globals.currentIndexDict.Remove(playerid);
         Globals.buttonPressed.Remove(playerid);
         Globals.ShowHud_Kill.Remove(playerid);
+
+        Task.Run(async () =>
+        {
+            try
+            {
+                var connectionSettings = JsonConvert.DeserializeObject<MySqlDataManager.MySqlConnectionSettings>(await File.ReadAllTextAsync(Path.Combine(Path.Combine(ModuleDirectory, "config"), "MySql_Settings.json")));
+                var connectionString = new MySqlConnectionStringBuilder
+                {
+                    Server = connectionSettings!.MySqlHost,
+                    Port = (uint)connectionSettings.MySqlPort,
+                    Database = connectionSettings.MySqlDatabase,
+                    UserID = connectionSettings.MySqlUsername,
+                    Password = connectionSettings.MySqlPassword
+                }.ConnectionString;
+                
+                using (var connection = new MySqlConnection(connectionString))
+                {
+                    await connection.OpenAsync();
+                    await MySqlDataManager.CreatePersonDataTableIfNotExistsAsync(connection);
+
+                    DateTime personDate = DateTime.Now;
+                    var personData = Helper.RetrievePersonDataById(playerid);
+                    if (personData.PlayerSteamID != 0)
+                    {
+                        await MySqlDataManager.SaveToMySqlAsync(playerid, Configs.GetConfigData().KS_DefaultValue_FreezeOnOpenMenu ? !personData.freezemenu : personData.freezemenu, Configs.GetConfigData().KS_DefaultValue_HeadShotKillSound ? !personData.headshotkill : personData.headshotkill, Configs.GetConfigData().KS_DefaultValue_HeadShotHitSound ? !personData.headshothit : personData.headshothit, Configs.GetConfigData().KS_DefaultValue_BodyKillSound ? !personData.bodyshotkill : personData.bodyshotkill, Configs.GetConfigData().KS_DefaultValue_BodyHitSound ? !personData.bodyshothit : personData.bodyshothit, personData.quakesounds, personData.quakehmessages, personData.quakecmessages, personDate, connection, connectionSettings);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"======================== ERROR =============================");
+                Console.WriteLine($"An error occurred: {ex.Message}");
+                Console.WriteLine($"======================== ERROR =============================");
+            }
+        });
 
         return HookResult.Continue;
     }
@@ -2467,7 +2546,7 @@ public class KillSoundGoldKingZ : BasePlugin
                 return HookResult.Continue;
             }
             Helper.PersonData personData = Helper.RetrievePersonDataById(playerid);
-            if(Configs.GetConfigData().KS_FreezeOnOpenMenuDefaultValue)
+            if(Configs.GetConfigData().KS_DefaultValue_FreezeOnOpenMenu)
             {
                 if (personData.freezemenu)
                 {
@@ -2641,7 +2720,7 @@ public class KillSoundGoldKingZ : BasePlugin
                 if (Configs.GetConfigData().KS_AddMenu_FreezeOnOpenMenu)
                 {
                     MenuSetupList.Add(Localizer["menu.item.freeze"]);
-                    if(Configs.GetConfigData().KS_FreezeOnOpenMenuDefaultValue)
+                    if(Configs.GetConfigData().KS_DefaultValue_FreezeOnOpenMenu)
                     {
                         boolValuesList.Add(personData.freezemenu);
                     }else
@@ -2653,7 +2732,7 @@ public class KillSoundGoldKingZ : BasePlugin
                 if (!string.IsNullOrEmpty(Configs.GetConfigData().KS_AddMenu_BodyHitSoundPath))
                 {
                     MenuSetupList.Add(Localizer["menu.item.bodyhit"]);
-                    if(Configs.GetConfigData().KS_BodyHitSoundDefaultValue)
+                    if(Configs.GetConfigData().KS_DefaultValue_BodyHitSound)
                     {
                         boolValuesList.Add(personData.bodyshothit);
                     }else
@@ -2665,7 +2744,7 @@ public class KillSoundGoldKingZ : BasePlugin
                 if (!string.IsNullOrEmpty(Configs.GetConfigData().KS_AddMenu_BodyKillSoundPath))
                 {
                     MenuSetupList.Add(Localizer["menu.item.bodykill"]);
-                    if(Configs.GetConfigData().KS_BodyKillSoundDefaultValue)
+                    if(Configs.GetConfigData().KS_DefaultValue_BodyKillSound)
                     {
                         boolValuesList.Add(personData.bodyshotkill);
                     }else
@@ -2678,7 +2757,7 @@ public class KillSoundGoldKingZ : BasePlugin
                 {
                     MenuSetupList.Add(Localizer["menu.item.headshothit"]);
                     
-                    if(Configs.GetConfigData().KS_HeadShotHitSoundDefaultValue)
+                    if(Configs.GetConfigData().KS_DefaultValue_HeadShotHitSound)
                     {
                         boolValuesList.Add(personData.headshothit);
                     }else
@@ -2690,7 +2769,7 @@ public class KillSoundGoldKingZ : BasePlugin
                 if (!string.IsNullOrEmpty(Configs.GetConfigData().KS_AddMenu_HeadShotKillSoundPath))
                 {
                     MenuSetupList.Add(Localizer["menu.item.headshotkill"]);
-                    if(Configs.GetConfigData().KS_HeadShotKillSoundDefaultValue)
+                    if(Configs.GetConfigData().KS_DefaultValue_HeadShotKillSound)
                     {
                         boolValuesList.Add(personData.headshotkill);
                     }else
@@ -2757,7 +2836,7 @@ public class KillSoundGoldKingZ : BasePlugin
                     if (currentLineName == Localizer["menu.item.freeze"])
                     {
                         personData.freezemenu = !personData.freezemenu;
-                        if(Configs.GetConfigData().KS_FreezeOnOpenMenuDefaultValue)
+                        if(Configs.GetConfigData().KS_DefaultValue_FreezeOnOpenMenu)
                         {
                             if(personData.freezemenu)
                             {
@@ -2814,7 +2893,7 @@ public class KillSoundGoldKingZ : BasePlugin
                     else if (currentLineName == Localizer["menu.item.bodyhit"])
                     {
                         personData.bodyshothit = !personData.bodyshothit;
-                        if(Configs.GetConfigData().KS_BodyHitSoundDefaultValue)
+                        if(Configs.GetConfigData().KS_DefaultValue_BodyHitSound)
                         {
                             if(personData.bodyshothit)
                             {
@@ -2852,7 +2931,7 @@ public class KillSoundGoldKingZ : BasePlugin
                     else if (currentLineName == Localizer["menu.item.bodykill"])
                     {
                         personData.bodyshotkill = !personData.bodyshotkill;
-                        if(Configs.GetConfigData().KS_BodyKillSoundDefaultValue)
+                        if(Configs.GetConfigData().KS_DefaultValue_BodyKillSound)
                         {
                             if(personData.bodyshotkill)
                             {
@@ -2889,7 +2968,7 @@ public class KillSoundGoldKingZ : BasePlugin
                     else if (currentLineName == Localizer["menu.item.headshothit"])
                     {
                         personData.headshothit = !personData.headshothit;
-                        if(Configs.GetConfigData().KS_HeadShotHitSoundDefaultValue)
+                        if(Configs.GetConfigData().KS_DefaultValue_HeadShotHitSound)
                         {
                             if(personData.headshothit)
                             {
@@ -2926,7 +3005,7 @@ public class KillSoundGoldKingZ : BasePlugin
                     else if (currentLineName == Localizer["menu.item.headshotkill"])
                     {
                         personData.headshotkill = !personData.headshotkill;
-                        if(Configs.GetConfigData().KS_HeadShotKillSoundDefaultValue)
+                        if(Configs.GetConfigData().KS_DefaultValue_HeadShotKillSound)
                         {
                             if(personData.headshotkill)
                             {
@@ -2963,6 +3042,7 @@ public class KillSoundGoldKingZ : BasePlugin
                     else if (currentLineName == Localizer["menu.item.quake.sounds"])
                     {
                         personData.quakesounds = !personData.quakesounds;
+                        
                         if(personData.quakesounds)
                         {
                             if (!string.IsNullOrEmpty(Localizer["player.toggle.quake.sounds.off"]))
@@ -2978,6 +3058,7 @@ public class KillSoundGoldKingZ : BasePlugin
                             }
                         }
                         Helper.SaveToJsonFile(playerid, personData.freezemenu, personData.headshotkill, personData.headshothit, personData.bodyshotkill, personData.bodyshothit,personData.quakesounds,personData.quakehmessages,personData.quakecmessages, personDate);
+                        
                     }
                     else if (currentLineName == Localizer["menu.item.quake.center.messages"])
                     {
